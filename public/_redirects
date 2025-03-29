@@ -1,0 +1,7 @@
+# Redirect API requests to Netlify Functions
+/api/posts              /.netlify/functions/posts      200
+/api/generate-article   /.netlify/functions/generate-article    200
+/api/subscribe          /.netlify/functions/subscribe   200
+
+# Handle SPA routing
+/*    /index.html   200 

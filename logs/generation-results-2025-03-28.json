@@ -1,0 +1,182 @@
+{
+  "timestamp": "2025-03-28T22:33:50.829Z",
+  "totalTime": "460.2s",
+  "success": [
+    {
+      "topic": "GMO",
+      "category": "Food Innovation",
+      "title": "What Makes GMO So Important in 2025?\u001b[0m",
+      "filename": "2025-03-28T22:26:24.379Z-what-makes-gmo-so-important-in-2025.md\u001b[0m",
+      "duration": "13.7s"
+    },
+    {
+      "topic": "AI",
+      "category": "AI & ML",
+      "title": "5 Things You Should Know About AI\u001b[0m",
+      "filename": "2025-03-28T22:26:44.522Z-5-things-you-should-know-about-ai.md\u001b[0m",
+      "duration": "18.1s"
+    },
+    {
+      "topic": "Bioethics",
+      "category": "Biotech & Genetics",
+      "title": "4 Ways Bioethics Is Transforming Industries\u001b[0m",
+      "filename": "2025-03-28T22:27:04.321Z-4-ways-bioethics-is-transforming-industries.md\u001b[0m",
+      "duration": "17.8s"
+    },
+    {
+      "topic": "Flying Cars",
+      "category": "Future Technology",
+      "title": "Is Flying Cars Right for You? The Complete Guide\u001b[0m",
+      "filename": "2025-03-28T22:27:25.688Z-is-flying-cars-right-for-you-the-complete-guide.md\u001b[0m",
+      "duration": "19.4s"
+    },
+    {
+      "topic": "Web3",
+      "category": "Trending",
+      "title": "What Makes Web3 So Important in 2025?\u001b[0m",
+      "filename": "2025-03-28T22:27:42.930Z-what-makes-web3-so-important-in-2025.md\u001b[0m",
+      "duration": "15.2s"
+    },
+    {
+      "topic": "Light Field Computing",
+      "category": "Holographic Memory",
+      "title": "What Makes Light Field Computing So Important in 2025?\u001b[0m",
+      "filename": "2025-03-28T22:28:03.176Z-what-makes-light-field-computing-so-important-in-2025.md\u001b[0m",
+      "duration": "18.3s"
+    },
+    {
+      "topic": "Oceanic Consciousness",
+      "category": "Sentient Oceans",
+      "title": "Why Oceanic Consciousness Matters More Than Ever\u001b[0m",
+      "filename": "2025-03-28T22:28:20.985Z-why-oceanic-consciousness-matters-more-than-ever.md\u001b[0m",
+      "duration": "15.8s"
+    },
+    {
+      "topic": "Carbon Sequestration",
+      "category": "Regenerative Technologies",
+      "title": "Why Carbon Sequestration Matters More Than Ever\u001b[0m",
+      "filename": "2025-03-28T22:28:41.139Z-why-carbon-sequestration-matters-more-than-ever.md\u001b[0m",
+      "duration": "18.2s"
+    },
+    {
+      "topic": "Quantum Computational Life",
+      "category": "Quantum Life",
+      "title": "Is Quantum Computational Life Right for You? The Complete Guide\u001b[0m",
+      "filename": "2025-03-28T22:29:00.018Z-is-quantum-computational-life-right-for-you-the-complete-guide.md\u001b[0m",
+      "duration": "16.9s"
+    },
+    {
+      "topic": "Existential Analytics",
+      "category": "Existential Technologies",
+      "title": "4 Ways Existential Analytics Is Transforming Industries\u001b[0m",
+      "filename": "2025-03-28T22:29:15.419Z-4-ways-existential-analytics-is-transforming-industries.md\u001b[0m",
+      "duration": "13.4s"
+    },
+    {
+      "topic": "Transcendent Cognition",
+      "category": "Superconsciousness",
+      "title": "How Transcendent Cognition Will Change in the Next Decade\u001b[0m",
+      "filename": "2025-03-28T22:29:33.544Z-how-transcendent-cognition-will-change-in-the-next-decade.md\u001b[0m",
+      "duration": "16.1s"
+    },
+    {
+      "topic": "Stellar Engineering",
+      "category": "Interstellar Exploration",
+      "title": "The Essential Guide to Stellar Engineering\u001b[0m",
+      "filename": "2025-03-28T22:29:52.104Z-the-essential-guide-to-stellar-engineering.md\u001b[0m",
+      "duration": "16.6s"
+    },
+    {
+      "topic": "Climate Intelligence",
+      "category": "Planetary Intelligence",
+      "title": "5 Things You Should Know About Climate Intelligence\u001b[0m",
+      "filename": "2025-03-28T22:30:09.787Z-5-things-you-should-know-about-climate-intelligence.md\u001b[0m",
+      "duration": "15.7s"
+    },
+    {
+      "topic": "Networked Matter",
+      "category": "Sentient Infrastructure",
+      "title": "Networked Matter\u001b[0m",
+      "filename": "2025-03-28T22:30:26.715Z-networked-matter.md\u001b[0m",
+      "duration": "14.9s"
+    },
+    {
+      "topic": "Superposition Ethics",
+      "category": "Quantum Sociology",
+      "title": "Why Superposition Ethics Matters More Than Ever\u001b[0m",
+      "filename": "2025-03-28T22:30:42.314Z-why-superposition-ethics-matters-more-than-ever.md\u001b[0m",
+      "duration": "13.6s"
+    },
+    {
+      "topic": "Hyperspatial Engineering",
+      "category": "Multidimensional Design",
+      "title": "Hyperspatial Engineering: Myths vs. Reality\u001b[0m",
+      "filename": "2025-03-28T22:31:01.721Z-hyperspatial-engineering-myths-vs-reality.md\u001b[0m",
+      "duration": "17.4s"
+    },
+    {
+      "topic": "Causality Management",
+      "category": "Time Manipulation",
+      "title": "How Causality Management Is Reshaping Our World\u001b[0m",
+      "filename": "2025-03-28T22:31:20.328Z-how-causality-management-is-reshaping-our-world.md\u001b[0m",
+      "duration": "16.6s"
+    },
+    {
+      "topic": "Memory DNA",
+      "category": "Mind Archaeology",
+      "title": "5 Things You Should Know About Memory DNA\u001b[0m",
+      "filename": "2025-03-28T22:31:39.098Z-5-things-you-should-know-about-memory-dna.md\u001b[0m",
+      "duration": "16.8s"
+    },
+    {
+      "topic": "Programmable Matter",
+      "category": "Sentient Infrastructure",
+      "title": "What Makes Programmable Matter So Important in 2025?\u001b[0m",
+      "filename": "2025-03-28T22:31:56.157Z-what-makes-programmable-matter-so-important-in-2025.md\u001b[0m",
+      "duration": "15.1s"
+    },
+    {
+      "topic": "Emotional AI",
+      "category": "Emotional Intelligence",
+      "title": "Emotional AI Explained: Everything You Need to Know\u001b[0m",
+      "filename": "2025-03-28T22:32:16.962Z-emotional-ai-explained-everything-you-need-to-know.md\u001b[0m",
+      "duration": "18.8s"
+    },
+    {
+      "topic": "Collective Behavior",
+      "category": "Emergent Dynamics",
+      "title": "How Collective Behavior Is Reshaping Our World\u001b[0m",
+      "filename": "2025-03-28T22:32:34.002Z-how-collective-behavior-is-reshaping-our-world.md\u001b[0m",
+      "duration": "15.0s"
+    },
+    {
+      "topic": "Stellar Diplomacy",
+      "category": "Interstellar Civilizations",
+      "title": "Stellar Diplomacy Explained: Everything You Need to Know\u001b[0m",
+      "filename": "2025-03-28T22:32:54.375Z-stellar-diplomacy-explained-everything-you-need-to-know.md\u001b[0m",
+      "duration": "18.4s"
+    },
+    {
+      "topic": "Living Buildings",
+      "category": "Sentient Architecture",
+      "title": "Living Buildings: Myths vs. Reality\u001b[0m",
+      "filename": "2025-03-28T22:33:12.927Z-living-buildings-myths-vs-reality.md\u001b[0m",
+      "duration": "16.5s"
+    },
+    {
+      "topic": "SETI",
+      "category": "Space & Exploration",
+      "title": "Understanding SETI in Today's World\u001b[0m",
+      "filename": "2025-03-28T22:33:30.944Z-understanding-seti-in-todays-world.md\u001b[0m",
+      "duration": "16.0s"
+    },
+    {
+      "topic": "Subjective Experience Atlases",
+      "category": "Consciousness Mapping",
+      "title": "Is Subjective Experience Atlases Right for You? The Complete Guide\u001b[0m",
+      "filename": "2025-03-28T22:33:50.817Z-is-subjective-experience-atlases-right-for-you-the-complete-guide.md\u001b[0m",
+      "duration": "17.9s"
+    }
+  ],
+  "failure": []
+}

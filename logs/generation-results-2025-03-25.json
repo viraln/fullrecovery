@@ -1,0 +1,182 @@
+{
+  "timestamp": "2025-03-25T19:25:34.669Z",
+  "totalTime": "385.1s",
+  "success": [
+    {
+      "topic": "Crystalline Light Processing",
+      "category": "Photonic Intelligence",
+      "title": "The Essential Guide to Crystalline Light Processing\u001b[0m",
+      "filename": "2025-03-25T19:19:23.386Z-the-essential-guide-to-crystalline-light-processing.md\u001b[0m",
+      "duration": "13.8s"
+    },
+    {
+      "topic": "Aerial Architecture",
+      "category": "Atmospheric Habitats",
+      "title": "Aerial Architecture: Myths vs. Reality\u001b[0m",
+      "filename": "2025-03-25T19:19:37.898Z-aerial-architecture-myths-vs-reality.md\u001b[0m",
+      "duration": "12.5s"
+    },
+    {
+      "topic": "Connected Urban Ecology",
+      "category": "Hyperconnected Cities",
+      "title": "How Does Connected Urban Ecology Impact Our Future?\u001b[0m",
+      "filename": "2025-03-25T19:19:52.683Z-how-does-connected-urban-ecology-impact-our-future.md\u001b[0m",
+      "duration": "12.8s"
+    },
+    {
+      "topic": "Microbial Fuel Cells",
+      "category": "Energy Transformation",
+      "title": "5 Things You Should Know About Microbial Fuel Cells\u001b[0m",
+      "filename": "2025-03-25T19:20:08.148Z-5-things-you-should-know-about-microbial-fuel-cells.md\u001b[0m",
+      "duration": "13.5s"
+    },
+    {
+      "topic": "Dimensional Engineering",
+      "category": "Dimensional Design",
+      "title": "Dimensional Engineering: Myths vs. Reality\u001b[0m",
+      "filename": "2025-03-25T19:20:23.714Z-dimensional-engineering-myths-vs-reality.md\u001b[0m",
+      "duration": "13.6s"
+    },
+    {
+      "topic": "Four-Day Week",
+      "category": "Future of Work",
+      "title": "Is Four-Day Week Right for You? The Complete Guide\u001b[0m",
+      "filename": "2025-03-25T19:20:39.665Z-is-four-day-week-right-for-you-the-complete-guide.md\u001b[0m",
+      "duration": "14.0s"
+    },
+    {
+      "topic": "Mars Colonization",
+      "category": "Space & Exploration",
+      "title": "How to Master Mars Colonization: Expert Strategies\u001b[0m",
+      "filename": "2025-03-25T19:20:54.420Z-how-to-master-mars-colonization-expert-strategies.md\u001b[0m",
+      "duration": "12.7s"
+    },
+    {
+      "topic": "Quantum Intelligence",
+      "category": "Hyperintelligence",
+      "title": "What Makes Quantum Intelligence So Important in 2025?\u001b[0m",
+      "filename": "2025-03-25T19:21:10.975Z-what-makes-quantum-intelligence-so-important-in-2025.md\u001b[0m",
+      "duration": "14.6s"
+    },
+    {
+      "topic": "Hydrodynamic Processing",
+      "category": "Fluid Intelligence",
+      "title": "Hydrodynamic Processing Explained: Everything You Need to Know\u001b[0m",
+      "filename": "2025-03-25T19:21:27.609Z-hydrodynamic-processing-explained-everything-you-need-to-know.md\u001b[0m",
+      "duration": "14.6s"
+    },
+    {
+      "topic": "Black Hole Technology",
+      "category": "Cosmological Engineering",
+      "title": "Why Black Hole Technology Matters More Than Ever\u001b[0m",
+      "filename": "2025-03-25T19:21:41.422Z-why-black-hole-technology-matters-more-than-ever.md\u001b[0m",
+      "duration": "11.8s"
+    },
+    {
+      "topic": "Conceptual Genesis",
+      "category": "Generative Ontology",
+      "title": "Understanding Conceptual Genesis in Today's World\u001b[0m",
+      "filename": "2025-03-25T19:21:55.707Z-understanding-conceptual-genesis-in-todays-world.md\u001b[0m",
+      "duration": "12.3s"
+    },
+    {
+      "topic": "Animal Cognition Translation",
+      "category": "Human-Animal Interface",
+      "title": "Animal Cognition Translation: A Comprehensive Analysis\u001b[0m",
+      "filename": "2025-03-25T19:22:11.046Z-animal-cognition-translation-a-comprehensive-analysis.md\u001b[0m",
+      "duration": "13.3s"
+    },
+    {
+      "topic": "Cryptocurrency",
+      "category": "Business & Finance",
+      "title": "The Essential Guide to Cryptocurrency\u001b[0m",
+      "filename": "2025-03-25T19:22:24.585Z-the-essential-guide-to-cryptocurrency.md\u001b[0m",
+      "duration": "11.5s"
+    },
+    {
+      "topic": "Propulsion",
+      "category": "Space & Exploration",
+      "title": "3 Revolutionary Aspects of Propulsion\u001b[0m",
+      "filename": "2025-03-25T19:22:40.370Z-3-revolutionary-aspects-of-propulsion.md\u001b[0m",
+      "duration": "13.8s"
+    },
+    {
+      "topic": "Holographic Storage",
+      "category": "Holographic Technology",
+      "title": "Is Holographic Storage Right for You? The Complete Guide\u001b[0m",
+      "filename": "2025-03-25T19:22:54.257Z-is-holographic-storage-right-for-you-the-complete-guide.md\u001b[0m",
+      "duration": "11.9s"
+    },
+    {
+      "topic": "Gravity Wave Generation",
+      "category": "Gravity Control",
+      "title": "How to Master Gravity Wave Generation: Expert Strategies\u001b[0m",
+      "filename": "2025-03-25T19:23:10.102Z-how-to-master-gravity-wave-generation-expert-strategies.md\u001b[0m",
+      "duration": "13.8s"
+    },
+    {
+      "topic": "Generative",
+      "category": "AI & ML",
+      "title": "Generative: A Comprehensive Analysis\u001b[0m",
+      "filename": "2025-03-25T19:23:26.791Z-generative-a-comprehensive-analysis.md\u001b[0m",
+      "duration": "14.7s"
+    },
+    {
+      "topic": "Zero Oxygen Systems",
+      "category": "Extremophile Design",
+      "title": "Zero Oxygen Systems: A Comprehensive Analysis\u001b[0m",
+      "filename": "2025-03-25T19:23:40.971Z-zero-oxygen-systems-a-comprehensive-analysis.md\u001b[0m",
+      "duration": "12.2s"
+    },
+    {
+      "topic": "Dimension-Shifting Spaces",
+      "category": "Multidimensional Design",
+      "title": "Understanding Dimension-Shifting Spaces in Today's World\u001b[0m",
+      "filename": "2025-03-25T19:23:55.503Z-understanding-dimension-shifting-spaces-in-todays-world.md\u001b[0m",
+      "duration": "12.5s"
+    },
+    {
+      "topic": "Multiverse Artifact Recovery",
+      "category": "Dimensional Archaeology",
+      "title": "Multiverse Artifact Recovery: Myths vs. Reality\u001b[0m",
+      "filename": "2025-03-25T19:24:10.886Z-multiverse-artifact-recovery-myths-vs-reality.md\u001b[0m",
+      "duration": "13.4s"
+    },
+    {
+      "topic": "Space Psychology",
+      "category": "Interplanetary Living",
+      "title": "3 Revolutionary Aspects of Space Psychology\u001b[0m",
+      "filename": "2025-03-25T19:24:28.242Z-3-revolutionary-aspects-of-space-psychology.md\u001b[0m",
+      "duration": "15.4s"
+    },
+    {
+      "topic": "Xenoscience",
+      "category": "Xenotech",
+      "title": "How to Master Xenoscience: Expert Strategies\u001b[0m",
+      "filename": "2025-03-25T19:24:42.931Z-how-to-master-xenoscience-expert-strategies.md\u001b[0m",
+      "duration": "12.7s"
+    },
+    {
+      "topic": "Organic Algorithm Design",
+      "category": "Biomimetic Computing",
+      "title": "What Makes Organic Algorithm Design So Important in 2025?\u001b[0m",
+      "filename": "2025-03-25T19:24:59.072Z-what-makes-organic-algorithm-design-so-important-in-2025.md\u001b[0m",
+      "duration": "14.1s"
+    },
+    {
+      "topic": "Gravitational Communication",
+      "category": "Gravity Control",
+      "title": "The Essential Guide to Gravitational Communication\u001b[0m",
+      "filename": "2025-03-25T19:25:16.324Z-the-essential-guide-to-gravitational-communication.md\u001b[0m",
+      "duration": "15.3s"
+    },
+    {
+      "topic": "Digital Detox",
+      "category": "Digital Wellness",
+      "title": "Digital Detox\u001b[0m",
+      "filename": "2025-03-25T19:25:34.655Z-digital-detox.md\u001b[0m",
+      "duration": "16.3s"
+    }
+  ],
+  "failure": []
+}

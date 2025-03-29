@@ -1,0 +1,357 @@
+{
+  "timestamp": "2025-03-22T22:09:07.353Z",
+  "totalTime": "765.7s",
+  "success": [
+    {
+      "topic": "BrainHealth",
+      "category": "Health & Medicine",
+      "title": "How BrainHealth Is Reshaping Our World\u001b[0m",
+      "filename": "2025-03-22T21:56:34.791Z-how-brainhealth-is-reshaping-our-world.md\u001b[0m",
+      "duration": "13.2s"
+    },
+    {
+      "topic": "Nano-Robotics",
+      "category": "Nanotech Revolution",
+      "title": "The Essential Guide to Nano-Robotics\u001b[0m",
+      "filename": "2025-03-22T21:56:50.725Z-the-essential-guide-to-nano-robotics.md\u001b[0m",
+      "duration": "13.9s"
+    },
+    {
+      "topic": "Narrative Spaces",
+      "category": "Synthetic Realities",
+      "title": "Narrative Spaces: Myths vs. Reality\u001b[0m",
+      "filename": "2025-03-22T21:57:05.362Z-narrative-spaces-myths-vs-reality.md\u001b[0m",
+      "duration": "12.6s"
+    },
+    {
+      "topic": "Telomere Science",
+      "category": "Extreme Longevity",
+      "title": "Why Telomere Science Matters More Than Ever\u001b[0m",
+      "filename": "2025-03-22T21:57:19.372Z-why-telomere-science-matters-more-than-ever.md\u001b[0m",
+      "duration": "12.0s"
+    },
+    {
+      "topic": "Digital Rights",
+      "category": "Digital Consciousness",
+      "title": "Digital Rights: Myths vs. Reality\u001b[0m",
+      "filename": "2025-03-22T21:57:34.879Z-digital-rights-myths-vs-reality.md\u001b[0m",
+      "duration": "13.5s"
+    },
+    {
+      "topic": "Basketball",
+      "category": "Sports & Athletics",
+      "title": "What Makes Basketball So Important in 2025?\u001b[0m",
+      "filename": "2025-03-22T21:57:48.263Z-what-makes-basketball-so-important-in-2025.md\u001b[0m",
+      "duration": "11.4s"
+    },
+    {
+      "topic": "Medical Holography",
+      "category": "Holographic Technology",
+      "title": "Is Medical Holography Right for You? The Complete Guide\u001b[0m",
+      "filename": "2025-03-22T21:58:02.590Z-is-medical-holography-right-for-you-the-complete-guide.md\u001b[0m",
+      "duration": "12.3s"
+    },
+    {
+      "topic": "Neural Interfaces",
+      "category": "Brain-Computer Interface",
+      "title": "How Neural Interfaces Is Reshaping Our World\u001b[0m",
+      "filename": "2025-03-22T21:58:15.641Z-how-neural-interfaces-is-reshaping-our-world.md\u001b[0m",
+      "duration": "11.1s"
+    },
+    {
+      "topic": "Perception Crafting",
+      "category": "Synthetic Experiences",
+      "title": "Why Perception Crafting Matters More Than Ever\u001b[0m",
+      "filename": "2025-03-22T21:58:30.284Z-why-perception-crafting-matters-more-than-ever.md\u001b[0m",
+      "duration": "12.6s"
+    },
+    {
+      "topic": "Diamond Mechanosynthesis",
+      "category": "Molecular Manufacturing",
+      "title": "Why Diamond Mechanosynthesis Matters More Than Ever\u001b[0m",
+      "filename": "2025-03-22T21:58:45.459Z-why-diamond-mechanosynthesis-matters-more-than-ever.md\u001b[0m",
+      "duration": "13.2s"
+    },
+    {
+      "topic": "AR Games",
+      "category": "Entertainment",
+      "title": "How AR Games Will Change in the Next Decade\u001b[0m",
+      "filename": "2025-03-22T21:59:00.429Z-how-ar-games-will-change-in-the-next-decade.md\u001b[0m",
+      "duration": "13.0s"
+    },
+    {
+      "topic": "Startups",
+      "category": "Business & Finance",
+      "title": "How to Master Startups: Expert Strategies\u001b[0m",
+      "filename": "2025-03-22T21:59:17.177Z-how-to-master-startups-expert-strategies.md\u001b[0m",
+      "duration": "14.9s"
+    },
+    {
+      "topic": "Neural Interfaces",
+      "category": "Cognitive Architecture",
+      "title": "Neural Interfaces: Myths vs. Reality\u001b[0m",
+      "filename": "2025-03-22T21:59:31.388Z-neural-interfaces-myths-vs-reality.md\u001b[0m",
+      "duration": "12.1s"
+    },
+    {
+      "topic": "Sustainable Materials",
+      "category": "Circular Economy",
+      "title": "Why Sustainable Materials Matters More Than Ever\u001b[0m",
+      "filename": "2025-03-22T21:59:46.046Z-why-sustainable-materials-matters-more-than-ever.md\u001b[0m",
+      "duration": "12.7s"
+    },
+    {
+      "topic": "Mind Palaces",
+      "category": "Synthetic Realities",
+      "title": "What Makes Mind Palaces So Important in 2025?\u001b[0m",
+      "filename": "2025-03-22T22:00:01.061Z-what-makes-mind-palaces-so-important-in-2025.md\u001b[0m",
+      "duration": "12.9s"
+    },
+    {
+      "topic": "Fashion",
+      "category": "Social & Lifestyle",
+      "title": "The Essential Guide to Fashion\u001b[0m",
+      "filename": "2025-03-22T22:00:15.758Z-the-essential-guide-to-fashion.md\u001b[0m",
+      "duration": "12.7s"
+    },
+    {
+      "topic": "AI Chips",
+      "category": "Future of Computing",
+      "title": "The Essential Guide to AI Chips\u001b[0m",
+      "filename": "2025-03-22T22:00:32.237Z-the-essential-guide-to-ai-chips.md\u001b[0m",
+      "duration": "14.5s"
+    },
+    {
+      "topic": "Civilizational Resilience",
+      "category": "Existential Technologies",
+      "title": "Civilizational Resilience Explained: Everything You Need to Know\u001b[0m",
+      "filename": "2025-03-22T22:00:47.922Z-civilizational-resilience-explained-everything-you-need-to-know.md\u001b[0m",
+      "duration": "13.7s"
+    },
+    {
+      "topic": "Social VR",
+      "category": "Digital Life",
+      "title": "How Social VR Will Change in the Next Decade\u001b[0m",
+      "filename": "2025-03-22T22:01:04.122Z-how-social-vr-will-change-in-the-next-decade.md\u001b[0m",
+      "duration": "14.2s"
+    },
+    {
+      "topic": "Movies",
+      "category": "Entertainment",
+      "title": "5 Things You Should Know About Movies\u001b[0m",
+      "filename": "2025-03-22T22:01:18.028Z-5-things-you-should-know-about-movies.md\u001b[0m",
+      "duration": "11.9s"
+    },
+    {
+      "topic": "Open Source",
+      "category": "Development & Coding",
+      "title": "Open Source: A Comprehensive Analysis\u001b[0m",
+      "filename": "2025-03-22T22:01:35.167Z-open-source-a-comprehensive-analysis.md\u001b[0m",
+      "duration": "15.1s"
+    },
+    {
+      "topic": "Terraforming Earth",
+      "category": "Regenerative Technologies",
+      "title": "Terraforming Earth: A Comprehensive Analysis\u001b[0m",
+      "filename": "2025-03-22T22:01:50.323Z-terraforming-earth-a-comprehensive-analysis.md\u001b[0m",
+      "duration": "13.2s"
+    },
+    {
+      "topic": "Regenerative Economics",
+      "category": "Next Generation Economics",
+      "title": "What Makes Regenerative Economics So Important in 2025?\u001b[0m",
+      "filename": "2025-03-22T22:02:05.460Z-what-makes-regenerative-economics-so-important-in-2025.md\u001b[0m",
+      "duration": "13.1s"
+    },
+    {
+      "topic": "Space Mining",
+      "category": "Space & Exploration",
+      "title": "Space Mining Explained: Everything You Need to Know\u001b[0m",
+      "filename": "2025-03-22T22:02:19.986Z-space-mining-explained-everything-you-need-to-know.md\u001b[0m",
+      "duration": "12.5s"
+    },
+    {
+      "topic": "Observer-Dependent Sociology",
+      "category": "Quantum Sociology",
+      "title": "How to Master Observer-Dependent Sociology: Expert Strategies\u001b[0m",
+      "filename": "2025-03-22T22:02:35.015Z-how-to-master-observer-dependent-sociology-expert-strategies.md\u001b[0m",
+      "duration": "13.0s"
+    },
+    {
+      "topic": "Bionics",
+      "category": "Human Augmentation",
+      "title": "Bionics: A Comprehensive Analysis\u001b[0m",
+      "filename": "2025-03-22T22:02:48.689Z-bionics-a-comprehensive-analysis.md\u001b[0m",
+      "duration": "11.7s"
+    },
+    {
+      "topic": "Running",
+      "category": "Sports & Athletics",
+      "title": "Running: Myths vs. Reality\u001b[0m",
+      "filename": "2025-03-22T22:03:04.604Z-running-myths-vs-reality.md\u001b[0m",
+      "duration": "13.9s"
+    },
+    {
+      "topic": "Sensory Design",
+      "category": "Neuroaesthetics",
+      "title": "Understanding Sensory Design in Today's World\u001b[0m",
+      "filename": "2025-03-22T22:03:21.427Z-understanding-sensory-design-in-todays-world.md\u001b[0m",
+      "duration": "14.8s"
+    },
+    {
+      "topic": "BCI Ethics",
+      "category": "Brain-Computer Interface",
+      "title": "BCI Ethics Explained: Everything You Need to Know\u001b[0m",
+      "filename": "2025-03-22T22:03:35.297Z-bci-ethics-explained-everything-you-need-to-know.md\u001b[0m",
+      "duration": "11.9s"
+    },
+    {
+      "topic": "Tech-Nature Integration",
+      "category": "Techno-Ecology",
+      "title": "4 Ways Tech-Nature Integration Is Transforming Industries\u001b[0m",
+      "filename": "2025-03-22T22:03:51.306Z-4-ways-tech-nature-integration-is-transforming-industries.md\u001b[0m",
+      "duration": "14.5s"
+    },
+    {
+      "topic": "Food",
+      "category": "Social & Lifestyle",
+      "title": "Food\u001b[0m",
+      "filename": "2025-03-22T22:04:06.057Z-food.md\u001b[0m",
+      "duration": "12.1s"
+    },
+    {
+      "topic": "Artificial Life",
+      "category": "Evolutionary Engineering",
+      "title": "4 Ways Artificial Life Is Transforming Industries\u001b[0m",
+      "filename": "2025-03-22T22:04:21.894Z-4-ways-artificial-life-is-transforming-industries.md\u001b[0m",
+      "duration": "13.9s"
+    },
+    {
+      "topic": "Chemistry",
+      "category": "Science & Education",
+      "title": "Chemistry Explained: Everything You Need to Know\u001b[0m",
+      "filename": "2025-03-22T22:04:38.782Z-chemistry-explained-everything-you-need-to-know.md\u001b[0m",
+      "duration": "14.8s"
+    },
+    {
+      "topic": "SETI Technology",
+      "category": "Xenotech",
+      "title": "SETI Technology Explained: Everything You Need to Know\u001b[0m",
+      "filename": "2025-03-22T22:04:52.164Z-seti-technology-explained-everything-you-need-to-know.md\u001b[0m",
+      "duration": "11.4s"
+    },
+    {
+      "topic": "Consciousness",
+      "category": "Psychology & Mind",
+      "title": "The Essential Guide to Consciousness\u001b[0m",
+      "filename": "2025-03-22T22:05:06.850Z-the-essential-guide-to-consciousness.md\u001b[0m",
+      "duration": "12.7s"
+    },
+    {
+      "topic": "Neural Interfaces",
+      "category": "Neurotechnology",
+      "title": "4 Ways Neural Interfaces Is Transforming Industries\u001b[0m",
+      "filename": "2025-03-22T22:05:22.391Z-4-ways-neural-interfaces-is-transforming-industries.md\u001b[0m",
+      "duration": "13.5s"
+    },
+    {
+      "topic": "Transcendent Intelligence",
+      "category": "Transhumanist Technologies",
+      "title": "Why Transcendent Intelligence Matters More Than Ever\u001b[0m",
+      "filename": "2025-03-22T22:05:37.901Z-why-transcendent-intelligence-matters-more-than-ever.md\u001b[0m",
+      "duration": "13.5s"
+    },
+    {
+      "topic": "Underground Urbanism",
+      "category": "Future Cities",
+      "title": "Understanding Underground Urbanism in Today's World\u001b[0m",
+      "filename": "2025-03-22T22:05:53.615Z-understanding-underground-urbanism-in-todays-world.md\u001b[0m",
+      "duration": "13.7s"
+    },
+    {
+      "topic": "Cognitive Augmentation",
+      "category": "Cognitive Architecture",
+      "title": "How Does Cognitive Augmentation Impact Our Future?\u001b[0m",
+      "filename": "2025-03-22T22:06:08.796Z-how-does-cognitive-augmentation-impact-our-future.md\u001b[0m",
+      "duration": "13.8s"
+    },
+    {
+      "topic": "AI Collaboration",
+      "category": "Future of Work",
+      "title": "AI Collaboration: Myths vs. Reality\u001b[0m",
+      "filename": "2025-03-22T22:06:25.712Z-ai-collaboration-myths-vs-reality.md\u001b[0m",
+      "duration": "14.3s"
+    },
+    {
+      "topic": "Plant-Based",
+      "category": "Food Technology",
+      "title": "The Essential Guide to Plant-Based\u001b[0m",
+      "filename": "2025-03-22T22:06:40.936Z-the-essential-guide-to-plant-based.md\u001b[0m",
+      "duration": "13.2s"
+    },
+    {
+      "topic": "Precision Agriculture",
+      "category": "Next-Gen Agriculture",
+      "title": "The Essential Guide to Precision Agriculture\u001b[0m",
+      "filename": "2025-03-22T22:06:57.666Z-the-essential-guide-to-precision-agriculture.md\u001b[0m",
+      "duration": "14.7s"
+    },
+    {
+      "topic": "Quantum Materials",
+      "category": "Advanced Materials Science",
+      "title": "The Essential Guide to Quantum Materials\u001b[0m",
+      "filename": "2025-03-22T22:07:13.895Z-the-essential-guide-to-quantum-materials.md\u001b[0m",
+      "duration": "14.9s"
+    },
+    {
+      "topic": "Wave Energy",
+      "category": "Ocean Technology",
+      "title": "Understanding Wave Energy in Today's World\u001b[0m",
+      "filename": "2025-03-22T22:07:34.514Z-understanding-wave-energy-in-todays-world.md\u001b[0m",
+      "duration": "17.8s"
+    },
+    {
+      "topic": "Cyborgs",
+      "category": "Human Augmentation",
+      "title": "5 Things You Should Know About Cyborgs\u001b[0m",
+      "filename": "2025-03-22T22:07:49.289Z-5-things-you-should-know-about-cyborgs.md\u001b[0m",
+      "duration": "12.8s"
+    },
+    {
+      "topic": "Genetic Programming",
+      "category": "Evolutionary Engineering",
+      "title": "Genetic Programming\u001b[0m",
+      "filename": "2025-03-22T22:08:05.695Z-genetic-programming.md\u001b[0m",
+      "duration": "14.4s"
+    },
+    {
+      "topic": "Cosmic Life Support",
+      "category": "Galactic Ecology",
+      "title": "Understanding Cosmic Life Support in Today's World\u001b[0m",
+      "filename": "2025-03-22T22:08:21.612Z-understanding-cosmic-life-support-in-todays-world.md\u001b[0m",
+      "duration": "13.9s"
+    },
+    {
+      "topic": "APIs",
+      "category": "Development & Coding",
+      "title": "How Does APIs Impact Our Future?\u001b[0m",
+      "filename": "2025-03-22T22:08:37.410Z-how-does-apis-impact-our-future.md\u001b[0m",
+      "duration": "13.8s"
+    },
+    {
+      "topic": "DNA",
+      "category": "Trending",
+      "title": "Is DNA Right for You? The Complete Guide\u001b[0m",
+      "filename": "2025-03-22T22:08:53.241Z-is-dna-right-for-you-the-complete-guide.md\u001b[0m",
+      "duration": "13.8s"
+    },
+    {
+      "topic": "DNA Computing",
+      "category": "Bio-Digital Convergence",
+      "title": "5 Things You Should Know About DNA Computing\u001b[0m",
+      "filename": "2025-03-22T22:09:07.347Z-5-things-you-should-know-about-dna-computing.md\u001b[0m",
+      "duration": "12.1s"
+    }
+  ],
+  "failure": []
+}

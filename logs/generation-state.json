@@ -1,0 +1,1531 @@
+{
+  "timestamp": "2025-03-19T14:35:22.904Z",
+  "generatedCount": 174,
+  "totalToGenerate": 300,
+  "completed": false,
+  "successfulTopics": [
+    {
+      "topic": "Latest",
+      "category": "Trending",
+      "title": "The Latest in AI-Powered Personalization:  Beyond the Hype, a 2025 Reality Check\u001b[0m",
+      "filename": "2025-03-18T20:56:39.466Z-the-latest-in-ai-powered-personalization-beyond-the-hype-a-2025-reality-check.md\u001b[0m",
+      "duration": "11.9s"
+    },
+    {
+      "topic": "AI",
+      "category": "Trending",
+      "title": "AI in 2025: Beyond the Hype, the Real-World Revolution\u001b[0m",
+      "filename": "2025-03-18T20:59:13.795Z-ai-in-2025-beyond-the-hype-the-real-world-revolution.md\u001b[0m",
+      "duration": "12.4s"
+    },
+    {
+      "topic": "Tech",
+      "category": "Trending",
+      "title": "Tech's Quantum Leap: How 2025's Innovations Will Reshape Your Life\u001b[0m",
+      "filename": "2025-03-18T20:59:28.889Z-techs-quantum-leap-how-2025s-innovations-will-reshape-your-life.md\u001b[0m",
+      "duration": "13.1s"
+    },
+    {
+      "topic": "Gaming",
+      "category": "Trending",
+      "title": "Level Up Your Life: Gaming's Unexpected Impact in 2025\u001b[0m",
+      "filename": "2025-03-18T20:59:43.489Z-level-up-your-life-gamings-unexpected-impact-in-2025.md\u001b[0m",
+      "duration": "12.6s"
+    },
+    {
+      "topic": "Business",
+      "category": "Trending",
+      "title": "Future-Proof Your Business: Navigating the AI Revolution in 2025\u001b[0m",
+      "filename": "2025-03-18T20:59:57.700Z-future-proof-your-business-navigating-the-ai-revolution-in-2025.md\u001b[0m",
+      "duration": "12.2s"
+    },
+    {
+      "topic": "Science",
+      "category": "Trending",
+      "title": "The Unexpected Science of Everyday Life: How Understanding Physics Shapes Your Reality in 2025\u001b[0m",
+      "filename": "2025-03-18T21:00:12.032Z-unexpected-science-of-everyday-life-how-understanding-physics-shapes-your-reality-2025.md\u001b[0m",
+      "duration": "12.3s"
+    },
+    {
+      "topic": "Climate",
+      "category": "Trending",
+      "title": "Climate Change 2025: Beyond the Headlines – A Tech-Driven Path Forward\u001b[0m",
+      "filename": "2025-03-18T21:00:24.939Z-climate-change-2025-beyond-the-headlines-a-tech-driven-path-forward.md\u001b[0m",
+      "duration": "10.9s"
+    },
+    {
+      "topic": "Politics",
+      "category": "Trending",
+      "title": "How to Master Politics: Expert Strategies\u001b[0m",
+      "filename": "2025-03-18T21:00:39.368Z-how-to-master-politics-expert-strategies.md\u001b[0m",
+      "duration": "12.4s"
+    },
+    {
+      "topic": "Food",
+      "category": "Trending",
+      "title": "Food 2.0: How Personalized Nutrition is Reshaping Our Plates in 2025\u001b[0m",
+      "filename": "2025-03-18T21:00:53.092Z-food-20-how-personalized-nutrition-is-reshaping-our-plates-in-2025.md\u001b[0m",
+      "duration": "11.7s"
+    },
+    {
+      "topic": "Innovation",
+      "category": "Trending",
+      "title": "Reimagining Tomorrow: The Unexpected Frontiers of Innovation in 2025\u001b[0m",
+      "filename": "2025-03-18T21:01:07.311Z-reimagining-tomorrow-the-unexpected-frontiers-of-innovation-in-2025.md\u001b[0m",
+      "duration": "12.3s"
+    },
+    {
+      "topic": "Metaverse",
+      "category": "Trending",
+      "title": "Beyond the Hype: Navigating the Metaverse in 2025\u001b[0m",
+      "filename": "2025-03-18T21:01:21.076Z-beyond-the-hype-navigating-the-metaverse-in-2025.md\u001b[0m",
+      "duration": "11.7s"
+    },
+    {
+      "topic": "Web3",
+      "category": "Trending",
+      "title": "Web3 in 2025: Beyond the Hype, a Reality Check\u001b[0m",
+      "filename": "2025-03-18T21:01:34.425Z-web3-in-2025-beyond-the-hype-a-reality-check.md\u001b[0m",
+      "duration": "11.3s"
+    },
+    {
+      "topic": "Space",
+      "category": "Trending",
+      "title": "Space Tourism 2.0: Beyond the Orbit – Your Guide to the Next Frontier\u001b[0m",
+      "filename": "2025-03-18T21:01:47.916Z-space-tourism-20-beyond-the-orbit-your-guide-to-the-next-frontier.md\u001b[0m",
+      "duration": "11.5s"
+    },
+    {
+      "topic": "Biotech",
+      "category": "Trending",
+      "title": "Biotech 2025: Beyond the Hype – The Revolution Reshaping Our Lives\u001b[0m",
+      "filename": "2025-03-18T21:01:59.837Z-biotech-2025-beyond-the-hype-the-revolution-reshaping-our-lives.md\u001b[0m",
+      "duration": "9.9s"
+    },
+    {
+      "topic": "Crypto",
+      "category": "Trending",
+      "title": "Crypto in 2025: Beyond the Hype, Understanding the Evolving Landscape\u001b[0m",
+      "filename": "2025-03-18T21:02:13.681Z-crypto-in-2025-beyond-the-hype-understanding-the-evolving-landscape.md\u001b[0m",
+      "duration": "11.8s"
+    },
+    {
+      "topic": "Augmentation",
+      "category": "Trending",
+      "title": "Beyond the Human: Augmentation's 2025 Revolution\u001b[0m",
+      "filename": "2025-03-18T21:02:29.280Z-beyond-the-human-augmentations-2025-revolution.md\u001b[0m",
+      "duration": "13.6s"
+    },
+    {
+      "topic": "Synthetic Biology",
+      "category": "Trending",
+      "title": "Synthetic Biology: Engineering Life, Redefining Tomorrow\u001b[0m",
+      "filename": "2025-03-18T21:02:43.166Z-synthetic-biology-engineering-life-redefining-tomorrow.md\u001b[0m",
+      "duration": "11.9s"
+    },
+    {
+      "topic": "Climate Action",
+      "category": "Trending",
+      "title": "Rewiring Our World: Climate Action in the Age of Tech\u001b[0m",
+      "filename": "2025-03-18T21:02:57.155Z-rewiring-our-world-climate-action-in-the-age-of-tech.md\u001b[0m",
+      "duration": "12.0s"
+    },
+    {
+      "topic": "AI",
+      "category": "Technology",
+      "title": "AI in 2025: Beyond the Hype, a Deep Dive into the Transformative Power of Artificial Intelligence\u001b[0m",
+      "filename": "2025-03-18T21:03:10.172Z-ai-2025-beyond-hype-deep-dive-into-transformative-power-of-artificial-intelligence.md\u001b[0m",
+      "duration": "11.0s"
+    },
+    {
+      "topic": "Tech",
+      "category": "Technology",
+      "title": "Tech's Quantum Leap: How 2025's Innovations Will Reshape Our Lives\u001b[0m",
+      "filename": "2025-03-18T21:03:24.146Z-techs-quantum-leap-how-2025s-innovations-will-reshape-our-lives.md\u001b[0m",
+      "duration": "12.0s"
+    },
+    {
+      "topic": "Blockchain",
+      "category": "Technology",
+      "title": "Beyond Bitcoin: Blockchain's Unexpected Revolution in 2025\u001b[0m",
+      "filename": "2025-03-18T21:03:36.702Z-beyond-bitcoin-blockchains-unexpected-revolution-in-2025.md\u001b[0m",
+      "duration": "10.5s"
+    },
+    {
+      "topic": "Cloud",
+      "category": "Technology",
+      "title": "Decoding the Cloud in 2025: Beyond the Hype, Towards Hyper-Personalization\u001b[0m",
+      "filename": "2025-03-18T21:03:51.452Z-decoding-the-cloud-in-2025-beyond-the-hype-towards-hyper-personalization.md\u001b[0m",
+      "duration": "12.7s"
+    },
+    {
+      "topic": "Security",
+      "category": "Technology",
+      "title": "Securing Your Digital Life in 2025: Beyond Passwords and Phishing\u001b[0m",
+      "filename": "2025-03-18T21:04:05.503Z-securing-your-digital-life-in-2025-beyond-passwords-and-phishing.md\u001b[0m",
+      "duration": "12.0s"
+    },
+    {
+      "topic": "Mobile",
+      "category": "Technology",
+      "title": "Mobile 2025: Beyond the Smartphone – The Evolving Landscape of Personal Connectivity\u001b[0m",
+      "filename": "2025-03-18T21:04:21.159Z-mobile-2025-beyond-the-smartphone-the-evolving-landscape-of-personal-connectivity.md\u001b[0m",
+      "duration": "13.7s"
+    },
+    {
+      "topic": "Data",
+      "category": "Technology",
+      "title": "Data: Your Secret Weapon in the Metaverse and Beyond\u001b[0m",
+      "filename": "2025-03-18T21:04:35.393Z-data-your-secret-weapon-in-the-metaverse-and-beyond.md\u001b[0m",
+      "duration": "12.2s"
+    },
+    {
+      "topic": "DevOps",
+      "category": "Technology",
+      "title": "DevOps in 2025: Beyond the Hype, Towards AI-Powered Agility\u001b[0m",
+      "filename": "2025-03-18T21:04:48.291Z-devops-in-2025-beyond-the-hype-towards-ai-powered-agility.md\u001b[0m",
+      "duration": "10.9s"
+    },
+    {
+      "topic": "Machine Learning",
+      "category": "Technology",
+      "title": "Decoding the Future: Machine Learning in 2025 and Beyond\u001b[0m",
+      "filename": "2025-03-18T21:05:02.959Z-decoding-the-future-machine-learning-in-2025-and-beyond.md\u001b[0m",
+      "duration": "12.7s"
+    },
+    {
+      "topic": "AR",
+      "category": "Technology",
+      "title": "AR 2025: Beyond the Hype –  A Deep Dive into Augmented Reality's Transformative Power\u001b[0m",
+      "filename": "2025-03-18T21:05:15.951Z-ar-2025-beyond-hype-deep-dive-into-augmented-realitys-transformative-power.md\u001b[0m",
+      "duration": "11.0s"
+    },
+    {
+      "topic": "VR",
+      "category": "Technology",
+      "title": "VR in 2025: Beyond Gaming – A Deep Dive into the Metaverse's Real-World Impact\u001b[0m",
+      "filename": "2025-03-18T21:05:31.062Z-vr-2025-beyond-gaming-deep-dive-into-metaverses-real-world-impact.md\u001b[0m",
+      "duration": "13.1s"
+    },
+    {
+      "topic": "IoT",
+      "category": "Technology",
+      "title": "IoT in 2025: Beyond the Hype – A Deep Dive into the Connected Future\u001b[0m",
+      "filename": "2025-03-18T21:05:44.349Z-iot-2025-beyond-hype-deep-dive-into-connected-future.md\u001b[0m",
+      "duration": "11.2s"
+    },
+    {
+      "topic": "Robotics",
+      "category": "Technology",
+      "title": "The Robotics Revolution: How AI-Powered Machines Are Reshaping Our World in 2025\u001b[0m",
+      "filename": "2025-03-18T21:05:58.564Z-the-robotics-revolution-how-ai-powered-machines-are-reshaping-our-world-in-2025.md\u001b[0m",
+      "duration": "12.2s"
+    },
+    {
+      "topic": "Quantum",
+      "category": "Technology",
+      "title": "Decoding the Quantum Leap: How Quantum Computing Will Reshape 2025 and Beyond\u001b[0m",
+      "filename": "2025-03-18T21:06:12.534Z-decoding-the-quantum-leap-how-quantum-computing-will-reshape-2025-and-beyond.md\u001b[0m",
+      "duration": "12.0s"
+    },
+    {
+      "topic": "Cybersecurity",
+      "category": "Technology",
+      "title": "Cybersecurity in 2025: Beyond the Hype, a Future-Proof Strategy\u001b[0m",
+      "filename": "2025-03-18T21:06:27.460Z-cybersecurity-in-2025-beyond-the-hype-a-future-proof-strategy.md\u001b[0m",
+      "duration": "12.9s"
+    },
+    {
+      "topic": "Big Data",
+      "category": "Technology",
+      "title": "Big Data in 2025: Beyond the Hype, Unveiling the Transformative Power\u001b[0m",
+      "filename": "2025-03-18T21:06:41.597Z-big-data-in-2025-beyond-the-hype-unveiling-the-transformative-power.md\u001b[0m",
+      "duration": "12.1s"
+    },
+    {
+      "topic": "Edge Computing",
+      "category": "Technology",
+      "title": "Edge Computing: The Silent Revolution Reshaping Our Digital World (2025)\u001b[0m",
+      "filename": "2025-03-18T21:06:55.737Z-edge-computing-the-silent-revolution-reshaping-our-digital-world-2025.md\u001b[0m",
+      "duration": "12.1s"
+    },
+    {
+      "topic": "5G",
+      "category": "Technology",
+      "title": "5G in 2025: Beyond the Hype – A Deep Dive into the Revolution's Real Impact\u001b[0m",
+      "filename": "2025-03-18T21:07:10.823Z-5g-2025-beyond-hype-deep-dive-into-revolutions-real-impact.md\u001b[0m",
+      "duration": "13.1s"
+    },
+    {
+      "topic": "Semiconductors",
+      "category": "Technology",
+      "title": "How Semiconductors Will Change in the Next Decade\u001b[0m",
+      "filename": "2025-03-18T21:07:23.961Z-how-semiconductors-will-change-in-the-next-decade.md\u001b[0m",
+      "duration": "11.1s"
+    },
+    {
+      "topic": "Open Source",
+      "category": "Technology",
+      "title": "Open Source: The Unexpected Power Shift of 2025\u001b[0m",
+      "filename": "2025-03-18T21:07:37.111Z-open-source-the-unexpected-power-shift-of-2025.md\u001b[0m",
+      "duration": "11.1s"
+    },
+    {
+      "topic": "6G",
+      "category": "Technology",
+      "title": "6G: Beyond the Hype – A Glimpse into the Future of Connectivity (2025)\u001b[0m",
+      "filename": "2025-03-18T21:07:50.810Z-6g-beyond-the-hype-a-glimpse-into-the-future-of-connectivity-2025.md\u001b[0m",
+      "duration": "11.7s"
+    },
+    {
+      "topic": "Nanotechnology",
+      "category": "Technology",
+      "title": "Nanotechnology: The Invisible Revolution Reshaping Our World (2025)\u001b[0m",
+      "filename": "2025-03-18T21:08:04.863Z-nanotechnology-the-invisible-revolution-reshaping-our-world-2025.md\u001b[0m",
+      "duration": "12.0s"
+    },
+    {
+      "topic": "Wearables",
+      "category": "Technology",
+      "title": "Wearables 2025: Beyond Fitness Trackers – The Future is Woven into Our Lives\u001b[0m",
+      "filename": "2025-03-18T21:08:19.465Z-wearables-2025-beyond-fitness-trackers-the-future-is-woven-into-our-lives.md\u001b[0m",
+      "duration": "12.6s"
+    },
+    {
+      "topic": "Brain Computer",
+      "category": "Technology",
+      "title": "Decoding the Brain Computer Interface: 2025 and Beyond\u001b[0m",
+      "filename": "2025-03-18T21:08:34.609Z-decoding-the-brain-computer-interface-2025-and-beyond.md\u001b[0m",
+      "duration": "13.1s"
+    },
+    {
+      "topic": "Software Eng",
+      "category": "Technology",
+      "title": "Decoding the Software Eng Enigma: Beyond the Code in 2025\u001b[0m",
+      "filename": "2025-03-18T21:08:48.375Z-decoding-the-software-eng-enigma-beyond-the-code-in-2025.md\u001b[0m",
+      "duration": "11.8s"
+    },
+    {
+      "topic": "Hardware Dev",
+      "category": "Technology",
+      "title": "Hardware Dev in 2025: Beyond the Silicon, Into the Future\u001b[0m",
+      "filename": "2025-03-18T21:09:02.433Z-hardware-dev-in-2025-beyond-the-silicon-into-the-future.md\u001b[0m",
+      "duration": "12.1s"
+    },
+    {
+      "topic": "AI",
+      "category": "AI & ML",
+      "title": "AI: Beyond the Hype – Navigating the 2025 Reality\u001b[0m",
+      "filename": "2025-03-18T21:09:16.468Z-ai-beyond-the-hype-navigating-the-2025-reality.md\u001b[0m",
+      "duration": "12.0s"
+    },
+    {
+      "topic": "Deep Learning",
+      "category": "AI & ML",
+      "title": "Deep Learning in 2025: Beyond the Hype, Towards a Smarter Future\u001b[0m",
+      "filename": "2025-03-18T21:09:30.827Z-deep-learning-in-2025-beyond-the-hype-towards-a-smarter-future.md\u001b[0m",
+      "duration": "12.4s"
+    },
+    {
+      "topic": "NLP",
+      "category": "AI & ML",
+      "title": "NLP in 2025: Beyond the Hype, a Deep Dive into the Revolution\u001b[0m",
+      "filename": "2025-03-18T21:09:45.979Z-nlp-in-2025-beyond-the-hype-a-deep-dive-into-the-revolution.md\u001b[0m",
+      "duration": "13.0s"
+    },
+    {
+      "topic": "Computer Vision",
+      "category": "AI & ML",
+      "title": "Computer Vision in 2025: Beyond the Hype, a Look at the Revolution\u001b[0m",
+      "filename": "2025-03-18T21:09:59.586Z-computer-vision-in-2025-beyond-the-hype-a-look-at-the-revolution.md\u001b[0m",
+      "duration": "11.6s"
+    },
+    {
+      "topic": "Generative",
+      "category": "AI & ML",
+      "title": "Generative AI: Beyond the Hype, Shaping Our 2025 Reality\u001b[0m",
+      "filename": "2025-03-18T21:10:13.567Z-generative-ai-beyond-the-hype-shaping-our-2025-reality.md\u001b[0m",
+      "duration": "12.0s"
+    },
+    {
+      "topic": "AI Ethics",
+      "category": "AI & ML",
+      "title": "Navigating the Moral Maze: AI Ethics in 2025\u001b[0m",
+      "filename": "2025-03-18T21:10:29.741Z-navigating-the-moral-maze-ai-ethics-in-2025.md\u001b[0m",
+      "duration": "14.2s"
+    },
+    {
+      "topic": "Neural Networks",
+      "category": "AI & ML",
+      "title": "Unlocking the Power of Neural Networks: How AI is Reshaping 2025\u001b[0m",
+      "filename": "2025-03-18T21:10:44.443Z-unlocking-the-power-of-neural-networks-how-ai-is-reshaping-2025.md\u001b[0m",
+      "duration": "12.6s"
+    },
+    {
+      "topic": "AI Research",
+      "category": "AI & ML",
+      "title": "AI Research: Unveiling the Future, One Algorithm at a Time\u001b[0m",
+      "filename": "2025-03-18T21:11:09.785Z-ai-research-unveiling-the-future-one-algorithm-at-a-time.md\u001b[0m",
+      "duration": "23.3s"
+    },
+    {
+      "topic": "AI Applications",
+      "category": "AI & ML",
+      "title": "AI Applications: Reshaping Our World in 2025 – Beyond the Hype\u001b[0m",
+      "filename": "2025-03-18T21:11:25.027Z-ai-applications-reshaping-our-world-in-2025-beyond-the-hype.md\u001b[0m",
+      "duration": "13.2s"
+    },
+    {
+      "topic": "LLMs",
+      "category": "AI & ML",
+      "title": "LLMs: Beyond the Hype – Unlocking the Transformative Power of Large Language Models in 2025\u001b[0m",
+      "filename": "2025-03-18T21:11:39.350Z-llms-beyond-hype-unlocking-transformative-power-of-large-language-models-2025.md\u001b[0m",
+      "duration": "12.3s"
+    },
+    {
+      "topic": "Autonomous",
+      "category": "AI & ML",
+      "title": "Autonomous Everything: How Self-Driving Tech is Reshaping Our Lives in 2025\u001b[0m",
+      "filename": "2025-03-18T21:11:52.424Z-autonomous-everything-how-self-driving-tech-is-reshaping-our-lives-in-2025.md\u001b[0m",
+      "duration": "11.1s"
+    },
+    {
+      "topic": "AI Agents",
+      "category": "AI & ML",
+      "title": "Unleashing the Power of AI Agents: Your Guide to the Next Frontier of Automation (2025)\u001b[0m",
+      "filename": "2025-03-18T21:12:06.067Z-unleashing-power-of-ai-agents-your-guide-next-frontier-of-automation-2025.md\u001b[0m",
+      "duration": "11.6s"
+    },
+    {
+      "topic": "Multimodal AI",
+      "category": "AI & ML",
+      "title": "Multimodal AI: The Dawn of Truly Intelligent Machines in 2025\u001b[0m",
+      "filename": "2025-03-18T21:12:21.307Z-multimodal-ai-the-dawn-of-truly-intelligent-machines-in-2025.md\u001b[0m",
+      "duration": "13.2s"
+    },
+    {
+      "topic": "AI Art",
+      "category": "AI & ML",
+      "title": "AI Art: The 2025 Creative Revolution – Beyond the Hype\u001b[0m",
+      "filename": "2025-03-18T21:12:35.563Z-ai-art-the-2025-creative-revolution-beyond-the-hype.md\u001b[0m",
+      "duration": "12.3s"
+    },
+    {
+      "topic": "AI Voice",
+      "category": "AI & ML",
+      "title": "AI Voice: The 2025 Revolution Reshaping How We Communicate\u001b[0m",
+      "filename": "2025-03-18T21:12:49.780Z-ai-voice-the-2025-revolution-reshaping-how-we-communicate.md\u001b[0m",
+      "duration": "12.2s"
+    },
+    {
+      "topic": "Embodied AI",
+      "category": "AI & ML",
+      "title": "Embodied AI: The Dawn of Intelligent Machines in the Real World (2025)\u001b[0m",
+      "filename": "2025-03-18T21:13:03.894Z-embodied-ai-the-dawn-of-intelligent-machines-in-the-real-world-2025.md\u001b[0m",
+      "duration": "12.1s"
+    },
+    {
+      "topic": "AI Reasoning",
+      "category": "AI & ML",
+      "title": "Unlocking the Future: AI Reasoning in 2025 and Beyond\u001b[0m",
+      "filename": "2025-03-18T21:13:17.950Z-unlocking-the-future-ai-reasoning-in-2025-and-beyond.md\u001b[0m",
+      "duration": "12.1s"
+    },
+    {
+      "topic": "AGI",
+      "category": "AI & ML",
+      "title": "AGI Dawn: Navigating the Brave New World of Artificial General Intelligence (2025)\u001b[0m",
+      "filename": "2025-03-18T21:13:31.619Z-agi-dawn-navigating-the-brave-new-world-of-artificial-general-intelligence-2025.md\u001b[0m",
+      "duration": "11.7s"
+    },
+    {
+      "topic": "Prompt Engineering",
+      "category": "AI & ML",
+      "title": "Mastering the Art of Prompt Engineering in 2025: Unlock AI's Untapped Potential\u001b[0m",
+      "filename": "2025-03-18T21:13:46.222Z-mastering-the-art-of-prompt-engineering-in-2025-unlock-ais-untapped-potential.md\u001b[0m",
+      "duration": "12.6s"
+    },
+    {
+      "topic": "Model Alignment",
+      "category": "AI & ML",
+      "title": "Cracking the Code: Model Alignment in 2025 and Beyond\u001b[0m",
+      "filename": "2025-03-18T21:14:00.708Z-cracking-the-code-model-alignment-in-2025-and-beyond.md\u001b[0m",
+      "duration": "12.5s"
+    },
+    {
+      "topic": "AI Hardware",
+      "category": "AI & ML",
+      "title": "AI Hardware: The 2025 Revolution Reshaping Our World\u001b[0m",
+      "filename": "2025-03-18T21:14:16.778Z-ai-hardware-the-2025-revolution-reshaping-our-world.md\u001b[0m",
+      "duration": "14.1s"
+    },
+    {
+      "topic": "Startups",
+      "category": "Business & Finance",
+      "title": "How Startups Will Change in the Next Decade\u001b[0m",
+      "filename": "2025-03-18T21:14:30.231Z-how-startups-will-change-in-the-next-decade.md\u001b[0m",
+      "duration": "11.4s"
+    },
+    {
+      "topic": "Investing",
+      "category": "Business & Finance",
+      "title": "Investing in the Metaverse: Your Guide to Navigating the 2025 Digital Frontier\u001b[0m",
+      "filename": "2025-03-18T21:14:44.522Z-investing-in-the-metaverse-your-guide-to-navigating-the-2025-digital-frontier.md\u001b[0m",
+      "duration": "12.3s"
+    },
+    {
+      "topic": "Cryptocurrency",
+      "category": "Business & Finance",
+      "title": "Decoding Cryptocurrency in 2025: Beyond the Hype, a Deeper Dive\u001b[0m",
+      "filename": "2025-03-18T21:14:58.915Z-decoding-cryptocurrency-in-2025-beyond-the-hype-a-deeper-dive.md\u001b[0m",
+      "duration": "12.4s"
+    },
+    {
+      "topic": "Markets",
+      "category": "Business & Finance",
+      "title": "Decoding the Metaverse Markets: Opportunities and Challenges in 2025\u001b[0m",
+      "filename": "2025-03-18T21:15:13.350Z-decoding-the-metaverse-markets-opportunities-and-challenges-in-2025.md\u001b[0m",
+      "duration": "12.4s"
+    },
+    {
+      "topic": "Entrepreneurship",
+      "category": "Business & Finance",
+      "title": "Reimagine Entrepreneurship: Thriving in the Metaverse and Beyond (2025)\u001b[0m",
+      "filename": "2025-03-18T21:15:27.840Z-reimagine-entrepreneurship-thriving-in-the-metaverse-and-beyond-2025.md\u001b[0m",
+      "duration": "12.5s"
+    },
+    {
+      "topic": "FinTech",
+      "category": "Business & Finance",
+      "title": "FinTech 2025: Beyond the Hype – The Revolution Reshaping Our Financial Lives\u001b[0m",
+      "filename": "2025-03-18T21:15:43.332Z-fintech-2025-beyond-the-hype-the-revolution-reshaping-our-financial-lives.md\u001b[0m",
+      "duration": "13.5s"
+    },
+    {
+      "topic": "Economics",
+      "category": "Business & Finance",
+      "title": "The Unexpected Economics of Attention in 2025:  How You're Being Monetized (Whether You Know It Or Not)\u001b[0m",
+      "filename": "2025-03-18T21:15:57.711Z-unexpected-economics-of-attention-2025-how-youre-being-monetized-whether-you-know.md\u001b[0m",
+      "duration": "12.4s"
+    },
+    {
+      "topic": "Real Estate",
+      "category": "Business & Finance",
+      "title": "Real Estate in the Metaverse: Owning the Future, Today\u001b[0m",
+      "filename": "2025-03-18T21:16:11.729Z-real-estate-in-the-metaverse-owning-the-future-today.md\u001b[0m",
+      "duration": "12.0s"
+    },
+    {
+      "topic": "Careers",
+      "category": "Business & Finance",
+      "title": "Why Careers Matters More Than Ever\u001b[0m",
+      "filename": "2025-03-18T21:16:28.001Z-why-careers-matters-more-than-ever.md\u001b[0m",
+      "duration": "14.3s"
+    },
+    {
+      "topic": "E-commerce",
+      "category": "Business & Finance",
+      "title": "E-commerce 2025: Navigating the Metaverse Marketplace\u001b[0m",
+      "filename": "2025-03-18T21:16:42.382Z-e-commerce-2025-navigating-the-metaverse-marketplace.md\u001b[0m",
+      "duration": "12.4s"
+    },
+    {
+      "topic": "Leadership",
+      "category": "Business & Finance",
+      "title": "Redefining Leadership in the Metaverse: Navigating the 2025 Tech Frontier\u001b[0m",
+      "filename": "2025-03-18T21:16:57.289Z-redefining-leadership-in-the-metaverse-navigating-the-2025-tech-frontier.md\u001b[0m",
+      "duration": "12.9s"
+    },
+    {
+      "topic": "Venture Capital",
+      "category": "Business & Finance",
+      "title": "Decoding Venture Capital in 2025: Beyond the Hype\u001b[0m",
+      "filename": "2025-03-18T21:17:13.434Z-decoding-venture-capital-in-2025-beyond-the-hype.md\u001b[0m",
+      "duration": "14.2s"
+    },
+    {
+      "topic": "DeFi",
+      "category": "Business & Finance",
+      "title": "DeFi 2025: Beyond the Hype – A Deep Dive into the Evolving Landscape\u001b[0m",
+      "filename": "2025-03-18T21:17:26.950Z-defi-2025-beyond-the-hype-a-deep-dive-into-the-evolving-landscape.md\u001b[0m",
+      "duration": "11.5s"
+    },
+    {
+      "topic": "NFTs",
+      "category": "Business & Finance",
+      "title": "NFTs in 2025: Beyond the Hype, a New Era of Digital Ownership\u001b[0m",
+      "filename": "2025-03-18T21:17:41.954Z-nfts-in-2025-beyond-the-hype-a-new-era-of-digital-ownership.md\u001b[0m",
+      "duration": "13.0s"
+    },
+    {
+      "topic": "DAOs",
+      "category": "Business & Finance",
+      "title": "DAOs: Beyond the Hype – The 2025 Decentralized Revolution\u001b[0m",
+      "filename": "2025-03-18T21:17:56.761Z-daos-beyond-the-hype-the-2025-decentralized-revolution.md\u001b[0m",
+      "duration": "12.8s"
+    },
+    {
+      "topic": "Remote Work",
+      "category": "Business & Finance",
+      "title": "Remote Work Revolution: Mastering the Future of Work in 2025\u001b[0m",
+      "filename": "2025-03-18T21:18:22.622Z-remote-work-revolution-mastering-the-future-of-work-in-2025.md\u001b[0m",
+      "duration": "23.9s"
+    },
+    {
+      "topic": "Micro Finance",
+      "category": "Business & Finance",
+      "title": "The Essential Guide to Micro Finance\u001b[0m",
+      "filename": "2025-03-18T21:18:37.083Z-the-essential-guide-to-micro-finance.md\u001b[0m",
+      "duration": "12.5s"
+    },
+    {
+      "topic": "Token Economics",
+      "category": "Business & Finance",
+      "title": "Mastering Token Economics in 2025: The Ultimate Guide to Web3 Value\u001b[0m",
+      "filename": "2025-03-18T21:19:01.660Z-mastering-token-economics-in-2025-the-ultimate-guide-to-web3-value.md\u001b[0m",
+      "duration": "22.6s"
+    },
+    {
+      "topic": "Wellness",
+      "category": "Health & Medicine",
+      "title": "Reclaim Your Energy: The 2025 Guide to Holistic Tech Wellness\u001b[0m",
+      "filename": "2025-03-18T21:19:16.064Z-reclaim-your-energy-the-2025-guide-to-holistic-tech-wellness.md\u001b[0m",
+      "duration": "12.4s"
+    },
+    {
+      "topic": "Nutrition",
+      "category": "Health & Medicine",
+      "title": "Nutrition 2.0: Hacking Your Biology for Peak Performance in 2025\u001b[0m",
+      "filename": "2025-03-18T21:19:31.418Z-nutrition-20-hacking-your-biology-for-peak-performance-in-2025.md\u001b[0m",
+      "duration": "13.3s"
+    },
+    {
+      "topic": "Mental Health",
+      "category": "Health & Medicine",
+      "title": "How Mental Health Will Change in the Next Decade\u001b[0m",
+      "filename": "2025-03-18T21:19:45.893Z-how-mental-health-will-change-in-the-next-decade.md\u001b[0m",
+      "duration": "12.5s"
+    },
+    {
+      "topic": "Genomics",
+      "category": "Health & Medicine",
+      "title": "Genomics 2025: Your Personalized Blueprint for a Healthier Future\u001b[0m",
+      "filename": "2025-03-19T04:23:21.532Z-genomics-2025-your-personalized-blueprint-for-a-healthier-future.md\u001b[0m",
+      "duration": "12.9s"
+    },
+    {
+      "topic": "Healthcare",
+      "category": "Health & Medicine",
+      "title": "Reimagine Healthcare in 2025:  The Tech-Driven Revolution Reshaping Wellness\u001b[0m",
+      "filename": "2025-03-19T04:23:36.473Z-reimagine-healthcare-in-2025-the-tech-driven-revolution-reshaping-wellness.md\u001b[0m",
+      "duration": "12.9s"
+    },
+    {
+      "topic": "Immunology",
+      "category": "Health & Medicine",
+      "title": "Hacking Your Immunity: The 2025 Guide to Immunology and Personalized Wellness\u001b[0m",
+      "filename": "2025-03-19T04:23:50.949Z-hacking-your-immunity-the-2025-guide-to-immunology-and-personalized-wellness.md\u001b[0m",
+      "duration": "12.5s"
+    },
+    {
+      "topic": "Longevity",
+      "category": "Health & Medicine",
+      "title": "Hacking Longevity: The 2025 Blueprint for a Longer, Healthier Life\u001b[0m",
+      "filename": "2025-03-19T04:24:06.443Z-hacking-longevity-the-2025-blueprint-for-a-longer-healthier-life.md\u001b[0m",
+      "duration": "13.5s"
+    },
+    {
+      "topic": "Psychology",
+      "category": "Health & Medicine",
+      "title": "Decoding the Digital Mind: How Psychology Shapes Our Tech-Driven Lives in 2025\u001b[0m",
+      "filename": "2025-03-19T04:24:21.084Z-decoding-the-digital-mind-how-psychology-shapes-our-tech-driven-lives-in-2025.md\u001b[0m",
+      "duration": "12.6s"
+    },
+    {
+      "topic": "Pharmaceuticals",
+      "category": "Health & Medicine",
+      "title": "Pharmaceuticals in 2025: Beyond the Pill – A Deep Dive into the Evolving Landscape\u001b[0m",
+      "filename": "2025-03-19T04:24:35.907Z-pharmaceuticals-2025-beyond-pill-deep-dive-into-evolving-landscape.md\u001b[0m",
+      "duration": "12.8s"
+    },
+    {
+      "topic": "Bio Hacking",
+      "category": "Health & Medicine",
+      "title": "3 Revolutionary Aspects of Bio Hacking\u001b[0m",
+      "filename": "2025-03-19T04:24:51.418Z-3-revolutionary-aspects-of-bio-hacking.md\u001b[0m",
+      "duration": "13.5s"
+    },
+    {
+      "topic": "Telemedicine",
+      "category": "Health & Medicine",
+      "title": "Telemedicine 2025: Beyond the Hype – A Deep Dive into the Future of Healthcare\u001b[0m",
+      "filename": "2025-03-19T04:25:05.700Z-telemedicine-2025-beyond-hype-deep-dive-into-future-of-healthcare.md\u001b[0m",
+      "duration": "12.3s"
+    },
+    {
+      "topic": "Wearables",
+      "category": "Health & Medicine",
+      "title": "Beyond the Buzz: Wearables in 2025 – A Deep Dive into the Evolving Landscape\u001b[0m",
+      "filename": "2025-03-19T04:25:22.050Z-beyond-buzz-wearables-2025-deep-dive-into-evolving-landscape.md\u001b[0m",
+      "duration": "14.3s"
+    },
+    {
+      "topic": "CRISPR",
+      "category": "Health & Medicine",
+      "title": "CRISPR: Beyond Gene Editing – The Biotech Revolution Reshaping Our Future\u001b[0m",
+      "filename": "2025-03-19T04:25:35.933Z-crispr-beyond-gene-editing-the-biotech-revolution-reshaping-our-future.md\u001b[0m",
+      "duration": "11.9s"
+    },
+    {
+      "topic": "Brain Health",
+      "category": "Health & Medicine",
+      "title": "Supercharge Your Brain: The Ultimate Guide to Brain Health in 2025\u001b[0m",
+      "filename": "2025-03-19T04:25:52.919Z-supercharge-your-brain-the-ultimate-guide-to-brain-health-in-2025.md\u001b[0m",
+      "duration": "15.0s"
+    },
+    {
+      "topic": "Movies",
+      "category": "Entertainment",
+      "title": "The Future of Film: How Movies Are Redefining Entertainment in 2025\u001b[0m",
+      "filename": "2025-03-19T04:26:08.358Z-the-future-of-film-how-movies-are-redefining-entertainment-in-2025.md\u001b[0m",
+      "duration": "13.4s"
+    },
+    {
+      "topic": "Music",
+      "category": "Entertainment",
+      "title": "The Sonic Revolution: How Music is Reshaping Our 2025 Reality\u001b[0m",
+      "filename": "2025-03-19T04:26:24.211Z-the-sonic-revolution-how-music-is-reshaping-our-2025-reality.md\u001b[0m",
+      "duration": "13.8s"
+    },
+    {
+      "topic": "Space",
+      "category": "Science & Education",
+      "title": "Space Tourism 2.0: Beyond the Orbit – Your Guide to the Next Frontier\u001b[0m",
+      "filename": "2025-03-19T12:16:11.257Z-space-tourism-20-beyond-the-orbit-your-guide-to-the-next-frontier.md\u001b[0m",
+      "duration": "11.7s"
+    },
+    {
+      "topic": "Physics",
+      "category": "Science & Education",
+      "title": "Physics in 2025: Beyond the Textbook – Unveiling the Universe's Hidden Secrets\u001b[0m",
+      "filename": "2025-03-19T12:16:26.756Z-physics-in-2025-beyond-the-textbook-unveiling-the-universes-hidden-secrets.md\u001b[0m",
+      "duration": "13.5s"
+    },
+    {
+      "topic": "Biology",
+      "category": "Science & Education",
+      "title": "Biology's Unexpected Tech Revolution: How Life's Code is Shaping Our Future\u001b[0m",
+      "filename": "2025-03-19T12:16:41.792Z-biologys-unexpected-tech-revolution-how-lifes-code-is-shaping-our-future.md\u001b[0m",
+      "duration": "13.0s"
+    },
+    {
+      "topic": "Chemistry",
+      "category": "Science & Education",
+      "title": "Chemistry: The Unexpected Science Shaping Our 2025 World\u001b[0m",
+      "filename": "2025-03-19T12:16:55.724Z-chemistry-the-unexpected-science-shaping-our-2025-world.md\u001b[0m",
+      "duration": "11.9s"
+    },
+    {
+      "topic": "Climate",
+      "category": "Science & Education",
+      "title": "Climate Change 2025: Beyond the Headlines – A Tech-Powered Future\u001b[0m",
+      "filename": "2025-03-19T12:17:09.082Z-climate-change-2025-beyond-the-headlines-a-tech-powered-future.md\u001b[0m",
+      "duration": "11.3s"
+    },
+    {
+      "topic": "Astronomy",
+      "category": "Science & Education",
+      "title": "Unveiling the Cosmos: Astronomy's Astonishing Advancements in 2025\u001b[0m",
+      "filename": "2025-03-19T12:17:24.918Z-unveiling-the-cosmos-astronomys-astonishing-advancements-in-2025.md\u001b[0m",
+      "duration": "13.8s"
+    },
+    {
+      "topic": "EdTech",
+      "category": "Science & Education",
+      "title": "EdTech 2025: Beyond the Hype – The Future of Personalized Learning is Here\u001b[0m",
+      "filename": "2025-03-19T12:17:40.224Z-edtech-2025-beyond-the-hype-the-future-of-personalized-learning-is-here.md\u001b[0m",
+      "duration": "13.3s"
+    },
+    {
+      "topic": "Research",
+      "category": "Science & Education",
+      "title": "Decoding the Metaverse: Researching the Future of Immersive Experiences\u001b[0m",
+      "filename": "2025-03-19T12:17:53.473Z-decoding-the-metaverse-researching-the-future-of-immersive-experiences.md\u001b[0m",
+      "duration": "11.2s"
+    },
+    {
+      "topic": "Neuroscience",
+      "category": "Science & Education",
+      "title": "Unlock Your Brain's Potential: Neuroscience Hacks for a Thriving 2025\u001b[0m",
+      "filename": "2025-03-19T12:18:08.448Z-unlock-your-brains-potential-neuroscience-hacks-for-a-thriving-2025.md\u001b[0m",
+      "duration": "13.0s"
+    },
+    {
+      "topic": "Mathematics",
+      "category": "Science & Education",
+      "title": "The Unexpected Power of Mathematics in 2025: Beyond the Numbers\u001b[0m",
+      "filename": "2025-03-19T12:18:23.881Z-the-unexpected-power-of-mathematics-in-2025-beyond-the-numbers.md\u001b[0m",
+      "duration": "13.5s"
+    },
+    {
+      "topic": "Environment",
+      "category": "Science & Education",
+      "title": "Is Environment Right for You? The Complete Guide\u001b[0m",
+      "filename": "2025-03-19T12:18:38.416Z-is-environment-right-for-you-the-complete-guide.md\u001b[0m",
+      "duration": "12.5s"
+    },
+    {
+      "topic": "Oceanography",
+      "category": "Science & Education",
+      "title": "Unveiling the Ocean's Secrets: Oceanography in the Age of Discovery (2025)\u001b[0m",
+      "filename": "2025-03-19T12:18:53.307Z-unveiling-the-oceans-secrets-oceanography-in-the-age-of-discovery-2025.md\u001b[0m",
+      "duration": "12.8s"
+    },
+    {
+      "topic": "VR Learning",
+      "category": "Science & Education",
+      "title": "VR Learning: Revolutionizing Education in 2025\u001b[0m",
+      "filename": "2025-03-19T12:19:08.864Z-vr-learning-revolutionizing-education-in-2025.md\u001b[0m",
+      "duration": "14.0s"
+    },
+    {
+      "topic": "Remote Learning",
+      "category": "Science & Education",
+      "title": "Remote Learning Reimagined: Navigating the Metaverse of Education in 2025\u001b[0m",
+      "filename": "2025-03-19T12:19:24.094Z-remote-learning-reimagined-navigating-the-metaverse-of-education-in-2025.md\u001b[0m",
+      "duration": "12.5s"
+    },
+    {
+      "topic": "Astrophysics",
+      "category": "Science & Education",
+      "title": "Unveiling the Cosmos: Astrophysics in 2025 and Beyond\u001b[0m",
+      "filename": "2025-03-19T12:19:38.061Z-unveiling-the-cosmos-astrophysics-in-2025-and-beyond.md\u001b[0m",
+      "duration": "12.0s"
+    },
+    {
+      "topic": "STEM",
+      "category": "Science & Education",
+      "title": "STEM in 2025: Beyond the Hype, Shaping Our Future\u001b[0m",
+      "filename": "2025-03-19T12:19:51.024Z-stem-in-2025-beyond-the-hype-shaping-our-future.md\u001b[0m",
+      "duration": "11.0s"
+    },
+    {
+      "topic": "Social Media",
+      "category": "Social & Lifestyle",
+      "title": "Mastering the Metaverse of Social Media in 2025: Beyond Likes and Followers\u001b[0m",
+      "filename": "2025-03-19T12:20:07.340Z-mastering-the-metaverse-of-social-media-in-2025-beyond-likes-and-followers.md\u001b[0m",
+      "duration": "14.3s"
+    },
+    {
+      "topic": "Fashion",
+      "category": "Social & Lifestyle",
+      "title": "Fashion's Algorithmic Revolution: How AI is Reshaping Style in 2025\u001b[0m",
+      "filename": "2025-03-19T12:20:21.653Z-fashions-algorithmic-revolution-how-ai-is-reshaping-style-in-2025.md\u001b[0m",
+      "duration": "13.0s"
+    },
+    {
+      "topic": "Travel",
+      "category": "Social & Lifestyle",
+      "title": "Reimagine Your Travel: The 2025 Guide to Hyper-Personalized Adventures\u001b[0m",
+      "filename": "2025-03-19T12:20:39.744Z-reimagine-your-travel-the-2025-guide-to-hyper-personalized-adventures.md\u001b[0m",
+      "duration": "14.9s"
+    },
+    {
+      "topic": "Food",
+      "category": "Social & Lifestyle",
+      "title": "The Future of Food: Personalized Nutrition in 2025 and Beyond\u001b[0m",
+      "filename": "2025-03-19T12:20:54.389Z-the-future-of-food-personalized-nutrition-in-2025-and-beyond.md\u001b[0m",
+      "duration": "12.7s"
+    },
+    {
+      "topic": "Design",
+      "category": "Social & Lifestyle",
+      "title": "Design's Quantum Leap: How AI is Reshaping Creativity in 2025\u001b[0m",
+      "filename": "2025-03-19T12:21:09.040Z-designs-quantum-leap-how-ai-is-reshaping-creativity-in-2025.md\u001b[0m",
+      "duration": "12.6s"
+    },
+    {
+      "topic": "Photography",
+      "category": "Social & Lifestyle",
+      "title": "Mastering the Art of Photography in 2025: Beyond the Filter\u001b[0m",
+      "filename": "2025-03-19T12:21:23.272Z-mastering-the-art-of-photography-in-2025-beyond-the-filter.md\u001b[0m",
+      "duration": "12.2s"
+    },
+    {
+      "topic": "Sustainability",
+      "category": "Social & Lifestyle",
+      "title": "Reimagine Sustainability: Tech's Urgent Role in a Regenerative Future (2025)\u001b[0m",
+      "filename": "2025-03-19T12:21:37.077Z-reimagine-sustainability-techs-urgent-role-in-a-regenerative-future-2025.md\u001b[0m",
+      "duration": "11.8s"
+    },
+    {
+      "topic": "Parenting",
+      "category": "Social & Lifestyle",
+      "title": "Redefining Parenting in the Metaverse: Navigating the 2025 Digital Frontier\u001b[0m",
+      "filename": "2025-03-19T12:21:51.142Z-redefining-parenting-in-the-metaverse-navigating-the-2025-digital-frontier.md\u001b[0m",
+      "duration": "12.4s"
+    },
+    {
+      "topic": "Home Decor",
+      "category": "Social & Lifestyle",
+      "title": "Reimagine Your Home: 2025's Home Decor Revolution\u001b[0m",
+      "filename": "2025-03-19T12:22:07.311Z-reimagine-your-home-2025s-home-decor-revolution.md\u001b[0m",
+      "duration": "13.7s"
+    },
+    {
+      "topic": "DIY",
+      "category": "Social & Lifestyle",
+      "title": "Unleash Your Inner Maker: The 2025 Guide to DIY Tech & Lifestyle Upgrades\u001b[0m",
+      "filename": "2025-03-19T12:22:21.562Z-unleash-your-inner-maker-the-2025-guide-to-diy-tech-lifestyle-upgrades.md\u001b[0m",
+      "duration": "12.2s"
+    },
+    {
+      "topic": "Relationships",
+      "category": "Social & Lifestyle",
+      "title": "Redefining Relationships in the Age of Hyperconnectivity: Navigating Love in 2025\u001b[0m",
+      "filename": "2025-03-19T12:22:35.838Z-redefining-relationships-in-the-age-of-hyperconnectivity-navigating-love-in-2025.md\u001b[0m",
+      "duration": "12.3s"
+    },
+    {
+      "topic": "Minimalism",
+      "category": "Social & Lifestyle",
+      "title": "Reclaim Your Life: Minimalism in the Hyper-Connected Age of 2025\u001b[0m",
+      "filename": "2025-03-19T12:22:51.627Z-reclaim-your-life-minimalism-in-the-hyper-connected-age-of-2025.md\u001b[0m",
+      "duration": "13.8s"
+    },
+    {
+      "topic": "Urban Living",
+      "category": "Social & Lifestyle",
+      "title": "Urban Living in 2025: Thriving in the Hyper-Connected City\u001b[0m",
+      "filename": "2025-03-19T12:23:08.991Z-urban-living-in-2025-thriving-in-the-hyper-connected-city.md\u001b[0m",
+      "duration": "15.3s"
+    },
+    {
+      "topic": "Smart Home",
+      "category": "Social & Lifestyle",
+      "title": "Beyond the Buzz: Mastering the Smart Home Revolution in 2025\u001b[0m",
+      "filename": "2025-03-19T13:55:45.416Z-beyond-the-buzz-mastering-the-smart-home-revolution-in-2025.md\u001b[0m",
+      "duration": "12.5s"
+    },
+    {
+      "topic": "Co Living",
+      "category": "Social & Lifestyle",
+      "title": "Co Living: A Comprehensive Analysis\u001b[0m",
+      "filename": "2025-03-19T13:56:00.635Z-co-living-a-comprehensive-analysis.md\u001b[0m",
+      "duration": "13.2s"
+    },
+    {
+      "topic": "Mindfulness",
+      "category": "Social & Lifestyle",
+      "title": "Reclaim Your Focus: Mindfulness in the Age of Hyperconnectivity (2025)\u001b[0m",
+      "filename": "2025-03-19T13:56:15.294Z-reclaim-your-focus-mindfulness-in-the-age-of-hyperconnectivity-2025.md\u001b[0m",
+      "duration": "12.7s"
+    },
+    {
+      "topic": "Football",
+      "category": "Sports & Athletics",
+      "title": "The Future of Football: Beyond the Pitch in 2025\u001b[0m",
+      "filename": "2025-03-19T13:56:30.671Z-the-future-of-football-beyond-the-pitch-in-2025.md\u001b[0m",
+      "duration": "13.4s"
+    },
+    {
+      "topic": "Soccer",
+      "category": "Sports & Athletics",
+      "title": "Soccer's Algorithmic Revolution: How Data Science Is Changing the Beautiful Game\u001b[0m",
+      "filename": "2025-03-19T13:56:44.530Z-soccers-algorithmic-revolution-how-data-science-is-changing-the-beautiful-game.md\u001b[0m",
+      "duration": "11.9s"
+    },
+    {
+      "topic": "Basketball",
+      "category": "Sports & Athletics",
+      "title": "Basketball in 2025: Beyond the Hardwood – A Technological Revolution\u001b[0m",
+      "filename": "2025-03-19T13:56:59.609Z-basketball-in-2025-beyond-the-hardwood-a-technological-revolution.md\u001b[0m",
+      "duration": "13.1s"
+    },
+    {
+      "topic": "Baseball",
+      "category": "Sports & Athletics",
+      "title": "Baseball in 2025: Beyond the Diamond – A Tech-Infused Revolution\u001b[0m",
+      "filename": "2025-03-19T13:57:14.953Z-baseball-in-2025-beyond-the-diamond-a-tech-infused-revolution.md\u001b[0m",
+      "duration": "13.3s"
+    },
+    {
+      "topic": "Tennis",
+      "category": "Sports & Athletics",
+      "title": "Tennis 2025: Beyond the Baseline – The Future of the Game\u001b[0m",
+      "filename": "2025-03-19T13:57:28.197Z-tennis-2025-beyond-the-baseline-the-future-of-the-game.md\u001b[0m",
+      "duration": "11.2s"
+    },
+    {
+      "topic": "Golf",
+      "category": "Sports & Athletics",
+      "title": "Golf in 2025: Beyond the Fairway – A Tech-Infused Revolution\u001b[0m",
+      "filename": "2025-03-19T13:57:41.135Z-golf-in-2025-beyond-the-fairway-a-tech-infused-revolution.md\u001b[0m",
+      "duration": "10.9s"
+    },
+    {
+      "topic": "Olympics",
+      "category": "Sports & Athletics",
+      "title": "Beyond the Medals: The 2025 Olympics and the Future of Sport Tech\u001b[0m",
+      "filename": "2025-03-19T13:57:56.351Z-beyond-the-medals-the-2025-olympics-and-the-future-of-sport-tech.md\u001b[0m",
+      "duration": "13.2s"
+    },
+    {
+      "topic": "Running",
+      "category": "Sports & Athletics",
+      "title": "Unlock Your Running Potential: The 2025 Runner's Guide to Peak Performance\u001b[0m",
+      "filename": "2025-03-19T13:58:09.915Z-unlock-your-running-potential-the-2025-runners-guide-to-peak-performance.md\u001b[0m",
+      "duration": "11.6s"
+    },
+    {
+      "topic": "Cycling",
+      "category": "Sports & Athletics",
+      "title": "Pedal to the Future: Reimagining Cycling in 2025\u001b[0m",
+      "filename": "2025-03-19T13:58:25.277Z-pedal-to-the-future-reimagining-cycling-in-2025.md\u001b[0m",
+      "duration": "13.4s"
+    },
+    {
+      "topic": "Swimming",
+      "category": "Sports & Athletics",
+      "title": "Unlock Your Potential: The 2025 Guide to Swimming's Transformative Power\u001b[0m",
+      "filename": "2025-03-19T13:58:38.749Z-unlock-your-potential-the-2025-guide-to-swimmings-transformative-power.md\u001b[0m",
+      "duration": "11.4s"
+    },
+    {
+      "topic": "Martial Arts",
+      "category": "Sports & Athletics",
+      "title": "Unleash Your Inner Warrior: Martial Arts in the Age of Tech\u001b[0m",
+      "filename": "2025-03-19T13:58:54.785Z-unleash-your-inner-warrior-martial-arts-in-the-age-of-tech.md\u001b[0m",
+      "duration": "14.0s"
+    },
+    {
+      "topic": "Fitness",
+      "category": "Sports & Athletics",
+      "title": "Fitness Reimagined: Hacking Your Biology for Peak Performance in 2025\u001b[0m",
+      "filename": "2025-03-19T13:59:09.471Z-fitness-reimagined-hacking-your-biology-for-peak-performance-in-2025.md\u001b[0m",
+      "duration": "12.7s"
+    },
+    {
+      "topic": "Extreme",
+      "category": "Sports & Athletics",
+      "title": "Extreme Personalization: How AI is Reshaping Our Digital Lives in 2025\u001b[0m",
+      "filename": "2025-03-19T13:59:22.647Z-extreme-personalization-how-ai-is-reshaping-our-digital-lives-in-2025.md\u001b[0m",
+      "duration": "11.2s"
+    },
+    {
+      "topic": "eSports",
+      "category": "Sports & Athletics",
+      "title": "eSports in 2025: Beyond the Game – A Deep Dive into the Metaverse of Competition\u001b[0m",
+      "filename": "2025-03-19T13:59:38.373Z-esports-2025-beyond-game-deep-dive-into-metaverse-of-competition.md\u001b[0m",
+      "duration": "13.7s"
+    },
+    {
+      "topic": "VR Sports",
+      "category": "Sports & Athletics",
+      "title": "Level Up Your Game: The Explosive Rise of VR Sports in 2025\u001b[0m",
+      "filename": "2025-03-19T13:59:51.942Z-level-up-your-game-the-explosive-rise-of-vr-sports-in-2025.md\u001b[0m",
+      "duration": "11.6s"
+    },
+    {
+      "topic": "Analytics",
+      "category": "Sports & Athletics",
+      "title": "Unlock Your Brand's Potential: Mastering Predictive Analytics in 2025\u001b[0m",
+      "filename": "2025-03-19T14:00:08.195Z-unlock-your-brands-potential-mastering-predictive-analytics-in-2025.md\u001b[0m",
+      "duration": "14.2s"
+    },
+    {
+      "topic": "Politics",
+      "category": "Politics & Governance",
+      "title": "How to Master Politics: Expert Strategies\u001b[0m",
+      "filename": "2025-03-19T14:00:22.702Z-how-to-master-politics-expert-strategies.md\u001b[0m",
+      "duration": "12.5s"
+    },
+    {
+      "topic": "Policy",
+      "category": "Politics & Governance",
+      "title": "Navigating the Algorithmic Policy Maze: How Tech Shapes Your 2025 Reality\u001b[0m",
+      "filename": "2025-03-19T14:00:35.860Z-navigating-the-algorithmic-policy-maze-how-tech-shapes-your-2025-reality.md\u001b[0m",
+      "duration": "11.2s"
+    },
+    {
+      "topic": "Elections",
+      "category": "Politics & Governance",
+      "title": "2025 Elections: Navigating the Digital Deluge & Finding Your Voice\u001b[0m",
+      "filename": "2025-03-19T14:00:50.532Z-2025-elections-navigating-the-digital-deluge-finding-your-voice.md\u001b[0m",
+      "duration": "12.6s"
+    },
+    {
+      "topic": "Geopolitics",
+      "category": "Politics & Governance",
+      "title": "Geopolitics 2025: Navigating the Shifting Sands of Global Power\u001b[0m",
+      "filename": "2025-03-19T14:01:07.202Z-geopolitics-2025-navigating-the-shifting-sands-of-global-power.md\u001b[0m",
+      "duration": "14.6s"
+    },
+    {
+      "topic": "Diplomacy",
+      "category": "Politics & Governance",
+      "title": "Mastering the Art of Diplomacy in the Age of AI: Navigate the New World Order\u001b[0m",
+      "filename": "2025-03-19T14:01:21.694Z-mastering-art-of-diplomacy-age-of-ai-navigate-new-world-order.md\u001b[0m",
+      "duration": "12.5s"
+    },
+    {
+      "topic": "Legislation",
+      "category": "Politics & Governance",
+      "title": "Navigating the AI Legislation Landscape: 2025's Crucial Crossroads\u001b[0m",
+      "filename": "2025-03-19T14:01:37.364Z-navigating-the-ai-legislation-landscape-2025s-crucial-crossroads.md\u001b[0m",
+      "duration": "13.7s"
+    },
+    {
+      "topic": "Democracy",
+      "category": "Politics & Governance",
+      "title": "Is Democracy Broken? Reimagining Governance in the Age of AI\u001b[0m",
+      "filename": "2025-03-19T14:01:51.944Z-is-democracy-broken-reimagining-governance-in-the-age-of-ai.md\u001b[0m",
+      "duration": "12.6s"
+    },
+    {
+      "topic": "Rights",
+      "category": "Politics & Governance",
+      "title": "Your Digital Rights in 2025: Navigating the New Frontier\u001b[0m",
+      "filename": "2025-03-19T14:02:06.125Z-your-digital-rights-in-2025-navigating-the-new-frontier.md\u001b[0m",
+      "duration": "12.2s"
+    },
+    {
+      "topic": "Governance",
+      "category": "Politics & Governance",
+      "title": "Governing the Metaverse: Navigating the New Frontier of Digital Governance in 2025\u001b[0m",
+      "filename": "2025-03-19T14:02:22.564Z-governing-the-metaverse-navigating-the-new-frontier-of-digital-governance-in-2025.md\u001b[0m",
+      "duration": "14.4s"
+    },
+    {
+      "topic": "Activism",
+      "category": "Politics & Governance",
+      "title": "Redefining Activism in the Metaverse:  A 2025 Guide to Digital Dissent\u001b[0m",
+      "filename": "2025-03-19T14:02:35.663Z-redefining-activism-in-the-metaverse-a-2025-guide-to-digital-dissent.md\u001b[0m",
+      "duration": "11.1s"
+    },
+    {
+      "topic": "Public Policy",
+      "category": "Politics & Governance",
+      "title": "Public Policy in the Metaverse: Navigating the New Frontier of Governance\u001b[0m",
+      "filename": "2025-03-19T14:02:49.549Z-public-policy-in-the-metaverse-navigating-the-new-frontier-of-governance.md\u001b[0m",
+      "duration": "11.9s"
+    },
+    {
+      "topic": "Digital Rights",
+      "category": "Politics & Governance",
+      "title": "Reclaiming Your Digital Self: Navigating the Complexities of Digital Rights in 2025\u001b[0m",
+      "filename": "2025-03-19T14:03:04.508Z-reclaiming-your-digital-self-navigating-the-complexities-of-digital-rights-in-2025.md\u001b[0m",
+      "duration": "13.0s"
+    },
+    {
+      "topic": "AI Governance",
+      "category": "Politics & Governance",
+      "title": "Mastering AI Governance in 2025: A Guide to Ethical and Responsible AI\u001b[0m",
+      "filename": "2025-03-19T14:03:20.880Z-mastering-ai-governance-in-2025-a-guide-to-ethical-and-responsible-ai.md\u001b[0m",
+      "duration": "14.4s"
+    },
+    {
+      "topic": "Cyber Warfare",
+      "category": "Politics & Governance",
+      "title": "Cyber Warfare 2025: Beyond the Battlefield – The New Frontlines of Global Conflict\u001b[0m",
+      "filename": "2025-03-19T14:03:35.055Z-cyber-warfare-2025-beyond-the-battlefield-the-new-frontlines-of-global-conflict.md\u001b[0m",
+      "duration": "12.2s"
+    },
+    {
+      "topic": "Travel",
+      "category": "World & Culture",
+      "title": "Reimagine Travel in 2025: Beyond the Tourist Trail\u001b[0m",
+      "filename": "2025-03-19T14:03:49.256Z-reimagine-travel-in-2025-beyond-the-tourist-trail.md\u001b[0m",
+      "duration": "12.2s"
+    },
+    {
+      "topic": "Languages",
+      "category": "World & Culture",
+      "title": "Mastering the Multilingual Metaverse: Languages in 2025 and Beyond\u001b[0m",
+      "filename": "2025-03-19T14:04:04.434Z-mastering-the-multilingual-metaverse-languages-in-2025-and-beyond.md\u001b[0m",
+      "duration": "13.2s"
+    },
+    {
+      "topic": "History",
+      "category": "World & Culture",
+      "title": "Rewriting History: How AI is Reshaping Our Understanding of the Past\u001b[0m",
+      "filename": "2025-03-19T14:04:18.231Z-rewriting-history-how-ai-is-reshaping-our-understanding-of-the-past.md\u001b[0m",
+      "duration": "11.8s"
+    },
+    {
+      "topic": "Culture",
+      "category": "World & Culture",
+      "title": "Decoding the Metaverse: Culture's New Frontier in 2025\u001b[0m",
+      "filename": "2025-03-19T14:04:32.104Z-decoding-the-metaverse-cultures-new-frontier-in-2025.md\u001b[0m",
+      "duration": "11.9s"
+    },
+    {
+      "topic": "Religion",
+      "category": "World & Culture",
+      "title": "Religion in the Metaverse: Faith, Technology, and the Future of Belief\u001b[0m",
+      "filename": "2025-03-19T14:04:45.871Z-religion-in-the-metaverse-faith-technology-and-the-future-of-belief.md\u001b[0m",
+      "duration": "11.8s"
+    },
+    {
+      "topic": "Philosophy",
+      "category": "World & Culture",
+      "title": "Hacking Your Happiness: How Philosophy Can Optimize Your 2025 Life\u001b[0m",
+      "filename": "2025-03-19T14:05:00.934Z-hacking-your-happiness-how-philosophy-can-optimize-your-2025-life.md\u001b[0m",
+      "duration": "13.1s"
+    },
+    {
+      "topic": "Anthropology",
+      "category": "World & Culture",
+      "title": "Decoding the Digital Age: How Anthropology Can Help You Thrive in 2025\u001b[0m",
+      "filename": "2025-03-19T14:05:14.623Z-decoding-the-digital-age-how-anthropology-can-help-you-thrive-in-2025.md\u001b[0m",
+      "duration": "11.7s"
+    },
+    {
+      "topic": "Heritage",
+      "category": "World & Culture",
+      "title": "Reclaiming Our Digital Heritage: How Legacy Tech Shapes Our Future\u001b[0m",
+      "filename": "2025-03-19T14:05:28.685Z-reclaiming-our-digital-heritage-how-legacy-tech-shapes-our-future.md\u001b[0m",
+      "duration": "12.1s"
+    },
+    {
+      "topic": "Global Issues",
+      "category": "World & Culture",
+      "title": "Navigating the Complex Web: Global Issues in 2025\u001b[0m",
+      "filename": "2025-03-19T14:05:44.002Z-navigating-the-complex-web-global-issues-in-2025.md\u001b[0m",
+      "duration": "13.3s"
+    },
+    {
+      "topic": "Traditions",
+      "category": "World & Culture",
+      "title": "Reclaiming Ritual: How Traditions Are Reshaping Modern Life in 2025\u001b[0m",
+      "filename": "2025-03-19T14:05:58.435Z-reclaiming-ritual-how-traditions-are-reshaping-modern-life-in-2025.md\u001b[0m",
+      "duration": "12.4s"
+    },
+    {
+      "topic": "Migration",
+      "category": "World & Culture",
+      "title": "The Great Digital Migration: How Remote Work Reshaped Our Lives (and What's Next)\u001b[0m",
+      "filename": "2025-03-19T14:06:14.578Z-great-digital-migration-how-remote-work-reshaped-our-lives-whats-next.md\u001b[0m",
+      "duration": "14.0s"
+    },
+    {
+      "topic": "Festivals",
+      "category": "World & Culture",
+      "title": "Why Festivals Matters More Than Ever\u001b[0m",
+      "filename": "2025-03-19T14:06:29.812Z-why-festivals-matters-more-than-ever.md\u001b[0m",
+      "duration": "13.2s"
+    },
+    {
+      "topic": "Remote Work",
+      "category": "World & Culture",
+      "title": "Remote Work Revolution: Thriving in the Decentralized Workplace of 2025\u001b[0m",
+      "filename": "2025-03-19T14:06:58.145Z-remote-work-revolution-thriving-in-the-decentralized-workplace-of-2025.md\u001b[0m",
+      "duration": "12.2s"
+    }
+  ],
+  "failedTopics": [
+    {
+      "topic": "Fitness",
+      "category": "Health & Medicine",
+      "error": "Process exited with code 1\nError fetching featured image: Error: Unsplash API error: 403 Forbidden\n    at getFeaturedImage (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:548:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1744:27)\nFetching images from Unsplash: Error: Unsplash API error: 403 Forbidden\n    at searchUnsplashImages (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:440:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1747:30)\n\u001b[2m[2025-03-18T21:20:00.765Z]\u001b[0m \u001b[31m✖ Error generating article with Gemini:\u001b[0m\n\u001b[2m[2025-03-18T21:20:00.765Z]\u001b[0m \u001b[31mTypeError: Cannot read properties of undefined (reading 'name')\n    at generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1800:59)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\u001b[0m\n"
+    },
+    {
+      "topic": "MedTech",
+      "category": "Health & Medicine",
+      "error": "Process exited with code 1\nError fetching featured image: Error: Unsplash API error: 403 Forbidden\n    at getFeaturedImage (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:548:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1744:27)\nFetching images from Unsplash: Error: Unsplash API error: 403 Forbidden\n    at searchUnsplashImages (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:440:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1747:30)\n\u001b[2m[2025-03-18T21:20:15.569Z]\u001b[0m \u001b[31m✖ Error generating article with Gemini:\u001b[0m\n\u001b[2m[2025-03-18T21:20:15.569Z]\u001b[0m \u001b[31mTypeError: Cannot read properties of undefined (reading 'name')\n    at generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1800:59)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\u001b[0m\n"
+    },
+    {
+      "topic": "Gaming",
+      "category": "Entertainment",
+      "error": "Process exited with code 1\n\u001b[2m[2025-03-19T04:26:45.823Z]\u001b[0m \u001b[31m✖ operation failed after 5 attempts\u001b[0m\n\u001b[2m[2025-03-19T04:26:45.824Z]\u001b[0m \u001b[31mError: API request failed: 429 Too Many Requests - {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at /Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1661:19\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async retry (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:218:28)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1619:22)\u001b[0m\n\u001b[2m[2025-03-19T04:26:45.824Z]\u001b[0m \u001b[31m✖ Error generating article with Gemini:\u001b[0m\n\u001b[2m[2025-03-19T04:26:45.824Z]\u001b[0m \u001b[31mError: API request failed: 429 Too Many Requests - {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at /Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1661:19\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async retry (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:218:28)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1619:22)\u001b[0m\n"
+    },
+    {
+      "topic": "Streaming",
+      "category": "Entertainment",
+      "error": "Process exited with code 1\n\u001b[2m[2025-03-19T04:26:48.432Z]\u001b[0m \u001b[31m✖ API request failed: 429 Too Many Requests\u001b[0m\n\u001b[2m[2025-03-19T04:26:48.432Z]\u001b[0m \u001b[31m✖ Error generating SEO keywords:\u001b[0m\n\u001b[2m[2025-03-19T04:26:48.432Z]\u001b[0m \u001b[31mError: API request failed: 429 Too Many Requests - {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at generateSEOKeywords (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:2038:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1482:25)\u001b[0m\n\u001b[2m[2025-03-19T04:26:48.934Z]\u001b[0m \u001b[31m✖ Error generating categories:\u001b[0m\n\u001b[2m[2025-03-19T04:26:48.935Z]\u001b[0m \u001b[31mError: API request failed with status 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at generateCategories (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:800:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1511:22)\u001b[0m\n\u001b[2m[2025-03-19T04:27:06.301Z]\u001b[0m \u001b[31m✖ operation failed after 5 attempts\u001b[0m\n\u001b[2m[2025-03-19T04:27:06.301Z]\u001b[0m \u001b[31mError: API request failed: 429 Too Many Requests - {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at /Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1661:19\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async retry (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:218:28)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1619:22)\u001b[0m\n\u001b[2m[2025-03-19T04:27:06.301Z]\u001b[0m \u001b[31m✖ Error generating article with Gemini:\u001b[0m\n\u001b[2m[2025-03-19T04:27:06.301Z]\u001b[0m \u001b[31mError: API request failed: 429 Too Many Requests - {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at /Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1661:19\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async retry (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:218:28)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1619:22)\u001b[0m\n"
+    },
+    {
+      "topic": "Sports",
+      "category": "Entertainment",
+      "error": "Process exited with code 1\n\u001b[2m[2025-03-19T04:27:08.878Z]\u001b[0m \u001b[31m✖ API request failed: 429 Too Many Requests\u001b[0m\n\u001b[2m[2025-03-19T04:27:08.878Z]\u001b[0m \u001b[31m✖ Error generating SEO keywords:\u001b[0m\n\u001b[2m[2025-03-19T04:27:08.879Z]\u001b[0m \u001b[31mError: API request failed: 429 Too Many Requests - {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at generateSEOKeywords (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:2038:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1482:25)\u001b[0m\n\u001b[2m[2025-03-19T04:27:09.334Z]\u001b[0m \u001b[31m✖ Error generating categories:\u001b[0m\n\u001b[2m[2025-03-19T04:27:09.334Z]\u001b[0m \u001b[31mError: API request failed with status 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at generateCategories (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:800:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1511:22)\u001b[0m\n\u001b[2m[2025-03-19T04:27:26.752Z]\u001b[0m \u001b[31m✖ operation failed after 5 attempts\u001b[0m\n\u001b[2m[2025-03-19T04:27:26.753Z]\u001b[0m \u001b[31mError: API request failed: 429 Too Many Requests - {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at /Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1661:19\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async retry (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:218:28)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1619:22)\u001b[0m\n\u001b[2m[2025-03-19T04:27:26.753Z]\u001b[0m \u001b[31m✖ Error generating article with Gemini:\u001b[0m\n\u001b[2m[2025-03-19T04:27:26.753Z]\u001b[0m \u001b[31mError: API request failed: 429 Too Many Requests - {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at /Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1661:19\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async retry (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:218:28)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1619:22)\u001b[0m\n"
+    },
+    {
+      "topic": "Books",
+      "category": "Entertainment",
+      "error": "Process exited with code 1\n\u001b[2m[2025-03-19T04:27:29.911Z]\u001b[0m \u001b[31m✖ API request failed: 429 Too Many Requests\u001b[0m\n\u001b[2m[2025-03-19T04:27:29.911Z]\u001b[0m \u001b[31m✖ Error generating SEO keywords:\u001b[0m\n\u001b[2m[2025-03-19T04:27:29.913Z]\u001b[0m \u001b[31mError: API request failed: 429 Too Many Requests - {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at generateSEOKeywords (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:2038:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1482:25)\u001b[0m\n\u001b[2m[2025-03-19T04:27:30.370Z]\u001b[0m \u001b[31m✖ Error generating categories:\u001b[0m\n\u001b[2m[2025-03-19T04:27:30.371Z]\u001b[0m \u001b[31mError: API request failed with status 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at generateCategories (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:800:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1511:22)\u001b[0m\n\u001b[2m[2025-03-19T04:27:47.460Z]\u001b[0m \u001b[31m✖ operation failed after 5 attempts\u001b[0m\n\u001b[2m[2025-03-19T04:27:47.460Z]\u001b[0m \u001b[31mError: API request failed: 429 Too Many Requests - {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at /Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1661:19\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async retry (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:218:28)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1619:22)\u001b[0m\n\u001b[2m[2025-03-19T04:27:47.460Z]\u001b[0m \u001b[31m✖ Error generating article with Gemini:\u001b[0m\n\u001b[2m[2025-03-19T04:27:47.460Z]\u001b[0m \u001b[31mError: API request failed: 429 Too Many Requests - {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at /Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1661:19\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async retry (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:218:28)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1619:22)\u001b[0m\n"
+    },
+    {
+      "topic": "Art",
+      "category": "Entertainment",
+      "error": "Process exited with code 1\n\u001b[2m[2025-03-19T04:27:50.063Z]\u001b[0m \u001b[31m✖ API request failed: 429 Too Many Requests\u001b[0m\n\u001b[2m[2025-03-19T04:27:50.063Z]\u001b[0m \u001b[31m✖ Error generating SEO keywords:\u001b[0m\n\u001b[2m[2025-03-19T04:27:50.064Z]\u001b[0m \u001b[31mError: API request failed: 429 Too Many Requests - {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at generateSEOKeywords (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:2038:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1482:25)\u001b[0m\n\u001b[2m[2025-03-19T04:27:50.524Z]\u001b[0m \u001b[31m✖ Error generating categories:\u001b[0m\n\u001b[2m[2025-03-19T04:27:50.525Z]\u001b[0m \u001b[31mError: API request failed with status 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at generateCategories (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:800:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1511:22)\u001b[0m\n\u001b[2m[2025-03-19T04:28:07.677Z]\u001b[0m \u001b[31m✖ operation failed after 5 attempts\u001b[0m\n\u001b[2m[2025-03-19T04:28:07.677Z]\u001b[0m \u001b[31mError: API request failed: 429 Too Many Requests - {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at /Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1661:19\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async retry (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:218:28)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1619:22)\u001b[0m\n\u001b[2m[2025-03-19T04:28:07.678Z]\u001b[0m \u001b[31m✖ Error generating article with Gemini:\u001b[0m\n\u001b[2m[2025-03-19T04:28:07.678Z]\u001b[0m \u001b[31mError: API request failed: 429 Too Many Requests - {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at /Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1661:19\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async retry (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:218:28)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1619:22)\u001b[0m\n"
+    },
+    {
+      "topic": "Celebrities",
+      "category": "Entertainment",
+      "error": "Process exited with code 1\n\u001b[2m[2025-03-19T04:28:10.356Z]\u001b[0m \u001b[31m✖ API request failed: 429 Too Many Requests\u001b[0m\n\u001b[2m[2025-03-19T04:28:10.356Z]\u001b[0m \u001b[31m✖ Error generating SEO keywords:\u001b[0m\n\u001b[2m[2025-03-19T04:28:10.357Z]\u001b[0m \u001b[31mError: API request failed: 429 Too Many Requests - {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at generateSEOKeywords (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:2038:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1482:25)\u001b[0m\n\u001b[2m[2025-03-19T04:28:10.814Z]\u001b[0m \u001b[31m✖ Error generating categories:\u001b[0m\n\u001b[2m[2025-03-19T04:28:10.814Z]\u001b[0m \u001b[31mError: API request failed with status 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at generateCategories (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:800:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1511:22)\u001b[0m\n\u001b[2m[2025-03-19T04:28:27.954Z]\u001b[0m \u001b[31m✖ operation failed after 5 attempts\u001b[0m\n\u001b[2m[2025-03-19T04:28:27.954Z]\u001b[0m \u001b[31mError: API request failed: 429 Too Many Requests - {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at /Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1661:19\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async retry (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:218:28)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1619:22)\u001b[0m\n\u001b[2m[2025-03-19T04:28:27.955Z]\u001b[0m \u001b[31m✖ Error generating article with Gemini:\u001b[0m\n\u001b[2m[2025-03-19T04:28:27.955Z]\u001b[0m \u001b[31mError: API request failed: 429 Too Many Requests - {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at /Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1661:19\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async retry (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:218:28)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1619:22)\u001b[0m\n"
+    },
+    {
+      "topic": "Animation",
+      "category": "Entertainment",
+      "error": "Process exited with code 1\n\u001b[2m[2025-03-19T04:28:30.224Z]\u001b[0m \u001b[31m✖ API request failed: 429 Too Many Requests\u001b[0m\n\u001b[2m[2025-03-19T04:28:30.224Z]\u001b[0m \u001b[31m✖ Error generating SEO keywords:\u001b[0m\n\u001b[2m[2025-03-19T04:28:30.224Z]\u001b[0m \u001b[31mError: API request failed: 429 Too Many Requests - {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at generateSEOKeywords (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:2038:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1482:25)\u001b[0m\n\u001b[2m[2025-03-19T04:28:30.668Z]\u001b[0m \u001b[31m✖ Error generating categories:\u001b[0m\n\u001b[2m[2025-03-19T04:28:30.668Z]\u001b[0m \u001b[31mError: API request failed with status 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at generateCategories (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:800:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1511:22)\u001b[0m\n\u001b[2m[2025-03-19T04:28:47.543Z]\u001b[0m \u001b[31m✖ operation failed after 5 attempts\u001b[0m\n\u001b[2m[2025-03-19T04:28:47.544Z]\u001b[0m \u001b[31mError: API request failed: 429 Too Many Requests - {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at /Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1661:19\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async retry (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:218:28)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1619:22)\u001b[0m\n\u001b[2m[2025-03-19T04:28:47.544Z]\u001b[0m \u001b[31m✖ Error generating article with Gemini:\u001b[0m\n\u001b[2m[2025-03-19T04:28:47.544Z]\u001b[0m \u001b[31mError: API request failed: 429 Too Many Requests - {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at /Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1661:19\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async retry (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:218:28)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1619:22)\u001b[0m\n"
+    },
+    {
+      "topic": "Comedy",
+      "category": "Entertainment",
+      "error": "Process exited with code 1\n\u001b[2m[2025-03-19T04:28:50.183Z]\u001b[0m \u001b[31m✖ API request failed: 429 Too Many Requests\u001b[0m\n\u001b[2m[2025-03-19T04:28:50.183Z]\u001b[0m \u001b[31m✖ Error generating SEO keywords:\u001b[0m\n\u001b[2m[2025-03-19T04:28:50.183Z]\u001b[0m \u001b[31mError: API request failed: 429 Too Many Requests - {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at generateSEOKeywords (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:2038:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1482:25)\u001b[0m\n\u001b[2m[2025-03-19T04:28:50.640Z]\u001b[0m \u001b[31m✖ Error generating categories:\u001b[0m\n\u001b[2m[2025-03-19T04:28:50.640Z]\u001b[0m \u001b[31mError: API request failed with status 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at generateCategories (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:800:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1511:22)\u001b[0m\n\u001b[2m[2025-03-19T04:29:08.491Z]\u001b[0m \u001b[31m✖ operation failed after 5 attempts\u001b[0m\n\u001b[2m[2025-03-19T04:29:08.491Z]\u001b[0m \u001b[31mError: API request failed: 429 Too Many Requests - {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at /Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1661:19\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async retry (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:218:28)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1619:22)\u001b[0m\n\u001b[2m[2025-03-19T04:29:08.492Z]\u001b[0m \u001b[31m✖ Error generating article with Gemini:\u001b[0m\n\u001b[2m[2025-03-19T04:29:08.492Z]\u001b[0m \u001b[31mError: API request failed: 429 Too Many Requests - {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at /Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1661:19\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async retry (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:218:28)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1619:22)\u001b[0m\n"
+    },
+    {
+      "topic": "Podcasts",
+      "category": "Entertainment",
+      "error": "Process exited with code 1\n\u001b[2m[2025-03-19T04:29:11.087Z]\u001b[0m \u001b[31m✖ API request failed: 429 Too Many Requests\u001b[0m\n\u001b[2m[2025-03-19T04:29:11.087Z]\u001b[0m \u001b[31m✖ Error generating SEO keywords:\u001b[0m\n\u001b[2m[2025-03-19T04:29:11.087Z]\u001b[0m \u001b[31mError: API request failed: 429 Too Many Requests - {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at generateSEOKeywords (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:2038:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1482:25)\u001b[0m\n\u001b[2m[2025-03-19T04:29:11.553Z]\u001b[0m \u001b[31m✖ Error generating categories:\u001b[0m\n\u001b[2m[2025-03-19T04:29:11.553Z]\u001b[0m \u001b[31mError: API request failed with status 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at generateCategories (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:800:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1511:22)\u001b[0m\n\u001b[2m[2025-03-19T04:29:28.818Z]\u001b[0m \u001b[31m✖ operation failed after 5 attempts\u001b[0m\n\u001b[2m[2025-03-19T04:29:28.818Z]\u001b[0m \u001b[31mError: API request failed: 429 Too Many Requests - {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at /Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1661:19\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async retry (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:218:28)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1619:22)\u001b[0m\n\u001b[2m[2025-03-19T04:29:28.819Z]\u001b[0m \u001b[31m✖ Error generating article with Gemini:\u001b[0m\n\u001b[2m[2025-03-19T04:29:28.819Z]\u001b[0m \u001b[31mError: API request failed: 429 Too Many Requests - {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at /Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1661:19\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async retry (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:218:28)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1619:22)\u001b[0m\n"
+    },
+    {
+      "topic": "Virtual Events",
+      "category": "Entertainment",
+      "error": "Process exited with code 1\n\u001b[2m[2025-03-19T05:01:00.657Z]\u001b[0m \u001b[31m✖ API request failed: 429 Too Many Requests\u001b[0m\n\u001b[2m[2025-03-19T05:01:00.657Z]\u001b[0m \u001b[31m✖ Error generating SEO keywords:\u001b[0m\n\u001b[2m[2025-03-19T05:01:00.660Z]\u001b[0m \u001b[31mError: API request failed: 429 Too Many Requests - {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at generateSEOKeywords (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:2038:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1482:25)\u001b[0m\n\u001b[2m[2025-03-19T05:01:01.158Z]\u001b[0m \u001b[31m✖ Error generating categories:\u001b[0m\n\u001b[2m[2025-03-19T05:01:01.158Z]\u001b[0m \u001b[31mError: API request failed with status 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at generateCategories (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:800:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1511:22)\u001b[0m\n\u001b[2m[2025-03-19T05:01:18.610Z]\u001b[0m \u001b[31m✖ operation failed after 5 attempts\u001b[0m\n\u001b[2m[2025-03-19T05:01:18.611Z]\u001b[0m \u001b[31mError: API request failed: 429 Too Many Requests - {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at /Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1661:19\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async retry (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:218:28)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1619:22)\u001b[0m\n\u001b[2m[2025-03-19T05:01:18.612Z]\u001b[0m \u001b[31m✖ Error generating article with Gemini:\u001b[0m\n\u001b[2m[2025-03-19T05:01:18.612Z]\u001b[0m \u001b[31mError: API request failed: 429 Too Many Requests - {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at /Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1661:19\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async retry (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:218:28)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1619:22)\u001b[0m\n"
+    },
+    {
+      "topic": "eSports",
+      "category": "Entertainment",
+      "error": "Process exited with code 1\n\u001b[2m[2025-03-19T05:01:20.870Z]\u001b[0m \u001b[31m✖ API request failed: 429 Too Many Requests\u001b[0m\n\u001b[2m[2025-03-19T05:01:20.870Z]\u001b[0m \u001b[31m✖ Error generating SEO keywords:\u001b[0m\n\u001b[2m[2025-03-19T05:01:20.870Z]\u001b[0m \u001b[31mError: API request failed: 429 Too Many Requests - {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at generateSEOKeywords (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:2038:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1482:25)\u001b[0m\n\u001b[2m[2025-03-19T05:01:21.333Z]\u001b[0m \u001b[31m✖ Error generating categories:\u001b[0m\n\u001b[2m[2025-03-19T05:01:21.333Z]\u001b[0m \u001b[31mError: API request failed with status 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at generateCategories (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:800:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1511:22)\u001b[0m\n\u001b[2m[2025-03-19T05:01:38.796Z]\u001b[0m \u001b[31m✖ operation failed after 5 attempts\u001b[0m\n\u001b[2m[2025-03-19T05:01:38.796Z]\u001b[0m \u001b[31mError: API request failed: 429 Too Many Requests - {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at /Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1661:19\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async retry (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:218:28)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1619:22)\u001b[0m\n\u001b[2m[2025-03-19T05:01:38.798Z]\u001b[0m \u001b[31m✖ Error generating article with Gemini:\u001b[0m\n\u001b[2m[2025-03-19T05:01:38.798Z]\u001b[0m \u001b[31mError: API request failed: 429 Too Many Requests - {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at /Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1661:19\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async retry (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:218:28)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1619:22)\u001b[0m\n"
+    },
+    {
+      "topic": "AR Games",
+      "category": "Entertainment",
+      "error": "Process exited with code 1\n\u001b[2m[2025-03-19T06:04:46.156Z]\u001b[0m \u001b[31m✖ API request failed: 429 Too Many Requests\u001b[0m\n\u001b[2m[2025-03-19T06:04:46.156Z]\u001b[0m \u001b[31m✖ Error generating SEO keywords:\u001b[0m\n\u001b[2m[2025-03-19T06:04:46.156Z]\u001b[0m \u001b[31mError: API request failed: 429 Too Many Requests - {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at generateSEOKeywords (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:2038:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1482:25)\u001b[0m\n\u001b[2m[2025-03-19T06:04:46.620Z]\u001b[0m \u001b[31m✖ Error generating categories:\u001b[0m\n\u001b[2m[2025-03-19T06:04:46.620Z]\u001b[0m \u001b[31mError: API request failed with status 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at generateCategories (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:800:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1511:22)\u001b[0m\n\u001b[2m[2025-03-19T06:05:04.177Z]\u001b[0m \u001b[31m✖ operation failed after 5 attempts\u001b[0m\n\u001b[2m[2025-03-19T06:05:04.177Z]\u001b[0m \u001b[31mError: API request failed: 429 Too Many Requests - {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at /Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1661:19\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async retry (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:218:28)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1619:22)\u001b[0m\n\u001b[2m[2025-03-19T06:05:04.177Z]\u001b[0m \u001b[31m✖ Error generating article with Gemini:\u001b[0m\n\u001b[2m[2025-03-19T06:05:04.177Z]\u001b[0m \u001b[31mError: API request failed: 429 Too Many Requests - {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at /Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1661:19\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async retry (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:218:28)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1619:22)\u001b[0m\n"
+    },
+    {
+      "topic": "Interactive",
+      "category": "Entertainment",
+      "error": "Process exited with code 1\n\u001b[2m[2025-03-19T06:05:06.472Z]\u001b[0m \u001b[31m✖ API request failed: 429 Too Many Requests\u001b[0m\n\u001b[2m[2025-03-19T06:05:06.472Z]\u001b[0m \u001b[31m✖ Error generating SEO keywords:\u001b[0m\n\u001b[2m[2025-03-19T06:05:06.472Z]\u001b[0m \u001b[31mError: API request failed: 429 Too Many Requests - {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at generateSEOKeywords (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:2038:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1482:25)\u001b[0m\n\u001b[2m[2025-03-19T06:05:06.934Z]\u001b[0m \u001b[31m✖ Error generating categories:\u001b[0m\n\u001b[2m[2025-03-19T06:05:06.934Z]\u001b[0m \u001b[31mError: API request failed with status 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at generateCategories (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:800:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1511:22)\u001b[0m\n\u001b[2m[2025-03-19T06:05:24.353Z]\u001b[0m \u001b[31m✖ operation failed after 5 attempts\u001b[0m\n\u001b[2m[2025-03-19T06:05:24.353Z]\u001b[0m \u001b[31mError: API request failed: 429 Too Many Requests - {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at /Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1661:19\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async retry (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:218:28)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1619:22)\u001b[0m\n\u001b[2m[2025-03-19T06:05:24.353Z]\u001b[0m \u001b[31m✖ Error generating article with Gemini:\u001b[0m\n\u001b[2m[2025-03-19T06:05:24.353Z]\u001b[0m \u001b[31mError: API request failed: 429 Too Many Requests - {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Resource has been exhausted (e.g. check quota).\",\n    \"status\": \"RESOURCE_EXHAUSTED\"\n  }\n}\n\n    at /Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1661:19\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async retry (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:218:28)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1619:22)\u001b[0m\n"
+    },
+    {
+      "topic": "Digital Nomad",
+      "category": "Social & Lifestyle",
+      "error": "Process exited with code 1\nError fetching featured image: Error: Unsplash API error: 403 Forbidden\n    at getFeaturedImage (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:548:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1744:27)\nFetching images from Unsplash: Error: Unsplash API error: 403 Forbidden\n    at searchUnsplashImages (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:440:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1747:30)\n\u001b[2m[2025-03-19T12:23:23.279Z]\u001b[0m \u001b[31m✖ Error generating article with Gemini:\u001b[0m\n\u001b[2m[2025-03-19T12:23:23.279Z]\u001b[0m \u001b[31mTypeError: Cannot read properties of undefined (reading 'name')\n    at generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1800:59)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\u001b[0m\n"
+    },
+    {
+      "topic": "Digital Nomad",
+      "category": "World & Culture",
+      "error": "Process exited with code 1\nError fetching featured image: Error: Unsplash API error: 403 Forbidden\n    at getFeaturedImage (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:548:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1744:27)\nFetching images from Unsplash: Error: Unsplash API error: 403 Forbidden\n    at searchUnsplashImages (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:440:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1747:30)\n\u001b[2m[2025-03-19T14:06:43.977Z]\u001b[0m \u001b[31m✖ Error generating article with Gemini:\u001b[0m\n\u001b[2m[2025-03-19T14:06:43.978Z]\u001b[0m \u001b[31mTypeError: Cannot read properties of undefined (reading 'name')\n    at generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1800:59)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\u001b[0m\n"
+    },
+    {
+      "topic": "Virtual Tourism",
+      "category": "World & Culture",
+      "error": "Process exited with code 1\nError fetching featured image: Error: Unsplash API error: 403 Forbidden\n    at getFeaturedImage (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:548:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1744:27)\nFetching images from Unsplash: Error: Unsplash API error: 403 Forbidden\n    at searchUnsplashImages (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:440:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1747:30)\n\u001b[2m[2025-03-19T14:07:13.023Z]\u001b[0m \u001b[31m✖ Error generating article with Gemini:\u001b[0m\n\u001b[2m[2025-03-19T14:07:13.023Z]\u001b[0m \u001b[31mTypeError: Cannot read properties of undefined (reading 'name')\n    at generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1800:59)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\u001b[0m\n"
+    },
+    {
+      "topic": "Web Dev",
+      "category": "Web & Internet",
+      "error": "Process exited with code 1\nError fetching featured image: Error: Unsplash API error: 403 Forbidden\n    at getFeaturedImage (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:548:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1744:27)\nFetching images from Unsplash: Error: Unsplash API error: 403 Forbidden\n    at searchUnsplashImages (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:440:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1747:30)\n\u001b[2m[2025-03-19T14:35:22.896Z]\u001b[0m \u001b[31m✖ Error generating article with Gemini:\u001b[0m\n\u001b[2m[2025-03-19T14:35:22.896Z]\u001b[0m \u001b[31mTypeError: Cannot read properties of undefined (reading 'name')\n    at generateArticle (/Users/saar/Desktop/Development/Trendiingz - V2 - New/scripts/generate-article-gemini.js:1800:59)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\u001b[0m\n"
+    }
+  ],
+  "remainingTopicIds": [
+    "Web & Internet-E-commerce",
+    "Web & Internet-Social Networks",
+    "Web & Internet-Web Design",
+    "Web & Internet-SEO",
+    "Web & Internet-Content Creation",
+    "Web & Internet-Blogging",
+    "Web & Internet-Web Security",
+    "Web & Internet-Podcasting",
+    "Web & Internet-Online Privacy",
+    "Web & Internet-Digital Marketing",
+    "Web & Internet-Influencers",
+    "Web & Internet-Web3",
+    "Web & Internet-Metaverse",
+    "Web & Internet-Virtual Reality",
+    "Web & Internet-Cyber Security",
+    "Development & Coding-Programming",
+    "Development & Coding-JavaScript",
+    "Development & Coding-Python",
+    "Development & Coding-Web Dev",
+    "Development & Coding-Mobile Dev",
+    "Development & Coding-DevOps",
+    "Development & Coding-Frontend",
+    "Development & Coding-Backend",
+    "Development & Coding-Cloud Computing",
+    "Development & Coding-APIs",
+    "Development & Coding-Database Design",
+    "Development & Coding-Testing",
+    "Development & Coding-UI/UX",
+    "Development & Coding-Game Dev",
+    "Development & Coding-Open Source",
+    "Development & Coding-Rust",
+    "Development & Coding-Web Assembly",
+    "Development & Coding-Quantum Computing",
+    "Development & Coding-Microservices",
+    "Development & Coding-Low Code",
+    "Environment & Sustainability-Climate Change",
+    "Environment & Sustainability-Renewable Energy",
+    "Environment & Sustainability-Conservation",
+    "Environment & Sustainability-Sustainability",
+    "Environment & Sustainability-GreenTech",
+    "Environment & Sustainability-Biodiversity",
+    "Environment & Sustainability-Ocean Conservation",
+    "Environment & Sustainability-Pollution",
+    "Environment & Sustainability-Circular Economy",
+    "Environment & Sustainability-Wildlife",
+    "Environment & Sustainability-Zero Waste",
+    "Environment & Sustainability-Permaculture",
+    "Environment & Sustainability-Carbon Capture",
+    "Environment & Sustainability-Lab Grown Food",
+    "Environment & Sustainability-Sustainable Cities",
+    "Environment & Sustainability-Climate Tech",
+    "Future Technology-Quantum Computing",
+    "Future Technology-Space Tech",
+    "Future Technology-Neural Interface",
+    "Future Technology-AGI",
+    "Future Technology-Fusion Energy",
+    "Future Technology-Robotics",
+    "Future Technology-Nanotech",
+    "Future Technology-Metaverse",
+    "Future Technology-Smart Cities",
+    "Future Technology-Flying Cars",
+    "Future Technology-Space Mining",
+    "Future Technology-Digital Twins",
+    "Future Technology-Hyperloop",
+    "Future Technology-Lab Grown Meat",
+    "Future Technology-Autonomous",
+    "Digital Life-Web3",
+    "Digital Life-Metaverse",
+    "Digital Life-NFTs",
+    "Digital Life-Crypto",
+    "Digital Life-AR Life",
+    "Digital Life-Digital Identity",
+    "Digital Life-Digital Assets",
+    "Digital Life-DAOs",
+    "Digital Life-Virtual Real Estate",
+    "Digital Life-Digital Communities",
+    "Digital Life-Digital Art",
+    "Digital Life-Digital Well-being",
+    "Digital Life-Digital Detox",
+    "Digital Life-Social VR",
+    "Digital Life-Virtual Fashion",
+    "Space & Exploration-Mars Colonization",
+    "Space & Exploration-Space Tourism",
+    "Space & Exploration-Space Mining",
+    "Space & Exploration-Exoplanets",
+    "Space & Exploration-Space Telescopes",
+    "Space & Exploration-Space Habitats",
+    "Space & Exploration-Space Economy",
+    "Space & Exploration-Lunar Exploration",
+    "Space & Exploration-Space Agencies",
+    "Space & Exploration-Propulsion",
+    "Space & Exploration-SETI",
+    "Space & Exploration-Space Law",
+    "Space & Exploration-Asteroid Defense",
+    "Space & Exploration-Space Manufacturing",
+    "Space & Exploration-Interstellar Travel",
+    "Space & Exploration-Space Debris",
+    "Space & Exploration-Astrobiology",
+    "Biotech & Genetics-CRISPR",
+    "Biotech & Genetics-Gene Therapy",
+    "Biotech & Genetics-Bio Printing",
+    "Biotech & Genetics-Xenotransplantation",
+    "Biotech & Genetics-Synthetic Biology",
+    "Biotech & Genetics-Genomic Medicine",
+    "Biotech & Genetics-Bioethics",
+    "Biotech & Genetics-Lab Grown Organs",
+    "Human Augmentation-Prosthetics",
+    "Human Augmentation-Neural Implants",
+    "Human Augmentation-Exoskeletons",
+    "Human Augmentation-Biohacking",
+    "Human Augmentation-Cognitive Enhancement",
+    "Human Augmentation-Sensory Augmentation",
+    "Food Technology-Lab Grown Meat",
+    "Food Technology-Vertical Farming",
+    "Food Technology-Plant-Based",
+    "Food Technology-Food 3D Printing",
+    "Food Technology-Smart Kitchens",
+    "Food Technology-Personalized Nutrition",
+    "Immersive Entertainment-VR Experiences",
+    "Immersive Entertainment-Holographic Shows",
+    "Immersive Entertainment-Interactive Films",
+    "Immersive Entertainment-Haptic Technology",
+    "Immersive Entertainment-Brain-Computer Gaming",
+    "Smart Cities-Urban IoT",
+    "Smart Cities-Smart Grids",
+    "Smart Cities-Autonomous Transit",
+    "Smart Cities-Smart Buildings",
+    "Smart Cities-Urban Analytics",
+    "Smart Cities-Digital Twins",
+    "Circular Economy-Upcycling",
+    "Circular Economy-Zero Waste",
+    "Circular Economy-Repair Economy",
+    "Circular Economy-Product Lifecycle",
+    "Circular Economy-Sustainable Materials",
+    "Future of Work-Remote-First",
+    "Future of Work-AI Collaboration",
+    "Future of Work-Four-Day Week",
+    "Future of Work-Distributed Teams",
+    "Future of Work-Automation Impact",
+    "Future of Work-Workplace VR",
+    "Neurotechnology-Brain Mapping",
+    "Neurotechnology-Neural Interfaces",
+    "Neurotechnology-Cognitive Computing",
+    "Neurotechnology-Neuroethics",
+    "Neurotechnology-Memory Enhancement",
+    "Digital Wellness-Mental Health Apps",
+    "Digital Wellness-Digital Detox",
+    "Digital Wellness-Screen Time Management",
+    "Digital Wellness-Mindfulness Tech",
+    "Digital Wellness-Sleep Technology",
+    "Synthetic Media-Deepfakes",
+    "Synthetic Media-AI Generated Music",
+    "Synthetic Media-Virtual Influencers",
+    "Synthetic Media-Text-to-Video",
+    "Synthetic Media-Digital Humans",
+    "Future of Transportation-Electric Aviation",
+    "Future of Transportation-Hyperloop",
+    "Future of Transportation-Self-Driving",
+    "Future of Transportation-Urban Air Mobility",
+    "Future of Transportation-Micromobility",
+    "Future of Transportation-Alternative Fuels",
+    "Alternative Energy-Fusion Power",
+    "Alternative Energy-Advanced Solar",
+    "Alternative Energy-Ocean Energy",
+    "Alternative Energy-Hydrogen Economy",
+    "Alternative Energy-Energy Storage",
+    "Advanced Materials-Metamaterials",
+    "Advanced Materials-Graphene",
+    "Advanced Materials-Biodegradable",
+    "Advanced Materials-Self-Healing",
+    "Advanced Materials-Smart Textiles",
+    "Future of Education-AI Tutoring",
+    "Future of Education-VR Classrooms",
+    "Future of Education-Microlearning",
+    "Future of Education-Adaptive Learning",
+    "Future of Education-Lifelong Learning",
+    "Digital Identity-Self-Sovereign ID",
+    "Digital Identity-Biometric Auth",
+    "Digital Identity-Digital Passports",
+    "Digital Identity-Identity Verification",
+    "Digital Identity-Privacy Tech",
+    "Human Longevity-Anti-Aging",
+    "Human Longevity-Longevity Research",
+    "Human Longevity-Life Extension",
+    "Human Longevity-Regenerative Medicine",
+    "Human Longevity-Healthspan",
+    "Quantum Technologies-Quantum Computing",
+    "Quantum Technologies-Quantum Networks",
+    "Quantum Technologies-Quantum Sensing",
+    "Quantum Technologies-Quantum Cryptography",
+    "Quantum Technologies-Quantum Algorithms",
+    "Climate Solutions-Direct Air Capture",
+    "Climate Solutions-Geoengineering",
+    "Climate Solutions-Ocean Cleanup",
+    "Climate Solutions-Green Hydrogen",
+    "Climate Solutions-Reforestation Tech",
+    "Extended Reality-Mixed Reality",
+    "Extended Reality-AR Workplace",
+    "Extended Reality-Spatial Computing",
+    "Extended Reality-Holographic Displays",
+    "Extended Reality-Virtual Worlds",
+    "Internet Evolution-Web3",
+    "Internet Evolution-Decentralized Web",
+    "Internet Evolution-Semantic Web",
+    "Internet Evolution-Spatial Internet",
+    "Internet Evolution-Internet of Behavior"
+  ]
+}
