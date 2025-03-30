@@ -1,5 +1,5 @@
 [build]
-  command = "npm run build"
+  command = "npm run build:static"
   publish = "out"
   functions = "netlify/functions"
 
@@ -11,6 +11,7 @@
   NETLIFY_NEXT_PLUGIN_SKIP = "true"
   NODE_ENV = "production"
   NEXT_PUBLIC_SITE_URL = "https://trendiingz.com"
+  STATIC_MODE = "true"
 
 [functions]
   # Increase function timeout for potential slow operations
@@ -20,19 +21,22 @@
 
 [dev]
   # Settings for netlify dev
-  functions = "netlify/functions"
+  command = "npm run dev"
+  port = 8888
+  targetPort = 3000
   publish = "out"
+  autoLaunch = true
 
 # Redirect API calls to Netlify Functions
 [[redirects]]
   from = "/api/*"
-  to = "/.netlify/functions/:splat"
+  to = "/api-fallback.js"
   status = 200
 
 # Handle client-side routing
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
+  from = "/.netlify/functions/*"
+  to = "/.netlify/functions/:splat"
   status = 200
 
 # Optimize asset caching

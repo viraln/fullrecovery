@@ -1428,10 +1428,8 @@ export default function Home({ posts: serverPosts, hasMore, totalPosts }) {
           {/* InfiniteArticles section - displays unique posts not shown in other sections */}
           <div className="mt-6 sm:mt-8 md:mt-12">
             <InfiniteArticles 
-              posts={infinitePosts}
-              hasMore={hasMorePosts}
-              isLoadingMore={isLoadingInfinite}
-              onLoadMore={loadMoreInfinite}
+              initialArticles={infinitePosts.slice(0, 6)}
+              filter={activeFilter || 'latest'}
             />
           </div>
 
