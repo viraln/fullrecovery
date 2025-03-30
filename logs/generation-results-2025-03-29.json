@@ -1,181 +1,181 @@
 {
-  "timestamp": "2025-03-29T05:53:00.882Z",
-  "totalTime": "464.1s",
+  "timestamp": "2025-03-29T12:22:56.193Z",
+  "totalTime": "455.2s",
   "success": [
     {
-      "topic": "Transcendent Computing",
-      "category": "Synthetic Mythology",
-      "title": "Why Transcendent Computing Matters More Than Ever\u001b[0m",
-      "filename": "2025-03-29T05:45:32.647Z-why-transcendent-computing-matters-more-than-ever.md\u001b[0m",
-      "duration": "15.8s"
-    },
-    {
-      "topic": "Self-Healing Materials",
-      "category": "Advanced Materials Science",
-      "title": "The Essential Guide to Self-Healing Materials\u001b[0m",
-      "filename": "2025-03-29T05:45:50.860Z-the-essential-guide-to-self-healing-materials.md\u001b[0m",
+      "topic": "Light-Speed Processing",
+      "category": "Light-Based Computing",
+      "title": "Light-Speed Processing Explained: Everything You Need to Know\u001b[0m",
+      "filename": "2025-03-29T12:15:37.180Z-light-speed-processing-explained-everything-you-need-to-know.md\u001b[0m",
       "duration": "16.2s"
     },
     {
-      "topic": "Consciousness as Power",
-      "category": "Psychoenergetics",
-      "title": "Consciousness as Power\u001b[0m",
-      "filename": "2025-03-29T05:46:09.805Z-consciousness-as-power.md\u001b[0m",
-      "duration": "16.9s"
-    },
-    {
-      "topic": "Planetary Shield Systems",
-      "category": "Astroengineering",
-      "title": "How Planetary Shield Systems Is Reshaping Our World\u001b[0m",
-      "filename": "2025-03-29T05:46:27.131Z-how-planetary-shield-systems-is-reshaping-our-world.md\u001b[0m",
-      "duration": "15.3s"
-    },
-    {
-      "topic": "Quantum Information Theory",
-      "category": "Quantum Information",
-      "title": "5 Things You Should Know About Quantum Information Theory\u001b[0m",
-      "filename": "2025-03-29T05:46:43.226Z-5-things-you-should-know-about-quantum-information-theory.md\u001b[0m",
-      "duration": "14.1s"
-    },
-    {
-      "topic": "Quantum Metrology",
-      "category": "Quantum Technologies",
-      "title": "Quantum Metrology Explained: Everything You Need to Know\u001b[0m",
-      "filename": "2025-03-29T05:47:04.102Z-quantum-metrology-explained-everything-you-need-to-know.md\u001b[0m",
-      "duration": "18.9s"
-    },
-    {
-      "topic": "Holographic Storage",
-      "category": "Holographic Reality",
-      "title": "3 Revolutionary Aspects of Holographic Storage\u001b[0m",
-      "filename": "2025-03-29T05:47:21.367Z-3-revolutionary-aspects-of-holographic-storage.md\u001b[0m",
-      "duration": "15.3s"
-    },
-    {
-      "topic": "Moon Habitation",
-      "category": "Lunar Civilization",
-      "title": "The Essential Guide to Moon Habitation\u001b[0m",
-      "filename": "2025-03-29T05:47:39.890Z-the-essential-guide-to-moon-habitation.md\u001b[0m",
+      "topic": "Empathic Buildings",
+      "category": "Conscious Architecture",
+      "title": "Understanding Empathic Buildings in Today's World\u001b[0m",
+      "filename": "2025-03-29T12:15:55.680Z-understanding-empathic-buildings-in-todays-world.md\u001b[0m",
       "duration": "16.5s"
     },
     {
-      "topic": "Terraforming Robotics",
-      "category": "Terraformation",
-      "title": "Terraforming Robotics: A Comprehensive Analysis\u001b[0m",
-      "filename": "2025-03-29T05:47:56.095Z-terraforming-robotics-a-comprehensive-analysis.md\u001b[0m",
-      "duration": "14.2s"
+      "topic": "Sentiment Processing",
+      "category": "Emotional Computation",
+      "title": "How Sentiment Processing Will Change in the Next Decade\u001b[0m",
+      "filename": "2025-03-29T12:16:12.126Z-how-sentiment-processing-will-change-in-the-next-decade.md\u001b[0m",
+      "duration": "14.4s"
     },
     {
-      "topic": "Visual Conceptual Networks",
-      "category": "Visual Language",
-      "title": "How to Master Visual Conceptual Networks: Expert Strategies\u001b[0m",
-      "filename": "2025-03-29T05:48:15.857Z-how-to-master-visual-conceptual-networks-expert-strategies.md\u001b[0m",
-      "duration": "17.8s"
-    },
-    {
-      "topic": "Circular Economy",
-      "category": "Environment & Sustainability",
-      "title": "Circular Economy\u001b[0m",
-      "filename": "2025-03-29T05:48:33.743Z-circular-economy.md\u001b[0m",
-      "duration": "15.9s"
-    },
-    {
-      "topic": "Web Security",
-      "category": "Web & Internet",
-      "title": "How to Master Web Security: Expert Strategies\u001b[0m",
-      "filename": "2025-03-29T05:48:52.934Z-how-to-master-web-security-expert-strategies.md\u001b[0m",
-      "duration": "17.2s"
-    },
-    {
-      "topic": "Synthetic Realities",
-      "category": "Generative Ontology",
-      "title": "Synthetic Realities\u001b[0m",
-      "filename": "2025-03-29T05:49:11.584Z-synthetic-realities.md\u001b[0m",
-      "duration": "16.6s"
-    },
-    {
-      "topic": "Design",
-      "category": "Social & Lifestyle",
-      "title": "Design\u001b[0m",
-      "filename": "2025-03-29T05:49:30.183Z-design.md\u001b[0m",
-      "duration": "16.6s"
-    },
-    {
-      "topic": "Synesthetic Technology",
-      "category": "Perception Engineering",
-      "title": "Understanding Synesthetic Technology in Today's World\u001b[0m",
-      "filename": "2025-03-29T05:49:48.607Z-understanding-synesthetic-technology-in-todays-world.md\u001b[0m",
-      "duration": "16.4s"
-    },
-    {
-      "topic": "Backend",
-      "category": "Development & Coding",
-      "title": "Understanding Backend in Today's World\u001b[0m",
-      "filename": "2025-03-29T05:50:08.309Z-understanding-backend-in-todays-world.md\u001b[0m",
-      "duration": "17.7s"
-    },
-    {
-      "topic": "Cognitive Interfaces",
-      "category": "Neural Interfaces",
-      "title": "How Cognitive Interfaces Is Reshaping Our World\u001b[0m",
-      "filename": "2025-03-29T05:50:27.967Z-how-cognitive-interfaces-is-reshaping-our-world.md\u001b[0m",
-      "duration": "17.7s"
-    },
-    {
-      "topic": "Higher Dimensional Ruins",
-      "category": "Dimensional Archaeology",
-      "title": "How to Master Higher Dimensional Ruins: Expert Strategies\u001b[0m",
-      "filename": "2025-03-29T05:50:46.969Z-how-to-master-higher-dimensional-ruins-expert-strategies.md\u001b[0m",
+      "topic": "CRISPR",
+      "category": "Health & Medicine",
+      "title": "How to Master CRISPR: Expert Strategies\u001b[0m",
+      "filename": "2025-03-29T12:16:31.094Z-how-to-master-crispr-expert-strategies.md\u001b[0m",
       "duration": "17.0s"
     },
     {
-      "topic": "Collective Mind Linking",
-      "category": "Radiotelepathy",
-      "title": "How to Master Collective Mind Linking: Expert Strategies\u001b[0m",
-      "filename": "2025-03-29T05:51:04.530Z-how-to-master-collective-mind-linking-expert-strategies.md\u001b[0m",
-      "duration": "15.6s"
+      "topic": "Intelligence Amplification",
+      "category": "Nootropic Engineering",
+      "title": "How to Master Intelligence Amplification: Expert Strategies\u001b[0m",
+      "filename": "2025-03-29T12:16:48.054Z-how-to-master-intelligence-amplification-expert-strategies.md\u001b[0m",
+      "duration": "15.0s"
     },
     {
-      "topic": "Murmuration Engineering",
-      "category": "Biomimetic Swarm Intelligence",
-      "title": "How Does Murmuration Engineering Impact Our Future?\u001b[0m",
-      "filename": "2025-03-29T05:51:25.150Z-how-does-murmuration-engineering-impact-our-future.md\u001b[0m",
-      "duration": "18.6s"
+      "topic": "Metabolic Computation",
+      "category": "Biocomputation",
+      "title": "Understanding Metabolic Computation in Today's World\u001b[0m",
+      "filename": "2025-03-29T12:17:07.895Z-understanding-metabolic-computation-in-todays-world.md\u001b[0m",
+      "duration": "17.8s"
     },
     {
-      "topic": "Mind Control Systems",
-      "category": "Neural Interfaces",
-      "title": "4 Ways Mind Control Systems Is Transforming Industries\u001b[0m",
-      "filename": "2025-03-29T05:51:44.462Z-4-ways-mind-control-systems-is-transforming-industries.md\u001b[0m",
+      "topic": "Neuromorphic Structures",
+      "category": "Conscious Architecture",
+      "title": "How Neuromorphic Structures Is Reshaping Our World\u001b[0m",
+      "filename": "2025-03-29T12:17:27.593Z-how-neuromorphic-structures-is-reshaping-our-world.md\u001b[0m",
+      "duration": "17.7s"
+    },
+    {
+      "topic": "Entangled Communication",
+      "category": "Quantum Information",
+      "title": "Understanding Entangled Communication in Today's World\u001b[0m",
+      "filename": "2025-03-29T12:17:43.141Z-understanding-entangled-communication-in-todays-world.md\u001b[0m",
+      "duration": "13.5s"
+    },
+    {
+      "topic": "Persistent Holograms",
+      "category": "Holographic Reality",
+      "title": "How Does Persistent Holograms Impact Our Future?\u001b[0m",
+      "filename": "2025-03-29T12:18:01.103Z-how-does-persistent-holograms-impact-our-future.md\u001b[0m",
+      "duration": "16.0s"
+    },
+    {
+      "topic": "Synchronized Consciousness",
+      "category": "Hyperconnected Minds",
+      "title": "Synchronized Consciousness: A Comprehensive Analysis\u001b[0m",
+      "filename": "2025-03-29T12:18:17.746Z-synchronized-consciousness-a-comprehensive-analysis.md\u001b[0m",
+      "duration": "14.6s"
+    },
+    {
+      "topic": "Web3",
+      "category": "Web & Internet",
+      "title": "How Web3 Is Reshaping Our World\u001b[0m",
+      "filename": "2025-03-29T12:18:37.539Z-how-web3-is-reshaping-our-world.md\u001b[0m",
+      "duration": "17.8s"
+    },
+    {
+      "topic": "Emotive Computing",
+      "category": "Synthetic Emotion",
+      "title": "How Emotive Computing Will Change in the Next Decade\u001b[0m",
+      "filename": "2025-03-29T12:18:55.520Z-how-emotive-computing-will-change-in-the-next-decade.md\u001b[0m",
+      "duration": "16.0s"
+    },
+    {
+      "topic": "Quantum Language",
+      "category": "Xenolinguistic Systems",
+      "title": "The Essential Guide to Quantum Language\u001b[0m",
+      "filename": "2025-03-29T12:19:14.491Z-the-essential-guide-to-quantum-language.md\u001b[0m",
+      "duration": "17.0s"
+    },
+    {
+      "topic": "Recursive Self-Improvement",
+      "category": "Hyperintelligence",
+      "title": "The Essential Guide to Recursive Self-Improvement\u001b[0m",
+      "filename": "2025-03-29T12:19:31.673Z-the-essential-guide-to-recursive-self-improvement.md\u001b[0m",
+      "duration": "15.2s"
+    },
+    {
+      "topic": "Closed Ecosystem Design",
+      "category": "Deep Space Technologies",
+      "title": "Closed Ecosystem Design: A Comprehensive Analysis\u001b[0m",
+      "filename": "2025-03-29T12:19:51.024Z-closed-ecosystem-design-a-comprehensive-analysis.md\u001b[0m",
       "duration": "17.3s"
     },
     {
-      "topic": "Quantum Knowledge Bases",
-      "category": "Quantum Information",
-      "title": "How Does Quantum Knowledge Bases Impact Our Future?\u001b[0m",
-      "filename": "2025-03-29T05:52:03.013Z-how-does-quantum-knowledge-bases-impact-our-future.md\u001b[0m",
-      "duration": "16.6s"
+      "topic": "Crystal Growth Computation",
+      "category": "Crystalline Computing",
+      "title": "How Does Crystal Growth Computation Impact Our Future?\u001b[0m",
+      "filename": "2025-03-29T12:20:10.919Z-how-does-crystal-growth-computation-impact-our-future.md\u001b[0m",
+      "duration": "17.9s"
     },
     {
-      "topic": "Mind-Energy Conversion",
-      "category": "Psychoenergetics",
-      "title": "The Essential Guide to Mind-Energy Conversion\u001b[0m",
-      "filename": "2025-03-29T05:52:22.636Z-the-essential-guide-to-mind-energy-conversion.md\u001b[0m",
-      "duration": "17.6s"
+      "topic": "Orbital Architecture",
+      "category": "Gravitational Engineering",
+      "title": "How Orbital Architecture Will Change in the Next Decade\u001b[0m",
+      "filename": "2025-03-29T12:20:28.097Z-how-orbital-architecture-will-change-in-the-next-decade.md\u001b[0m",
+      "duration": "15.2s"
     },
     {
-      "topic": "Quantum State Fiction",
-      "category": "Multi-Dimensional Writing",
-      "title": "Quantum State Fiction Explained: Everything You Need to Know\u001b[0m",
-      "filename": "2025-03-29T05:52:43.292Z-quantum-state-fiction-explained-everything-you-need-to-know.md\u001b[0m",
-      "duration": "18.7s"
+      "topic": "Metacognition",
+      "category": "Cognitive Revolution",
+      "title": "4 Ways Metacognition Is Transforming Industries\u001b[0m",
+      "filename": "2025-03-29T12:20:44.623Z-4-ways-metacognition-is-transforming-industries.md\u001b[0m",
+      "duration": "14.5s"
     },
     {
-      "topic": "Consciousness",
-      "category": "Psychology & Mind",
-      "title": "3 Revolutionary Aspects of Consciousness\u001b[0m",
-      "filename": "2025-03-29T05:53:00.876Z-3-revolutionary-aspects-of-consciousness.md\u001b[0m",
-      "duration": "15.6s"
+      "topic": "Bioreactors",
+      "category": "Biotechnology Frontiers",
+      "title": "What Makes Bioreactors So Important in 2025?\u001b[0m",
+      "filename": "2025-03-29T12:21:04.894Z-what-makes-bioreactors-so-important-in-2025.md\u001b[0m",
+      "duration": "18.3s"
+    },
+    {
+      "topic": "Festivals",
+      "category": "World & Culture",
+      "title": "How to Master Festivals: Expert Strategies\u001b[0m",
+      "filename": "2025-03-29T12:21:23.939Z-how-to-master-festivals-expert-strategies.md\u001b[0m",
+      "duration": "17.0s"
+    },
+    {
+      "topic": "Quantum Cloud",
+      "category": "Quantum Technologies",
+      "title": "Quantum Cloud: Myths vs. Reality\u001b[0m",
+      "filename": "2025-03-29T12:21:42.477Z-quantum-cloud-myths-vs-reality.md\u001b[0m",
+      "duration": "16.5s"
+    },
+    {
+      "topic": "Ontological Interfaces",
+      "category": "Reality Interfaces",
+      "title": "The Essential Guide to Ontological Interfaces\u001b[0m",
+      "filename": "2025-03-29T12:22:02.269Z-the-essential-guide-to-ontological-interfaces.md\u001b[0m",
+      "duration": "17.8s"
+    },
+    {
+      "topic": "Genomic Poetry",
+      "category": "Genomic Arts",
+      "title": "5 Things You Should Know About Genomic Poetry\u001b[0m",
+      "filename": "2025-03-29T12:22:19.579Z-5-things-you-should-know-about-genomic-poetry.md\u001b[0m",
+      "duration": "15.3s"
+    },
+    {
+      "topic": "Floating Infrastructure",
+      "category": "Microgravity Civilization",
+      "title": "3 Revolutionary Aspects of Floating Infrastructure\u001b[0m",
+      "filename": "2025-03-29T12:22:37.247Z-3-revolutionary-aspects-of-floating-infrastructure.md\u001b[0m",
+      "duration": "15.7s"
+    },
+    {
+      "topic": "Possibility Space Archaeology",
+      "category": "Dimensional Archaeology",
+      "title": "The Essential Guide to Possibility Space Archaeology\u001b[0m",
+      "filename": "2025-03-29T12:22:56.181Z-the-essential-guide-to-possibility-space-archaeology.md\u001b[0m",
+      "duration": "16.9s"
     }
   ],
   "failure": []
