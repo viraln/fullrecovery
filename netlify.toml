@@ -33,12 +33,6 @@
   to = "/api-fallback.js"
   status = 200
 
-# Handle client-side routing
-[[redirects]]
-  from = "/.netlify/functions/*"
-  to = "/.netlify/functions/:splat"
-  status = 200
-
 # Optimize asset caching
 [[headers]]
   for = "/static/*"
