@@ -302,30 +302,43 @@ export default function Post({ frontMatter, content, slug, relatedArticles: rawR
 
   // Handle browser history and back button
   useEffect(() => {
-    // Save the current pathname for checking navigation source
-    const currentPath = window.location.pathname;
+    if (typeof window === 'undefined') return;
     
-    // Only modify history state if there's a hash in the URL
-    if (window.location.hash) {
-      // Mark when navigating to an element
-      const state = { fromTOC: true, source: currentPath };
-      window.history.replaceState(
-        state,
-        '',
-        window.location.pathname + window.location.hash
-      );
+    // Safely get the current pathname
+    const currentPath = window.location.pathname || '';
+    
+    // Safely check for hash - only modify history state if there's a hash in the URL
+    const hash = window.location.hash || '';
+    if (hash) {
+      try {
+        // Mark when navigating to an element
+        const state = { fromTOC: true, source: currentPath };
+        window.history.replaceState(
+          state,
+          '',
+          window.location.pathname + hash
+        );
+      } catch (error) {
+        console.error('Error updating history state:', error);
+        // Continue without updating history if it fails
+      }
     }
 
     const handlePopState = (event) => {
-      // If navigating from within the same article (internal TOC navigation)
-      if (event.state && event.state.fromTOC && event.state.source === currentPath) {
-        console.log("Handling TOC navigation");
-        // Allow normal handling for hash changes within this article
-      } else {
-        // This is external navigation (like clicking the logo to go home)
-        console.log("External navigation detected");
-        // Allow the normal navigation to proceed
-        // IMPORTANT: Don't do anything here that might prevent navigation
+      try {
+        // If navigating from within the same article (internal TOC navigation)
+        if (event?.state && event.state.fromTOC && event.state.source === currentPath) {
+          console.log("Handling TOC navigation");
+          // Allow normal handling for hash changes within this article
+        } else {
+          // This is external navigation (like clicking the logo to go home)
+          console.log("External navigation detected");
+          // Allow the normal navigation to proceed
+          // IMPORTANT: Don't do anything here that might prevent navigation
+        }
+      } catch (error) {
+        console.error('Error in popstate handler:', error);
+        // Continue with default navigation on error
       }
     };
 
@@ -1599,6 +1612,12 @@ export async function getStaticProps({ params: { slug } }) {
     console.time(`getStaticProps:${slug}`);
     console.log('Getting static props for slug:', slug);
     
+    // Validate slug - ensure it's a valid string
+    if (!slug || typeof slug !== 'string') {
+      console.error('Invalid slug provided to getStaticProps:', slug);
+      return { notFound: true };
+    }
+    
     // Import and use getArticleBySlug
     const { getArticleBySlug, getRelatedArticles } = await import('../../utils/articleUtils');
     
@@ -1612,32 +1631,42 @@ export async function getStaticProps({ params: { slug } }) {
     
     const { frontMatter, content: rawContent } = article;
     
-    // Calculate word count for SEO and reading time
-    const wordCount = rawContent.split(/\s+/g).length;
-    const readingTime = Math.ceil(wordCount / 200); // 200 words per minute
+    // Ensure rawContent is valid before using split
+    const safeRawContent = rawContent || '';
+    
+    // Calculate word count for SEO and reading time with safer calculation
+    const wordCount = safeRawContent ? safeRawContent.split(/\s+/g).length : 0;
+    const readingTime = Math.ceil(wordCount / 200) || 1; // 200 words per minute, minimum 1 minute
     
     // Ensure all necessary SEO fields are present
     const serializedFrontMatter = {
       ...frontMatter,
-      date: frontMatter.date instanceof Date 
+      date: frontMatter && frontMatter.date instanceof Date 
         ? frontMatter.date.toISOString() 
-        : frontMatter.date,
+        : (frontMatter?.date || new Date().toISOString()),
       wordCount,
-      readingTime: frontMatter.readingTime || readingTime,
-      excerpt: frontMatter.excerpt || rawContent.slice(0, 160).trim() + '...',
-      keywords: frontMatter.keywords || frontMatter.tags || [],
-      category: frontMatter.category || 'Technology',
+      readingTime: frontMatter?.readingTime || readingTime,
+      excerpt: frontMatter?.excerpt || (safeRawContent ? safeRawContent.slice(0, 160).trim() + '...' : 'No content available'),
+      keywords: frontMatter?.keywords || frontMatter?.tags || [],
+      category: frontMatter?.category || 'Technology',
       // Ensure categories are properly handled
-      categories: frontMatter.categories || [],
-      image: frontMatter.image || 'https://Trendiingz.com/default-og-image.jpg',
-      imageAlt: frontMatter.imageAlt || frontMatter.title,
-      imageCredit: frontMatter.imageCredit || '',
+      categories: frontMatter?.categories || [],
+      image: frontMatter?.image || 'https://Trendiingz.com/default-og-image.jpg',
+      imageAlt: frontMatter?.imageAlt || frontMatter?.title || 'Article image',
+      imageCredit: frontMatter?.imageCredit || '',
       url: `https://Trendiingz.com/posts/${slug}`,
       locale: 'en_US'
     };
 
     // Get related articles in parallel with other operations
-    const relatedArticlesPromise = getRelatedArticles(frontMatter.keywords, slug, 6);
+    const relatedArticlesPromise = getRelatedArticles(
+      frontMatter?.keywords || [], 
+      slug, 
+      6
+    ).catch(error => {
+      console.error('Error fetching related articles:', error);
+      return []; // Return empty array on error
+    });
     
     // Import only if needed
     let serializedContent = null;
@@ -1652,7 +1681,7 @@ export async function getStaticProps({ params: { slug } }) {
         const rehypeAutolinkHeadings = (await import('rehype-autolink-headings')).default;
         const rehypePrism = (await import('rehype-prism-plus')).default;
         
-        serializedContent = await serialize(rawContent, {
+        serializedContent = await serialize(safeRawContent, {
           mdxOptions: {
             remarkPlugins: [remarkGfm],
             rehypePlugins: [
@@ -1671,8 +1700,24 @@ export async function getStaticProps({ params: { slug } }) {
     // Wait for related articles to finish and sort by newest first
     let relatedArticles = await relatedArticlesPromise;
     
+    // Validate and sanitize related articles
+    relatedArticles = Array.isArray(relatedArticles) ? relatedArticles : [];
+    
+    // Filter out any invalid articles and ensure all have required fields
+    relatedArticles = relatedArticles
+      .filter(article => article && typeof article === 'object' && article.slug)
+      .map(article => ({
+        slug: article.slug,
+        title: article.title || 'Untitled Article',
+        excerpt: article.excerpt || 'No description available',
+        date: article.date || new Date().toISOString(),
+        image: article.image || 'https://Trendiingz.com/default-og-image.jpg',
+        category: article.category || 'Uncategorized',
+        readingTime: article.readingTime || 3
+      }));
+    
     // Ensure articles are sorted by newest first
-    if (relatedArticles && relatedArticles.length > 0) {
+    if (relatedArticles.length > 0) {
       relatedArticles.sort((a, b) => new Date(b.date) - new Date(a.date));
     }
     
