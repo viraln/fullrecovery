@@ -18,8 +18,16 @@ let prefetchTimer = null;
 const processPrefetchBatch = async () => {
   if (pendingPrefetches.length === 0) return;
   
-  const batch = [...pendingPrefetches];
+  // Filter out any invalid slugs
+  const batch = pendingPrefetches
+    .filter(slug => slug && typeof slug === 'string' && slug.trim() !== '')
+    .map(slug => slug.trim());
+  
+  // Reset pending prefetches
   pendingPrefetches = [];
+  
+  // Skip if we ended up with an empty batch after filtering
+  if (batch.length === 0) return;
   
   // Skip data prefetching for static export mode
   const isStaticExport = typeof window !== 'undefined' && 
@@ -54,6 +62,12 @@ const processPrefetchBatch = async () => {
 // Prefetch article data when a card is hovered or visible in viewport
 const prefetchArticle = async (slug) => {
   if (typeof window === 'undefined') return
+  
+  // Add validation for the slug parameter
+  if (!slug || typeof slug !== 'string' || slug.trim() === '') {
+    console.warn('Invalid slug provided to prefetchArticle:', slug);
+    return;
+  }
   
   // Skip prefetching for placeholder slugs or already prefetched articles
   if (slug.startsWith('placeholder-') || prefetchedArticles.has(slug)) {
@@ -107,18 +121,40 @@ const ArticleCard = ({ post, index, observer }) => {
   const [isVisible, setIsVisible] = useState(false)
   const [isPrefetched, setIsPrefetched] = useState(false)
 
+  // Bail early if post is undefined or null
+  if (!post) {
+    return (
+      <div className="article-card bg-white rounded-xl shadow-sm p-4 h-full">
+        <div className="animate-pulse space-y-4">
+          <div className="h-48 bg-gray-200 rounded"></div>
+          <div className="h-4 bg-gray-200 rounded w-1/4"></div>
+          <div className="h-6 bg-gray-200 rounded w-3/4"></div>
+          <div className="h-4 bg-gray-200 rounded w-full"></div>
+          <div className="h-4 bg-gray-200 rounded w-full"></div>
+        </div>
+      </div>
+    );
+  }
+
   // Set up intersection observer to detect when card is visible
   useEffect(() => {
-    if (!cardRef.current || !observer) return
+    if (!cardRef.current || !observer) return;
     
-    observer.observe(cardRef.current)
+    // Automatically make visible if no observer available
+    if (!observer) {
+      setIsVisible(true);
+      cardRef.current.classList.add('opacity-100', 'translate-y-0');
+      return;
+    }
+    
+    observer.observe(cardRef.current);
     
     return () => {
-      if (cardRef.current) {
-        observer.unobserve(cardRef.current)
+      if (cardRef.current && observer) {
+        observer.unobserve(cardRef.current);
       }
-    }
-  }, [observer])
+    };
+  }, [observer]);
   
   // When card becomes visible, prefetch the article data
   useEffect(() => {
@@ -127,6 +163,15 @@ const ArticleCard = ({ post, index, observer }) => {
       setIsPrefetched(true)
     }
   }, [isVisible, isPrefetched, post.slug])
+
+  // Safe values with fallbacks
+  const slug = post.slug || '';
+  const title = post.title || 'Untitled Article';
+  const image = post.image || '/images/placeholder.jpg';
+  const readingTime = post.readingTime || 3;
+  const date = post.date || new Date().toISOString();
+  const category = post.category || 'Technology';
+  const excerpt = post.excerpt || 'No excerpt available';
 
   return (
     <div 
@@ -137,43 +182,43 @@ const ArticleCard = ({ post, index, observer }) => {
       }}
     >
       <Link
-        href={`/posts/${post.slug}`}
+        href={`/posts/${slug}`}
         className="block h-full bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group"
         onMouseEnter={() => {
-          if (!isPrefetched && post.slug) {
-            prefetchArticle(post.slug)
+          if (!isPrefetched && slug) {
+            prefetchArticle(slug)
             setIsPrefetched(true)
           }
         }}
       >
         <div className="relative h-48 overflow-hidden">
           <Image
-            src={post.image}
-            alt={post.title}
+            src={image}
+            alt={title}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="object-cover group-hover:scale-105 transition-transform duration-500"
-            unoptimized={post.image.includes('unsplash.com') || post.image.includes('http')}
+            unoptimized={image.includes('unsplash.com') || image.includes('http')}
           />
           <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
             <div className="text-xs text-white/90 flex items-center space-x-2">
-              <span>{post.readingTime || 3} min read</span>
+              <span>{readingTime} min read</span>
               <span>•</span>
-              <span>{getRelativeTime(new Date(post.date))}</span>
+              <span>{getRelativeTime(new Date(date))}</span>
             </div>
           </div>
         </div>
         <div className="p-4 flex flex-col flex-grow">
           <div className="mb-2 flex">
             <span className="inline-block px-2 py-1 text-xs font-medium bg-indigo-100 text-indigo-800 rounded-full">
-              {post.category || 'Technology'}
+              {category}
             </span>
           </div>
           <h3 className="font-bold text-lg mb-2 text-gray-800 group-hover:text-indigo-600 transition-colors line-clamp-2">
-            {post.title}
+            {title}
           </h3>
           <p className="text-sm text-gray-600 line-clamp-2 mb-3">
-            {post.excerpt}
+            {excerpt}
           </p>
         </div>
       </Link>
@@ -197,6 +242,33 @@ export default function InfiniteArticles({
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
   const [error, setError] = useState(null);
+  
+  // Create a shared intersection observer for all article cards
+  const [articleObserver, setArticleObserver] = useState(null);
+  
+  // Initialize observer on client side only
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      // Create a single observer to be shared across all article cards
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('opacity-100', 'translate-y-0');
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '20px'
+      });
+      
+      setArticleObserver(observer);
+      
+      return () => {
+        // Clean up the observer when component unmounts
+        observer.disconnect();
+      };
+    }
+  }, []);
   
   // Intersection observer for infinite scroll
   const { ref, inView } = useInView({
@@ -292,7 +364,12 @@ export default function InfiniteArticles({
       {/* Articles grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {articles.map((article, index) => (
-          <ArticleCard key={`${article.slug}-${index}`} article={article} />
+          <ArticleCard 
+            key={`${article?.slug || index}-${index}`} 
+            post={article} 
+            index={index}
+            observer={articleObserver}
+          />
         ))}
       </div>
       
