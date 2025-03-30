@@ -1705,9 +1705,8 @@ export async function getStaticProps() {
           totalPosts: 50, // Reduced from 150 to 50
           currentPage: 1,
           totalPages: 1
-        },
-        // Revalidate every hour in production
-        revalidate: 3600
+        }
+        // Removed: revalidate: 3600
       };
     }
 
@@ -1740,9 +1739,8 @@ export async function getStaticProps() {
         totalPosts: pagination.total,
         currentPage: pagination.page,
         totalPages: pagination.totalPages
-      },
-      // Revalidate every hour in production
-      revalidate: 3600
+      }
+      // Removed: revalidate: 3600
     }
   } catch (error) {
     console.error('Error in getStaticProps:', error);
@@ -1755,9 +1753,8 @@ export async function getStaticProps() {
         totalPosts: 50, // Reduced from 150 to 50
         currentPage: 1,
         totalPages: 1
-      },
-      // Revalidate quickly on error
-      revalidate: 300
+      }
+      // Removed: revalidate: 300
     };
   }
 }

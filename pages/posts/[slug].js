@@ -1669,9 +1669,7 @@ export async function getStaticProps({ params: { slug } }) {
         serializedContent,
         slug,
         relatedArticles
-      },
-      // Add revalidation to improve build time while keeping content fresh
-      revalidate: 600 // 10 minutes
+      }
     };
   } catch (error) {
     console.error('Error in getStaticProps:', error);

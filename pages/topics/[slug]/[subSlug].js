@@ -480,8 +480,7 @@ export async function getStaticProps({ params }) {
           mainTopic: slug,
           articlesData: [],
           relatedTopics: []
-        },
-        revalidate: 3600 // Revalidate every hour
+        }
       }
     }
     
@@ -553,8 +552,7 @@ export async function getStaticProps({ params }) {
           views: Math.floor(Math.random() * 1000) + 100, // Random view count for demo
         })),
         relatedTopics: relatedTopics.slice(0, 6) // Limit to 6 related topics
-      },
-      revalidate: 3600 // Revalidate every hour
+      }
     }
   } catch (error) {
     console.error('Error in getStaticProps for subtopic page:', error)
@@ -565,8 +563,7 @@ export async function getStaticProps({ params }) {
         mainTopic: slug,
         articlesData: [],
         relatedTopics: []
-      },
-      revalidate: 300 // Retry sooner on error
+      }
     }
   }
 }
