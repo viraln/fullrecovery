@@ -4,8 +4,14 @@ on:
   schedule:
     # Run every hour at 0 minutes
     - cron: '0 * * * *'
-  # Allow manual triggering from GitHub Actions tab
+  # Allow manual triggering from GitHub Actions tab with optional inputs
   workflow_dispatch:
+    inputs:
+      article_count:
+        description: 'Number of articles to generate'
+        required: true
+        default: '25'
+        type: number
 
 jobs:
   generate-articles:
@@ -28,7 +34,12 @@ jobs:
         run: npm ci
         
       - name: Generate new articles
-        run: node scripts/generate-topic-articles.js --random --count=25 --force
+        run: |
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            node scripts/generate-topic-articles.js --random --count=${{ github.event.inputs.article_count }} --force
+          else
+            node scripts/generate-topic-articles.js --random --count=25 --force
+          fi
         env:
           # Make sure all your environment variables from .env are defined here
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
