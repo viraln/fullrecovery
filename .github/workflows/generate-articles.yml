@@ -13,6 +13,10 @@ on:
         default: '25'
         type: number
 
+# Add permissions section to allow GitHub Actions to push changes
+permissions:
+  contents: write
+  
 jobs:
   generate-articles:
     runs-on: ubuntu-latest
