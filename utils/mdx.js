@@ -3,7 +3,7 @@
 // We'll use dynamic imports to avoid errors on the client side
 
 // Mark this function as server-side only
-export const getAllPosts = async (options = {}) => {
+const getAllPosts = async (options = {}) => {
   const { page = 1, limit = 50, paginate = true } = options;
   
   // Only include server-side code when running on the server
@@ -259,7 +259,7 @@ export const getAllPosts = async (options = {}) => {
 /**
  * Convert markdown content to HTML
  */
-export async function markdownToHtml(markdown) {
+async function markdownToHtml(markdown) {
   if (typeof window === 'undefined') {
     try {
       // Dynamically import server-only modules
@@ -286,7 +286,7 @@ export async function markdownToHtml(markdown) {
 /**
  * Get post data by slug
  */
-export async function getPostBySlug(slug, includeContent = false) {
+async function getPostBySlug(slug, includeContent = false) {
   if (typeof window === 'undefined') {
     try {
       console.log(`getPostBySlug called for slug: ${slug}`);
@@ -477,4 +477,11 @@ export async function getPostBySlug(slug, includeContent = false) {
     console.warn(`getPostBySlug called on the client side for slug: ${slug}`);
     return null;
   }
-} 
+}
+
+// Export as CommonJS module
+module.exports = {
+  getAllPosts,
+  markdownToHtml,
+  getPostBySlug
+}; 
