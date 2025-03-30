@@ -21,6 +21,18 @@ const processPrefetchBatch = async () => {
   const batch = [...pendingPrefetches];
   pendingPrefetches = [];
   
+  // Skip data prefetching for static export mode
+  const isStaticExport = typeof window !== 'undefined' && 
+    window.location.hostname !== 'localhost' &&
+    window.location.hostname !== '127.0.0.1';
+    
+  if (isStaticExport) {
+    // In static export mode, just mark as prefetched without trying API fetch
+    batch.forEach(slug => prefetchedArticles.add(slug));
+    console.log(`Static export mode: skipping batch prefetch for ${batch.length} articles`);
+    return;
+  }
+  
   try {
     // Use our batch fetch utility
     await fetchArticles(batch);
@@ -28,6 +40,14 @@ const processPrefetchBatch = async () => {
     console.log(`Prefetched batch of ${batch.length} articles`);
   } catch (error) {
     console.error('Error prefetching article batch:', error);
+    
+    // Still mark as attempted so we don't retry constantly
+    batch.forEach(slug => prefetchedArticles.add(slug));
+    
+    // In static export mode, just silently handle the error
+    if (isStaticExport) {
+      console.log('Static export mode: Expected prefetch errors, continuing without data prefetching');
+    }
   }
 };
 
@@ -40,29 +60,45 @@ const prefetchArticle = async (slug) => {
     return;
   }
   
+  // Skip data prefetching for static export mode, just prefetch the route
+  const isStaticExport = typeof window !== 'undefined' && 
+    window.location.hostname !== 'localhost' &&
+    window.location.hostname !== '127.0.0.1';
+    
   try {
     // Prefetch the page navigation
     if (typeof window !== 'undefined' && window.next && window.next.router) {
       window.next.router.prefetch(`/posts/${slug}`);
     }
     
-    // Add to batch prefetch queue
-    pendingPrefetches.push(slug);
-    prefetchedArticles.add(slug); // Mark as prefetched immediately to prevent duplicates
-    
-    // Clear existing timer and set a new one
-    if (prefetchTimer) {
-      clearTimeout(prefetchTimer);
-    }
-    
-    // Process batch after short delay or when batch is full
-    if (pendingPrefetches.length >= PREFETCH_BATCH_SIZE) {
-      processPrefetchBatch();
+    // In static export mode, we might not have all API endpoints available
+    // So let's only try data prefetching if we're not in static export mode or specifically for critical articles
+    if (!isStaticExport) {
+      // Add to batch prefetch queue
+      pendingPrefetches.push(slug);
+      prefetchedArticles.add(slug); // Mark as prefetched immediately to prevent duplicates
+      
+      // Clear existing timer and set a new one
+      if (prefetchTimer) {
+        clearTimeout(prefetchTimer);
+      }
+      
+      // Process batch after short delay or when batch is full
+      if (pendingPrefetches.length >= PREFETCH_BATCH_SIZE) {
+        processPrefetchBatch();
+      } else {
+        prefetchTimer = setTimeout(processPrefetchBatch, 100);
+      }
     } else {
-      prefetchTimer = setTimeout(processPrefetchBatch, 100);
+      // In static export mode, just mark as prefetched without trying API fetch
+      prefetchedArticles.add(slug);
+      console.log(`Static export mode: skipping data prefetch for ${slug}, only prefetching route`);
     }
   } catch (error) {
-    console.error('Error prefetching article:', slug, error)
+    console.error('Error prefetching article:', slug, error);
+    
+    // Still mark as attempted so we don't retry constantly
+    prefetchedArticles.add(slug);
   }
 }
 
@@ -196,21 +232,47 @@ export default function InfiniteArticles({
       if (subtopic) queryParams.append('subtopic', subtopic);
       
       // Fetch articles from Netlify Function
-      const response = await fetch(`${baseUrl}?${queryParams.toString()}`);
+      let response;
+      try {
+        response = await fetch(`${baseUrl}?${queryParams.toString()}`);
+      } catch (fetchError) {
+        console.log('Network error fetching from Netlify function, trying API fallback');
+        // Try API fallback path
+        const apiFallbackUrl = `/api/articles/page/${page + 1}`;
+        response = await fetch(`${apiFallbackUrl}?${queryParams.toString()}`);
+      }
       
+      // Handle response errors gracefully
       if (!response.ok) {
-        throw new Error(`Failed to fetch articles: ${response.status}`);
+        // For 404 errors in static export mode, just stop loading more
+        if (response.status === 404) {
+          console.log('API fallback: No more static data available - this is expected in static export mode');
+          setHasMore(false);
+          setLoading(false);
+          return;
+        }
+        
+        throw new Error(`Failed to fetch articles: ${response.status} ${response.statusText}`);
       }
       
       const data = await response.json();
       
-      // Update state
-      setArticles(prev => [...prev, ...data.articles]);
-      setPage(page + 1);
-      setHasMore(data.hasMore);
-    } catch (err) {
-      console.error('Error loading more articles:', err);
-      setError('Failed to load more articles. Please try again.');
+      if (!data.articles || data.articles.length === 0) {
+        setHasMore(false);
+      } else {
+        setArticles(prev => [...prev, ...data.articles]);
+        setPage(prev => prev + 1);
+        setHasMore(data.hasMore);
+      }
+    } catch (error) {
+      console.error('Error loading more articles:', error);
+      setError('Failed to load more articles. Please try again later.');
+      
+      // In static export mode, gracefully handle errors by showing fallback content
+      if (typeof window !== 'undefined' && window.location.hostname !== 'localhost') {
+        console.log('Using fallback content in static export mode');
+        setHasMore(false);
+      }
     } finally {
       setLoading(false);
     }

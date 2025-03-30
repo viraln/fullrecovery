@@ -654,6 +654,20 @@ export default function Home({ posts: serverPosts, hasMore, totalPosts }) {
         res = await fetch(`/api/posts?page=${nextPage}&limit=11`);
       }
       
+      // Handle response errors gracefully, especially for static export
+      if (!res.ok) {
+        // Handle 404 errors specifically for static export mode
+        if (res.status === 404) {
+          console.log(`API fallback: No static data found for page ${nextPage} - this is expected in static export mode`);
+          setIsLoadingMoreNew(false);
+          return;
+        }
+        
+        console.error(`New arrivals API request failed with status ${res.status}`);
+        setIsLoadingMoreNew(false);
+        return;
+      }
+      
       const data = await res.json()
       
       if (data.posts?.length) {
@@ -698,6 +712,13 @@ export default function Home({ posts: serverPosts, hasMore, totalPosts }) {
       }
       
       if (!res.ok) {
+        // Handle 404 errors specifically for static export mode
+        if (res.status === 404) {
+          console.log(`API fallback: No static data found for page ${nextPage} - this is expected in static export mode`);
+          setHasMorePosts(false);
+          return;
+        }
+        
         console.error(`API request failed with status ${res.status}`);
         const errorText = await res.text();
         console.error('Error response:', errorText);
@@ -874,6 +895,9 @@ export default function Home({ posts: serverPosts, hasMore, totalPosts }) {
             const response = await fetch(`/api/articles/${article.slug}`);
             if (response.ok) {
               debugLog('Prefetch success', article.slug);
+            } else {
+              // This is expected in static export mode when a static JSON file doesn't exist
+              debugLog('Prefetch info', `Static data not found for ${article.slug} - this is normal in static export mode`);
             }
           } catch (error) {
             // Silently fail - this is just prefetching
@@ -901,6 +925,9 @@ export default function Home({ posts: serverPosts, hasMore, totalPosts }) {
               const response = await fetch(`/api/articles/${article.slug}`);
               if (response.ok) {
                 debugLog('Prefetch success', article.slug);
+              } else {
+                // This is expected in static export mode when a static JSON file doesn't exist
+                debugLog('Prefetch info', `Static data not found for ${article.slug} - this is normal in static export mode`);
               }
             } catch (error) {
               // Silently fail - this is just prefetching
@@ -929,6 +956,9 @@ export default function Home({ posts: serverPosts, hasMore, totalPosts }) {
               const response = await fetch(`/api/articles/${article.slug}`);
               if (response.ok) {
                 debugLog('Prefetch success', article.slug);
+              } else {
+                // This is expected in static export mode when a static JSON file doesn't exist
+                debugLog('Prefetch info', `Static data not found for ${article.slug} - this is normal in static export mode`);
               }
             } catch (error) {
               // Silently fail - this is just prefetching
