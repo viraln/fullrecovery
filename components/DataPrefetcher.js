@@ -12,7 +12,6 @@ export default function DataPrefetcher() {
         // Start cache preload - this should run first but in background
         fetch('/api/preload-cache', { 
           priority: 'low',
-          next: { revalidate: 3600 } // Revalidate every hour
         }).catch(err => console.log('Cache preload running in background'));
           
         // Preload the first page of articles - high priority but cached

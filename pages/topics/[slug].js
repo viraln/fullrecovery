@@ -569,7 +569,6 @@ export async function getStaticProps({ params }) {
         articlesData: articles,
         relatedTopics,
       },
-      revalidate: 3600, // Revalidate every hour
     }
   } catch (error) {
     console.error('Error in getStaticProps for topic page:', error)
@@ -581,7 +580,6 @@ export async function getStaticProps({ params }) {
         articlesData: [],
         relatedTopics: [],
       },
-      revalidate: 60, // Try again more quickly in case of error
     }
   }
 } 

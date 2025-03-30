@@ -772,8 +772,7 @@ export async function getStaticProps({ params: { slug } }) {
         content: rawContent,
         slug,
         relatedArticles
-      },
-      revalidate: 60 // Revalidate every minute
+      }
     };
   } catch (error) {
     console.error('Error in getStaticProps:', error);
