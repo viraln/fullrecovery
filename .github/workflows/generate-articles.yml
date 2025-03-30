@@ -61,7 +61,14 @@ jobs:
           
       - name: Commit and push if changes
         run: |
-          git add netlify/functions/content/articles/
+          # Debug: Show where articles might be
+          find . -name "*.md" | grep article
+          
+          # Add both possible article locations to be safe
+          git add content/articles/ || echo "No content/articles/ directory"
+          git add netlify/functions/content/articles/ || echo "No netlify/functions/content/articles/ directory"
+          
+          # Commit and push if there are changes
           git commit -m "new-articles $(date +%Y-%m-%d-%H%M)" || echo "No changes to commit"
           git push
           
