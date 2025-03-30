@@ -7,7 +7,10 @@
     "dev": "next dev",
     "build": "next build && cd netlify/functions && npm install && cd ../.. && mkdir -p netlify/functions/content && cp -r content/articles netlify/functions/content/",
     "start": "next start",
-    "test:functions": "cd netlify/functions && npm install && node test-posts-function.js"
+    "test:functions": "cd netlify/functions && npm install && node test-posts-function.js",
+    "lint": "next lint",
+    "generate-static-data": "node scripts/generate-static-data.js",
+    "build:static": "npm run generate-static-data && next build"
   },
   "keywords": [],
   "author": "",

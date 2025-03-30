@@ -32,6 +32,13 @@ const nextConfig = {
       }
     ],
     unoptimized: true,
+    domains: [
+      'images.unsplash.com',
+      'picsum.photos',
+      'trendiingz.com',
+      'source.unsplash.com',
+      'plus.unsplash.com'
+    ],
   },
   
   // Handle server-only modules
@@ -49,6 +56,22 @@ const nextConfig = {
         https: false,
         zlib: false,
       };
+    }
+    
+    // Only run once on the server during build
+    if (isServer) {
+      // Run the static data generator script
+      const { spawnSync } = require('child_process');
+      console.log('🌐 Running static data generator before build...');
+      
+      const result = spawnSync('node', ['scripts/generate-static-data.js'], {
+        stdio: 'inherit',
+        encoding: 'utf-8'
+      });
+      
+      if (result.error) {
+        console.error('Error running static data generator:', result.error);
+      }
     }
     
     return config;
