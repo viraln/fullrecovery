@@ -180,6 +180,21 @@ export default function Post({ frontMatter, content, slug, relatedArticles: rawR
   // console.log("Article frontMatter:", frontMatter);
   // console.log("Categories:", frontMatter.categories);
   
+  // Ensure frontMatter is always defined
+  const safeFrontMatter = frontMatter || {
+    title: 'Article Not Found',
+    excerpt: 'We could not find this article.',
+    date: new Date().toISOString(),
+    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=60',
+    readingTime: 1,
+    category: 'General',
+    categories: [],
+    keywords: []
+  };
+  
+  // Ensure content is always defined
+  const safeContent = content || '# Article Not Found\n\nWe could not find the content for this article.';
+  
   // Safely process related articles to ensure unique keys and valid data
   const relatedArticles = safeRelatedArticles(rawRelatedArticles);
   
@@ -523,8 +538,8 @@ export default function Post({ frontMatter, content, slug, relatedArticles: rawR
     // Get current URL safely
     const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
     const url = currentUrl || `https://Trendiingz.com/posts/${slug}`;
-    const text = frontMatter.title;
-    const summary = frontMatter.excerpt || '';
+    const text = safeFrontMatter.title;
+    const summary = safeFrontMatter.excerpt || '';
     
     // Only try to use navigator.share on the client side
     if (typeof window !== 'undefined') {
@@ -534,8 +549,8 @@ export default function Post({ frontMatter, content, slug, relatedArticles: rawR
           ['twitter', 'facebook', 'linkedin', 'whatsapp'].includes(platform)) {
         try {
           navigator.share({
-            title: frontMatter.title,
-            text: frontMatter.excerpt || '',
+            title: safeFrontMatter.title,
+            text: safeFrontMatter.excerpt || '',
             url: window.location.href
           })
           .then(() => console.log('Successfully shared'))
@@ -639,11 +654,11 @@ export default function Post({ frontMatter, content, slug, relatedArticles: rawR
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
-    headline: frontMatter.title,
-    description: frontMatter.excerpt,
-    image: frontMatter.image,
-    datePublished: frontMatter.date,
-    dateModified: frontMatter.lastModified,
+    headline: safeFrontMatter.title,
+    description: safeFrontMatter.excerpt,
+    image: safeFrontMatter.image,
+    datePublished: safeFrontMatter.date,
+    dateModified: safeFrontMatter.lastModified,
     publisher: {
       '@type': 'Organization',
       name: 'Trendiingz',
@@ -654,12 +669,12 @@ export default function Post({ frontMatter, content, slug, relatedArticles: rawR
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': frontMatter.url
+      '@id': safeFrontMatter.url
     },
-    wordCount: frontMatter.wordCount,
-    keywords: (frontMatter.keywords || []).join(', '),
-    articleSection: frontMatter.category,
-    inLanguage: frontMatter.locale
+    wordCount: safeFrontMatter.wordCount,
+    keywords: (safeFrontMatter.keywords || []).join(', '),
+    articleSection: safeFrontMatter.category,
+    inLanguage: safeFrontMatter.locale
   };
 
   // Calculate read progress for the progress bar
@@ -727,9 +742,9 @@ export default function Post({ frontMatter, content, slug, relatedArticles: rawR
   return (
     <ErrorBoundary>
       <Head>
-        <title>{`${frontMatter.title} | Trendiingz - Latest Tech & Trends`}</title>
-        <meta name="description" content={frontMatter.excerpt} />
-        <meta name="keywords" content={frontMatter.keywords?.join(', ') || ''} />
+        <title>{`${safeFrontMatter.title} | Trendiingz - Latest Tech & Trends`}</title>
+        <meta name="description" content={safeFrontMatter.excerpt} />
+        <meta name="keywords" content={safeFrontMatter.keywords?.join(', ') || ''} />
         
         {/* Basic SEO */}
         <meta name="robots" content="index, follow" />
@@ -738,10 +753,10 @@ export default function Post({ frontMatter, content, slug, relatedArticles: rawR
         
         {/* Open Graph */}
         <meta property="og:site_name" content="Trendiingz" />
-        <meta property="og:title" content={frontMatter.title} />
-        <meta property="og:description" content={frontMatter.excerpt} />
-        <meta property="og:image" content={frontMatter.image} />
-        <meta property="og:image:alt" content={frontMatter.imageAlt} />
+        <meta property="og:title" content={safeFrontMatter.title} />
+        <meta property="og:description" content={safeFrontMatter.excerpt} />
+        <meta property="og:image" content={safeFrontMatter.image} />
+        <meta property="og:image:alt" content={safeFrontMatter.imageAlt} />
         <meta property="og:type" content="article" />
         <meta property="og:url" content={`https://Trendiingz.com/posts/${slug}`} />
         <meta property="og:locale" content="en_US" />
@@ -749,15 +764,15 @@ export default function Post({ frontMatter, content, slug, relatedArticles: rawR
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@Trendiingz" />
-        <meta name="twitter:title" content={frontMatter.title} />
-        <meta name="twitter:description" content={frontMatter.excerpt} />
-        <meta name="twitter:image" content={frontMatter.image} />
+        <meta name="twitter:title" content={safeFrontMatter.title} />
+        <meta name="twitter:description" content={safeFrontMatter.excerpt} />
+        <meta name="twitter:image" content={safeFrontMatter.image} />
         
         {/* Article Metadata */}
-        <meta property="article:published_time" content={frontMatter.date} />
-        <meta property="article:modified_time" content={frontMatter.lastModified} />
-        <meta property="article:section" content={frontMatter.category} />
-        {frontMatter.keywords?.map((keyword) => (
+        <meta property="article:published_time" content={safeFrontMatter.date} />
+        <meta property="article:modified_time" content={safeFrontMatter.lastModified} />
+        <meta property="article:section" content={safeFrontMatter.category} />
+        {safeFrontMatter.keywords?.map((keyword) => (
           <meta key={keyword} property="article:tag" content={keyword} />
         ))}
 
@@ -824,22 +839,22 @@ export default function Post({ frontMatter, content, slug, relatedArticles: rawR
         <div className="relative h-[60vh] sm:h-[70vh] min-h-[450px] sm:min-h-[600px] w-full">
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/30 z-10" />
           <Image
-            src={frontMatter.image}
-            alt={frontMatter.title}
+            src={safeFrontMatter.image}
+            alt={safeFrontMatter.title}
             fill
             priority
             className="object-cover"
             sizes="100vw"
             itemProp="image"
-            unoptimized={frontMatter.image.includes('unsplash.com') || frontMatter.image.includes('http')}
+            unoptimized={safeFrontMatter.image.includes('unsplash.com') || safeFrontMatter.image.includes('http')}
           />
           <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-8 z-20 max-w-4xl mx-auto">
             <div className="space-y-3 sm:space-y-4">
               {/* Categories */}
-              {frontMatter.categories && frontMatter.categories.length > 0 && (
+              {safeFrontMatter.categories && safeFrontMatter.categories.length > 0 && (
                 <div className="flex flex-wrap gap-1.5 sm:gap-2">
                   {/* Show exact category first with special styling */}
-                  {frontMatter.categories
+                  {safeFrontMatter.categories
                     .filter(cat => cat.type === 'exact')
                     .map((category, index) => (
                       <a 
@@ -853,7 +868,7 @@ export default function Post({ frontMatter, content, slug, relatedArticles: rawR
                   }
                 
                   {/* Display general categories next */}
-                  {frontMatter.categories
+                  {safeFrontMatter.categories
                     .filter(cat => cat.type === 'general')
                     .map((category, index) => (
                       <a 
@@ -867,9 +882,9 @@ export default function Post({ frontMatter, content, slug, relatedArticles: rawR
                   }
                   
                   {/* Only show a limited number of categories on mobile */}
-                  {frontMatter.categories
+                  {safeFrontMatter.categories
                     .filter(cat => cat.type !== 'general' && cat.type !== 'exact')
-                    .slice(0, isMobile ? 2 : frontMatter.categories.length)
+                    .slice(0, isMobile ? 2 : safeFrontMatter.categories.length)
                     .map((category, index) => {
                       // Style based on category type
                       let bgColor = 'bg-gray-100';
@@ -904,37 +919,37 @@ export default function Post({ frontMatter, content, slug, relatedArticles: rawR
                   
                   {/* Show +X more if we've truncated categories on mobile */}
                   {isMobile && 
-                    frontMatter.categories.filter(cat => cat.type !== 'general' && cat.type !== 'exact').length > 2 && (
+                    safeFrontMatter.categories.filter(cat => cat.type !== 'general' && cat.type !== 'exact').length > 2 && (
                     <span className="inline-block bg-gray-200 text-gray-700 px-2 py-1 rounded-full text-xs font-medium">
-                      +{frontMatter.categories.filter(cat => cat.type !== 'general' && cat.type !== 'exact').length - 2} more
+                      +{safeFrontMatter.categories.filter(cat => cat.type !== 'general' && cat.type !== 'exact').length - 2} more
                     </span>
                   )}
                 </div>
               )}
               
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-                {frontMatter.title}
+                {safeFrontMatter.title}
               </h1>
               <div className="flex items-center space-x-4 text-white/90 text-xs sm:text-sm md:text-base">
-                <time dateTime={frontMatter.date}>
-                  {new Date(frontMatter.date).toLocaleDateString('en-US', {
+                <time dateTime={safeFrontMatter.date}>
+                  {new Date(safeFrontMatter.date).toLocaleDateString('en-US', {
                     year: 'numeric',
                     month: 'long',
                     day: 'numeric'
                   })}
                 </time>
                 <span>•</span>
-                <span>{frontMatter.readingTime} min read</span>
+                <span>{safeFrontMatter.readingTime} min read</span>
               </div>
             </div>
           </div>
         </div>
 
         {/* Add the photographer attribution centered beneath the hero image */}
-        {frontMatter.imageCredit && (
+        {safeFrontMatter.imageCredit && (
           <div className="text-center py-2.5 border-b border-gray-100 text-gray-500 text-xs md:text-sm font-medium">
             <div className="max-w-3xl mx-auto px-4">
-              <div dangerouslySetInnerHTML={{ __html: frontMatter.imageCredit.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-indigo-500 hover:text-indigo-700 transition-colors">$1</a>') }} />
+              <div dangerouslySetInnerHTML={{ __html: safeFrontMatter.imageCredit.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-indigo-500 hover:text-indigo-700 transition-colors">$1</a>') }} />
             </div>
           </div>
         )}
@@ -1296,19 +1311,19 @@ export default function Post({ frontMatter, content, slug, relatedArticles: rawR
           )}
 
           {/* Article Excerpt - Only show separately if specified */}
-          {frontMatter.showExcerptSeparately && (
+          {safeFrontMatter.showExcerptSeparately && (
             <div className="mb-12 text-xl text-gray-600 leading-relaxed border-l-4 border-indigo-500 pl-6 py-2">
-              {frontMatter.excerpt}
+              {safeFrontMatter.excerpt}
             </div>
           )}
 
           {/* Categories section - More compact on mobile */}
-          {frontMatter.categories && frontMatter.categories.length > 0 && (
+          {safeFrontMatter.categories && safeFrontMatter.categories.length > 0 && (
             <div className="mb-8 sm:mb-12">
               <h3 className="text-xs sm:text-sm uppercase tracking-wider font-medium text-gray-500 mb-2 sm:mb-3">Browse by category</h3>
               <div className="flex flex-wrap gap-1.5 sm:gap-2">
                 {/* Display general categories first with larger size */}
-                {frontMatter.categories
+                {safeFrontMatter.categories
                   .filter(cat => cat.type === 'general')
                   .map((category, index) => (
                     <a 
@@ -1322,7 +1337,7 @@ export default function Post({ frontMatter, content, slug, relatedArticles: rawR
                 }
                 
                 {/* Display other categories */}
-                {frontMatter.categories
+                {safeFrontMatter.categories
                   .filter(cat => cat.type !== 'general')
                   .map((category, index) => {
                     // Style based on category type
@@ -1362,7 +1377,7 @@ export default function Post({ frontMatter, content, slug, relatedArticles: rawR
           {/* Main Content - Improved prose for mobile */}
           <div className="prose prose-sm sm:prose-base lg:prose-lg max-w-none w-full prose-headings:text-gray-800 prose-p:text-gray-700 prose-a:text-indigo-600 prose-a:no-underline hover:prose-a:text-indigo-800 prose-img:w-full prose-img:rounded-lg">
             {/* Only render ArticleViewer on the client side */}
-            <ArticleViewer content={content} />
+            <ArticleViewer content={safeContent} />
           </div>
 
           {/* Article CTA - Improved for mobile */}
@@ -1385,11 +1400,11 @@ export default function Post({ frontMatter, content, slug, relatedArticles: rawR
           <footer className="mt-10 sm:mt-16 pt-6 sm:pt-8 border-t border-gray-100">
             <div className="flex flex-col space-y-6">
               {/* Categories */}
-              {frontMatter.categories && frontMatter.categories.length > 0 && (
+              {safeFrontMatter.categories && safeFrontMatter.categories.length > 0 && (
                 <div>
                   <div className="text-xs sm:text-sm text-gray-500 uppercase mb-2">Categories</div>
                   <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                    {frontMatter.categories.map((category, index) => {
+                    {safeFrontMatter.categories.map((category, index) => {
                       // Style based on category type
                       let bgColor = 'bg-gray-50';
                       let textColor = 'text-gray-700';
@@ -1426,7 +1441,7 @@ export default function Post({ frontMatter, content, slug, relatedArticles: rawR
               <div className="text-xs sm:text-sm text-gray-500">
                 Last updated: {(() => {
                   // Check if lastModified is a valid date
-                  const lastModDate = frontMatter.lastModified ? new Date(frontMatter.lastModified) : null;
+                  const lastModDate = safeFrontMatter.lastModified ? new Date(safeFrontMatter.lastModified) : null;
                   const isValidDate = lastModDate && !isNaN(lastModDate.getTime());
                   
                   if (isValidDate) {
@@ -1437,7 +1452,7 @@ export default function Post({ frontMatter, content, slug, relatedArticles: rawR
                     });
                   } else {
                     // Fallback to article date if lastModified is invalid
-                    const pubDate = frontMatter.date ? new Date(frontMatter.date) : new Date();
+                    const pubDate = safeFrontMatter.date ? new Date(safeFrontMatter.date) : new Date();
                     return pubDate.toLocaleDateString('en-US', {
                       year: 'numeric',
                       month: 'long',
