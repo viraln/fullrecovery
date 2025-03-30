@@ -3408,4 +3408,24 @@ export const topicCategories = {
     { name: 'Space-Time Energy Taps', icon: '⏱️' },
     { name: 'Subquantum Power Generation', icon: '💡' },
   ]
-} 
+}
+
+// Create a flattened list of all topics for easier consumption by other components
+export const allTopicsFlat = Object.entries(topicCategories).reduce((acc, [category, topics]) => {
+  if (Array.isArray(topics)) {
+    topics.forEach(topic => {
+      if (topic && typeof topic.name === 'string') {
+        const slug = topic.name.toLowerCase().replace(/\s+/g, '-');
+        if (slug) {
+          acc.push({
+            slug,
+            name: topic.name,
+            icon: topic.icon,
+            category
+          });
+        }
+      }
+    });
+  }
+  return acc;
+}, []); 

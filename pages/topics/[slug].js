@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import Header from '../../components/Header'
 import Footer from '../../components/layout/Footer'
-import { topicCategories } from '../../data/topics'
+import { topicCategories, allTopicsFlat } from '../../data/topics'
 import TopicNav from '../../components/home/TopicNav'
 
 // Get article data
@@ -473,22 +473,40 @@ export default function TopicPage({ topic, articlesData, relatedTopics }) {
 
 // Server-side data fetching
 export async function getStaticPaths() {
-  // Get all the topic slugs from our topics data
-  const paths = topicCategories.map((topic) => ({
-    params: { slug: topic.slug },
-  }))
-  
-  return {
-    paths,
-    fallback: 'blocking', // can also be true or false
+  try {
+    // Use the pre-flattened topics array
+    if (!Array.isArray(allTopicsFlat) || allTopicsFlat.length === 0) {
+      console.warn('Warning: allTopicsFlat array is empty or invalid. Using empty array for paths.');
+      return {
+        paths: [],
+        fallback: 'blocking',
+      };
+    }
+    
+    // Generate paths from the flattened topics array
+    const paths = allTopicsFlat.map((topic) => ({
+      params: { slug: topic.slug },
+    }));
+    
+    console.log(`Generated ${paths.length} topic paths for static generation`);
+    
+    return {
+      paths,
+      fallback: 'blocking',
+    };
+  } catch (error) {
+    console.error('Error in getStaticPaths:', error);
+    // Return a safe fallback in case of any error
+    return {
+      paths: [],
+      fallback: 'blocking',
+    };
   }
 }
 
 export async function getStaticProps({ params }) {
   try {
     const { slug } = params || {}
-    // In a real app, this would come from an API or database
-    // For now, let's use the topic from the URL parameter
     
     // Handle subtopic paths
     const slugParts = slug.split('/') 
@@ -534,16 +552,16 @@ export async function getStaticProps({ params }) {
       views: post.frontmatter.views || 0,
     }))
     
-    // Get related topics
-    // In a real app, this would be based on topic similarity or popularity
-    const relatedTopics = topicCategories
-      .filter((topic) => topic.slug !== mainTopic)
-      .slice(0, 10)
-      .map((topic) => ({
-        slug: topic.slug,
-        name: topic.name,
-        icon: topic.icon
-      }))
+    // Use allTopicsFlat for related topics (exclude current topic)
+    const relatedTopics = Array.isArray(allTopicsFlat) ? 
+      allTopicsFlat
+        .filter(topic => topic.slug !== mainTopic)
+        .slice(0, 10)
+        .map(topic => ({
+          slug: topic.slug,
+          name: topic.name,
+          icon: topic.icon
+        })) : [];
     
     return {
       props: {
