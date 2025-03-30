@@ -50,7 +50,7 @@ jobs:
           
       - name: Commit and push if changes
         run: |
-          git add content/articles/
+          git add netlify/functions/content/articles/
           git commit -m "new-articles $(date +%Y-%m-%d-%H%M)" || echo "No changes to commit"
           git push
           
