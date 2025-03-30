@@ -13,26 +13,32 @@ import { getAllPosts } from '../../utils/mdx'
 
 export default function TopicPage({ topic, articlesData, relatedTopics }) {
   const router = useRouter()
-  const { slug, subSlug } = router.query
+  const { slug = '', subSlug } = router.query || {}
   
-  const [articles, setArticles] = useState(articlesData || [])
+  // Ensure articlesData is always an array
+  const safeArticlesData = Array.isArray(articlesData) ? articlesData : []
+  const safeSubtopics = Array.isArray(subtopics) ? subtopics : []
+  
+  const [articles, setArticles] = useState(safeArticlesData)
   const [isLoading, setIsLoading] = useState(false)
   const [currentFilter, setCurrentFilter] = useState('all')
   const [viewMode, setViewMode] = useState('grid')
   
-  // Determine if we're viewing a main topic or subtopic
-  const isSubTopic = !!subSlug
-  const displayName = subSlug || slug
-  const formattedName = displayName?.replace(/-/g, ' ')
-  const capitalizedName = formattedName?.split(' ')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ')
+  // Add defensive string handling
+  const safeSlug = typeof slug === 'string' ? slug : ''
   
-  const topicIcon = getTopicIcon(slug)
-  const topicDescription = getTopicDescription(slug)
+  // Format the topic name for display with defensive checks
+  const formattedName = safeSlug ? safeSlug.replace(/-/g, ' ') : ''
+  const capitalizedName = formattedName ? formattedName.split(' ')
+    .filter(word => typeof word === 'string' && word.length > 0)
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ') : 'Topic'
+  
+  const topicIcon = getTopicIcon(safeSlug)
+  const topicDescription = getTopicDescription(safeSlug)
   
   // Get possible subtopics for this main topic
-  const subtopics = getSubtopics(slug)
+  const subtopics = getSubtopics(safeSlug)
   
   // Filter options for articles
   const filterOptions = [
@@ -49,15 +55,20 @@ export default function TopicPage({ topic, articlesData, relatedTopics }) {
   const handleFilterChange = (filterId) => {
     setCurrentFilter(filterId)
     
-    // Filter the articles based on the selected filter
-    let filteredArticles = [...articlesData]
+    // Filter the articles based on the selected filter with defensive checks
+    let filteredArticles = [...safeArticlesData]
     
     if (filterId === 'trending') {
-      filteredArticles = filteredArticles.filter(article => article.trending)
+      filteredArticles = filteredArticles.filter(article => article && article.trending)
     } else if (filterId === 'latest') {
-      filteredArticles.sort((a, b) => new Date(b.date) - new Date(a.date))
+      filteredArticles.sort((a, b) => {
+        // Defensive sort with date validation
+        const dateA = a && a.date ? new Date(a.date) : new Date(0)
+        const dateB = b && b.date ? new Date(b.date) : new Date(0)
+        return dateB - dateA
+      })
     } else if (filterId === 'popular') {
-      filteredArticles.sort((a, b) => (b.views || 0) - (a.views || 0))
+      filteredArticles.sort((a, b) => ((b && b.views) || 0) - ((a && a.views) || 0))
     }
     
     setArticles(filteredArticles)
@@ -84,12 +95,26 @@ export default function TopicPage({ topic, articlesData, relatedTopics }) {
     }
   }
   
+  // Filter topics that have content
+  const activeSubtopics = safeSubtopics.filter(subtopic => subtopic && subtopic.hasContent)
+
+  // Ensure any function that works with subtopics handles undefined values
+  const getSubtopicUrl = (subtopic) => {
+    if (!subtopic || !subtopic.slug || !safeSlug) return '#'
+    return `/topics/${safeSlug}/${subtopic.slug}`
+  }
+
+  const getSubtopicName = (subtopic) => {
+    if (!subtopic || typeof subtopic.name !== 'string') return 'Subtopic'
+    return subtopic.name
+  }
+  
   return (
     <>
       <Head>
         <title>{capitalizedName || 'Topic'} Articles - Trendiingz</title>
         <meta name="description" content={`Explore the latest ${formattedName} articles, news, insights, and trends. Stay updated with our expert coverage on ${formattedName} developments.`} />
-        <meta name="keywords" content={`${formattedName}, ${slug}, technology, trends, news, articles`} />
+        <meta name="keywords" content={`${formattedName}, ${safeSlug}, technology, trends, news, articles`} />
         
         {/* Open Graph */}
         <meta property="og:title" content={`${capitalizedName} - Trendiingz`} />
@@ -121,12 +146,12 @@ export default function TopicPage({ topic, articlesData, relatedTopics }) {
               {/* Topic Info */}
               <div className="absolute bottom-0 left-0 p-4 sm:p-6 text-white">
                 <div className="flex items-center">
-                  {isSubTopic && (
-                    <Link href={`/topics/${slug}`} className="text-white/80 hover:text-white mr-2 font-medium text-sm sm:text-base">
-                      {slug.charAt(0).toUpperCase() + slug.slice(1).replace(/-/g, ' ')}
+                  {subSlug && (
+                    <Link href={`/topics/${safeSlug}`} className="text-white/80 hover:text-white mr-2 font-medium text-sm sm:text-base">
+                      {safeSlug.charAt(0).toUpperCase() + safeSlug.slice(1).replace(/-/g, ' ')}
                     </Link>
                   )}
-                  {isSubTopic && <span className="text-white/60 mx-2">/</span>}
+                  {subSlug && <span className="text-white/60 mx-2">/</span>}
                   <h1 className="text-xl sm:text-3xl font-bold">{capitalizedName}</h1>
                 </div>
                 <p className="text-white/80 text-sm sm:text-base mt-1 max-w-2xl">
@@ -141,17 +166,17 @@ export default function TopicPage({ topic, articlesData, relatedTopics }) {
             </div>
             
             {/* Subtopics Navigation (only show on main topic pages) */}
-            {!isSubTopic && subtopics && subtopics.length > 0 && (
+            {!subSlug && subtopics && subtopics.length > 0 && (
               <div className="py-3 px-4 sm:px-6 overflow-x-auto scrollbar-hide">
                 <div className="flex space-x-2">
                   {subtopics.map((subtopic) => (
                     <Link
                       key={subtopic.id}
-                      href={`/topics/${slug}/${subtopic.id}`}
+                      href={getSubtopicUrl(subtopic)}
                       className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium bg-indigo-50 text-indigo-700 hover:bg-indigo-100 whitespace-nowrap transition-colors"
                     >
                       <span className="mr-1.5">{subtopic.icon}</span>
-                      {subtopic.name}
+                      {getSubtopicName(subtopic)}
                     </Link>
                   ))}
                 </div>
@@ -159,7 +184,7 @@ export default function TopicPage({ topic, articlesData, relatedTopics }) {
             )}
             
             {/* Related Main Topics (only show on subtopic pages) */}
-            {isSubTopic && mainTopics && mainTopics.length > 0 && (
+            {subSlug && mainTopics && mainTopics.length > 0 && (
               <div className="py-3 px-4 sm:px-6 border-t border-gray-100">
                 <div className="flex flex-wrap gap-2">
                   <span className="text-xs text-gray-500 pt-1.5">Related:</span>

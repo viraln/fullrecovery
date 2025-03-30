@@ -12,28 +12,37 @@ import { getAllPosts } from '../../../utils/mdx'
 
 export default function SubTopicPage({ subtopic, mainTopic, articlesData, relatedTopics }) {
   const router = useRouter()
-  const { slug, subSlug } = router.query
+  const { slug = '', subSlug = '' } = router.query || {}
   
-  const [articles, setArticles] = useState(articlesData || [])
+  // Ensure articlesData is always an array
+  const safeArticlesData = Array.isArray(articlesData) ? articlesData : []
+  
+  const [articles, setArticles] = useState(safeArticlesData)
   const [isLoading, setIsLoading] = useState(false)
   const [currentFilter, setCurrentFilter] = useState('all')
   const [viewMode, setViewMode] = useState('grid')
   
-  // Format the subtopic name for display
-  const formattedName = subSlug?.replace(/-/g, ' ') || ''
-  const capitalizedName = formattedName?.split(' ')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ')
+  // Add defensive string handling for all text manipulations
+  const safeSlug = (typeof slug === 'string') ? slug : ''
+  const safeSubSlug = (typeof subSlug === 'string') ? subSlug : ''
   
-  // Format the main topic name
-  const formattedMainName = slug?.replace(/-/g, ' ') || ''
-  const capitalizedMainName = formattedMainName?.split(' ')
+  // Format the subtopic name for display with defensive checks
+  const formattedName = safeSubSlug ? safeSubSlug.replace(/-/g, ' ') : ''
+  const capitalizedName = formattedName ? formattedName.split(' ')
+    .filter(word => typeof word === 'string' && word.length > 0)
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ')
+    .join(' ') : 'Topic'
+  
+  // Format the main topic name with defensive checks
+  const formattedMainName = safeSlug ? safeSlug.replace(/-/g, ' ') : ''
+  const capitalizedMainName = formattedMainName ? formattedMainName.split(' ')
+    .filter(word => typeof word === 'string' && word.length > 0)
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ') : 'Category'
   
   // Get subtopic icon and description
-  const subtopicIcon = getSubtopicIcon(subSlug, slug)
-  const subtopicDescription = getSubtopicDescription(subSlug, slug)
+  const subtopicIcon = getSubtopicIcon(safeSubSlug, safeSlug)
+  const subtopicDescription = getSubtopicDescription(safeSubSlug, safeSlug)
   
   // Filter options for articles
   const filterOptions = [
@@ -47,15 +56,20 @@ export default function SubTopicPage({ subtopic, mainTopic, articlesData, relate
   const handleFilterChange = (filterId) => {
     setCurrentFilter(filterId)
     
-    // Filter the articles based on the selected filter
-    let filteredArticles = [...articlesData]
+    // Filter the articles based on the selected filter with defensive checks
+    let filteredArticles = [...safeArticlesData]
     
     if (filterId === 'trending') {
-      filteredArticles = filteredArticles.filter(article => article.trending)
+      filteredArticles = filteredArticles.filter(article => article && article.trending)
     } else if (filterId === 'latest') {
-      filteredArticles.sort((a, b) => new Date(b.date) - new Date(a.date))
+      filteredArticles.sort((a, b) => {
+        // Defensive sort with date validation
+        const dateA = a && a.date ? new Date(a.date) : new Date(0)
+        const dateB = b && b.date ? new Date(b.date) : new Date(0)
+        return dateB - dateA
+      })
     } else if (filterId === 'popular') {
-      filteredArticles.sort((a, b) => (b.views || 0) - (a.views || 0))
+      filteredArticles.sort((a, b) => ((b && b.views) || 0) - ((a && a.views) || 0))
     }
     
     setArticles(filteredArticles)
