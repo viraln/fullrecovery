@@ -80,7 +80,9 @@ jobs:
         # Only trigger the Netlify build if there were changes to commit
         run: |
           if git log -1 --pretty=%B | grep "new-articles"; then
-            curl -X POST -d {} ${{ secrets.NETLIFY_BUILD_HOOK }}
+            echo "Changes detected, triggering Netlify build..."
+            # Use curl to trigger Netlify build hook
+            curl -X POST -d {} https://api.netlify.com/build_hooks/${{ secrets.NETLIFY_BUILD_HOOK }}
           else
             echo "No changes were made, skipping Netlify build trigger"
           fi 
