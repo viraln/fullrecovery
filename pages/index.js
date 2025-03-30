@@ -274,6 +274,8 @@ export default function Home({ posts: serverPosts, hasMore, totalPosts }) {
   const [showPreferences, setShowPreferences] = useState(false)
   const [filteredPostsCount, setFilteredPostsCount] = useState(0)
   const [expandedTopics, setExpandedTopics] = useState([]) // Track expanded topic families for better filtering
+  // Article filtering state 
+  const [activeFilter, setActiveFilter] = useState('latest') // Default to 'latest' for article filtering
 
   // Load preferences from localStorage on initial render
   useEffect(() => {
