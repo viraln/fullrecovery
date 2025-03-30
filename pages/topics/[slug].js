@@ -11,13 +11,90 @@ import TopicNav from '../../components/home/TopicNav'
 // Get article data
 import { getAllPosts } from '../../utils/mdx'
 
+// Helper functions - moved outside component to avoid initialization issues
+function getTopicIcon(slug) {
+  const iconMap = {
+    'tech': '💻',
+    'ai': '🤖',
+    'science': '🔬',
+    'climate': '🌍',
+    'business': '💼',
+    'innovation': '💡',
+    'gaming': '🎮',
+    'lifestyle': '✨',
+    'food': '🍳',
+    'politics': '🏛️',
+    'entertainment': '🎭',
+  }
+  
+  return iconMap[slug] || '📚'
+}
+
+function getTopicDescription(slug) {
+  const descriptionMap = {
+    'tech': 'Explore the latest in technology trends, innovations, and insights from leading tech companies and startups.',
+    'ai': 'Discover breakthroughs in artificial intelligence, machine learning, deep learning, and neural networks.',
+    'science': 'Stay updated with the newest scientific discoveries, research findings, and advancements across disciplines.',
+    'climate': 'Follow climate change developments, environmental policies, sustainability initiatives, and green technologies.',
+    'business': 'Track business trends, market movements, entrepreneurship stories, and corporate innovations.',
+    'innovation': 'Learn about groundbreaking ideas, disruptive technologies, and creative solutions changing our world.',
+    'gaming': 'Get the latest on video games, esports, gaming hardware, and industry developments.',
+    'lifestyle': 'Find inspiration for better living through wellness, personal development, home, and relationships.',
+  }
+  
+  return descriptionMap[slug] || `Explore our latest articles and insights about ${slug}.`
+}
+
+function getSubtopics(slug) {
+  // This would typically come from the data source
+  const subtopicsMap = {
+    'tech': [
+      { id: 'web-development', name: 'Web Development', icon: '🌐' },
+      { id: 'mobile', name: 'Mobile', icon: '📱' },
+      { id: 'cloud', name: 'Cloud Computing', icon: '☁️' },
+      { id: 'security', name: 'Cybersecurity', icon: '🔒' },
+      { id: 'data-science', name: 'Data Science', icon: '📊' },
+    ],
+    'ai': [
+      { id: 'machine-learning', name: 'Machine Learning', icon: '🧠' },
+      { id: 'generative-ai', name: 'Generative AI', icon: '🎨' },
+      { id: 'nlp', name: 'Natural Language Processing', icon: '💬' },
+      { id: 'computer-vision', name: 'Computer Vision', icon: '👁️' },
+      { id: 'ai-ethics', name: 'AI Ethics', icon: '⚖️' },
+    ],
+    'science': [
+      { id: 'physics', name: 'Physics', icon: '⚛️' },
+      { id: 'astronomy', name: 'Astronomy', icon: '🔭' },
+      { id: 'biology', name: 'Biology', icon: '🧬' },
+      { id: 'quantum', name: 'Quantum Science', icon: '🔄' },
+      { id: 'medicine', name: 'Medicine', icon: '🩺' },
+    ],
+  }
+  
+  return subtopicsMap[slug] || []
+}
+
+function getMainTopicsForSubtopic(subSlug) {
+  // In a real implementation, this would come from a database or API
+  // For now, we'll return some example related topics
+  return [
+    { id: 'tech', name: 'Technology', icon: '💻' },
+    { id: 'ai', name: 'AI & ML', icon: '🤖' },
+    { id: 'innovation', name: 'Innovation', icon: '💡' },
+    { id: 'business', name: 'Business', icon: '💼' },
+  ]
+}
+
 export default function TopicPage({ topic, articlesData, relatedTopics }) {
   const router = useRouter()
-  const { slug = '', subSlug } = router.query || {}
+  const { slug = '', subSlug = '' } = router.query || {}
   
   // Ensure articlesData is always an array
   const safeArticlesData = Array.isArray(articlesData) ? articlesData : []
-  const safeSubtopics = Array.isArray(subtopics) ? subtopics : []
+  
+  // Get subtopics - ensure this is done before it's referenced
+  const subtopicsData = getSubtopics(typeof slug === 'string' ? slug : topic)
+  const safeSubtopics = Array.isArray(subtopicsData) ? subtopicsData : []
   
   const [articles, setArticles] = useState(safeArticlesData)
   const [isLoading, setIsLoading] = useState(false)
@@ -25,7 +102,7 @@ export default function TopicPage({ topic, articlesData, relatedTopics }) {
   const [viewMode, setViewMode] = useState('grid')
   
   // Add defensive string handling
-  const safeSlug = typeof slug === 'string' ? slug : ''
+  const safeSlug = typeof slug === 'string' ? slug : typeof topic === 'string' ? topic : ''
   
   // Format the topic name for display with defensive checks
   const formattedName = safeSlug ? safeSlug.replace(/-/g, ' ') : ''
@@ -36,9 +113,6 @@ export default function TopicPage({ topic, articlesData, relatedTopics }) {
   
   const topicIcon = getTopicIcon(safeSlug)
   const topicDescription = getTopicDescription(safeSlug)
-  
-  // Get possible subtopics for this main topic
-  const subtopics = getSubtopics(safeSlug)
   
   // Filter options for articles
   const filterOptions = [
@@ -166,10 +240,10 @@ export default function TopicPage({ topic, articlesData, relatedTopics }) {
             </div>
             
             {/* Subtopics Navigation (only show on main topic pages) */}
-            {!subSlug && subtopics && subtopics.length > 0 && (
+            {!subSlug && safeSubtopics && safeSubtopics.length > 0 && (
               <div className="py-3 px-4 sm:px-6 overflow-x-auto scrollbar-hide">
                 <div className="flex space-x-2">
-                  {subtopics.map((subtopic) => (
+                  {safeSubtopics.map((subtopic) => (
                     <Link
                       key={subtopic.id}
                       href={getSubtopicUrl(subtopic)}
@@ -203,121 +277,187 @@ export default function TopicPage({ topic, articlesData, relatedTopics }) {
             )}
           </div>
           
-          {/* Filters and View Mode Controls */}
-          <div className="bg-white rounded-xl shadow-sm p-3 sm:p-4 mb-6">
-            <div className="flex flex-wrap items-center justify-between gap-4">
-              {/* Filter Options */}
-              <div className="flex flex-wrap gap-2 sm:gap-0">
+          {/* Articles Section */}
+          <div className="mb-6">
+            {/* Filtering and View Controls */}
+            <div className="mb-4 flex flex-wrap justify-between items-center gap-4">
+              {/* Filter Controls */}
+              <div className="flex items-center space-x-3 overflow-x-auto scrollbar-hide pb-1">
                 {filterOptions.map((filter) => (
                   <button
                     key={filter.id}
                     onClick={() => handleFilterChange(filter.id)}
-                    className={`
-                      px-3 py-1.5 text-sm font-medium rounded-full sm:rounded-none
-                      transition-colors
-                      ${currentFilter === filter.id 
-                        ? 'bg-indigo-600 text-white' 
-                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}
-                      ${filter.id !== filterOptions[filterOptions.length - 1].id 
-                        ? 'sm:rounded-l-md' 
-                        : ''}
-                      ${filter.id !== filterOptions[0].id 
-                        ? 'sm:rounded-r-md' 
-                        : ''}
-                    `}
+                    className={`px-4 py-1.5 rounded-full text-sm font-medium ${
+                      currentFilter === filter.id
+                        ? 'bg-indigo-600 text-white'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    } transition-colors whitespace-nowrap`}
                   >
                     {filter.name}
                   </button>
                 ))}
               </div>
               
-              {/* View Mode Toggle */}
-              <div className="flex items-center p-1 bg-gray-100 rounded-md">
+              {/* View Mode Controls */}
+              <div className="flex items-center space-x-2">
                 <button
-                  onClick={() => setViewMode('grid')}
-                  className={`p-1.5 rounded-md ${viewMode === 'grid' ? 'bg-white shadow-sm' : 'text-gray-600'}`}
-                  aria-label="Grid view"
+                  onClick={toggleViewMode}
+                  className="p-2 rounded-md text-gray-500 hover:bg-gray-100 hover:text-gray-700 transition-colors"
+                  aria-label={viewMode === 'grid' ? 'Switch to list view' : 'Switch to grid view'}
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-                  </svg>
-                </button>
-                <button
-                  onClick={() => setViewMode('list')}
-                  className={`p-1.5 rounded-md ${viewMode === 'list' ? 'bg-white shadow-sm' : 'text-gray-600'}`}
-                  aria-label="List view"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
-                  </svg>
+                  {viewMode === 'grid' ? (
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                    </svg>
+                  ) : (
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
+                    </svg>
+                  )}
                 </button>
               </div>
             </div>
-          </div>
-          
-          {/* Articles Section */}
-          {articles.length > 0 ? (
-            <>
-              <div className={viewMode === 'grid' 
-                ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6' 
-                : 'space-y-6'
-              }>
-                {articles.map((article) => (
-                  viewMode === 'grid' 
-                    ? <GridArticleCard key={article.slug} article={article} /> 
-                    : <ListArticleCard key={article.slug} article={article} />
+            
+            {/* Articles Grid or List */}
+            {articles && articles.length > 0 ? (
+              <div className={`grid ${
+                viewMode === 'grid' 
+                  ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6' 
+                  : 'grid-cols-1 gap-4'
+              }`}>
+                {articles.map((article, index) => (
+                  <article 
+                    key={index} 
+                    className={`bg-white rounded-xl shadow-sm overflow-hidden transition-transform hover:-translate-y-1 ${
+                      viewMode === 'list' ? 'flex flex-col sm:flex-row' : ''
+                    }`}
+                  >
+                    {article.image && (
+                      <Link href={`/articles/${article.slug}`} className={`block ${viewMode === 'list' ? 'sm:w-1/3' : ''}`}>
+                        <div className={`relative ${viewMode === 'grid' ? 'aspect-w-16 aspect-h-9' : 'aspect-w-4 aspect-h-3'}`}>
+                          <Image 
+                            src={article.image} 
+                            alt={article.title} 
+                            fill
+                            className="object-cover transition-transform hover:scale-105"
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          />
+                        </div>
+                      </Link>
+                    )}
+                    
+                    <div className={`p-4 ${viewMode === 'list' ? 'sm:w-2/3' : ''} flex flex-col h-full`}>
+                      {article.category && (
+                        <Link href={`/topics/${article.category}`} className="mb-2 text-xs font-semibold text-indigo-600 uppercase tracking-wider">
+                          {article.category.replace(/-/g, ' ')}
+                        </Link>
+                      )}
+                      
+                      <h2 className="text-lg font-bold mb-2 line-clamp-2">
+                        <Link href={`/articles/${article.slug}`} className="hover:text-indigo-600 transition-colors">
+                          {article.title}
+                        </Link>
+                      </h2>
+                      
+                      <p className="text-gray-600 text-sm mb-4 line-clamp-2 flex-grow">
+                        {article.excerpt}
+                      </p>
+                      
+                      <div className="flex items-center justify-between text-xs text-gray-500 mt-auto">
+                        <div>
+                          {article.date && (
+                            <time dateTime={article.date}>
+                              {new Date(article.date).toLocaleDateString('en-US', {
+                                year: 'numeric',
+                                month: 'short',
+                                day: 'numeric'
+                              })}
+                            </time>
+                          )}
+                        </div>
+                        
+                        <div className="flex items-center">
+                          <span className="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 mr-1">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            {article.readingTime || '5 min'}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
                 ))}
               </div>
-              
-              {/* Load More Button */}
+            ) : (
+              <div className="bg-white rounded-xl shadow-sm p-8 text-center">
+                <div className="text-4xl mb-4">📚</div>
+                <h3 className="text-xl font-bold text-gray-700 mb-2">No articles found</h3>
+                <p className="text-gray-500 mb-6">
+                  We couldn't find any articles matching your criteria. Please try a different filter or check back later.
+                </p>
+                <button
+                  onClick={() => handleFilterChange('all')}
+                  className="px-4 py-2 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors inline-flex items-center"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 mr-2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+                  </svg>
+                  Show all articles
+                </button>
+              </div>
+            )}
+            
+            {/* Load More Button */}
+            {articles && articles.length > 0 && (
               <div className="mt-8 text-center">
                 <button
                   onClick={loadMoreArticles}
                   disabled={isLoading}
-                  className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors disabled:opacity-70"
+                  className={`px-6 py-3 rounded-full text-sm font-semibold ${
+                    isLoading
+                      ? 'bg-gray-200 text-gray-500 cursor-not-allowed'
+                      : 'bg-indigo-600 text-white hover:bg-indigo-700'
+                  } transition-colors flex items-center mx-auto`}
                 >
                   {isLoading ? (
                     <>
-                      <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <svg className="animate-spin h-4 w-4 mr-2 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                       </svg>
                       Loading...
                     </>
                   ) : (
-                    'Load More Articles'
+                    <>
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 mr-2">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 4.5h14.25M3 9h9.75M3 13.5h9.75m4.5-4.5v12m0 0l-3.75-3.75M17.25 21L21 17.25" />
+                      </svg>
+                      Load more articles
+                    </>
                   )}
                 </button>
               </div>
-            </>
-          ) : (
-            <div className="bg-white rounded-xl shadow-sm p-8 text-center">
-              <div className="mx-auto max-w-md">
-                <div className="text-6xl mb-4">📚</div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">No articles found</h3>
-                <p className="text-gray-600 mb-6">
-                  We couldn't find any articles for this topic yet. Check back soon as we're constantly adding new content.
-                </p>
-                <Link href="/" className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                  Back to Home
-                </Link>
-              </div>
-            </div>
-          )}
+            )}
+          </div>
           
-          {/* Related Topics Section */}
+          {/* Suggested Topics */}
           {relatedTopics && relatedTopics.length > 0 && (
-            <div className="mt-12">
-              <h2 className="text-xl font-bold text-gray-900 mb-4">Related Topics</h2>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                {relatedTopics.map((topic) => (
+            <div className="bg-white rounded-xl shadow-sm overflow-hidden mb-6">
+              <div className="p-4 sm:p-6 border-b border-gray-100">
+                <h2 className="text-lg font-bold">Related Topics</h2>
+                <p className="text-gray-500 text-sm mt-1">Explore more topics related to {capitalizedName}</p>
+              </div>
+              
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 p-4 sm:p-6">
+                {relatedTopics.map((relTopic) => (
                   <Link
-                    key={topic.id}
-                    href={`/topics/${topic.id}`}
-                    className="flex flex-col items-center p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow text-center"
+                    key={relTopic.slug}
+                    href={`/topics/${relTopic.slug}`}
+                    className="flex flex-col items-center justify-center p-3 rounded-xl bg-gray-50 hover:bg-indigo-50 hover:text-indigo-600 text-center transition-colors"
                   >
-                    <span className="text-3xl mb-2">{topic.icon}</span>
-                    <span className="text-sm font-medium text-gray-900">{topic.name}</span>
+                    <span className="text-2xl mb-1">{relTopic.icon || '📚'}</span>
+                    <span className="text-sm font-medium">{relTopic.name}</span>
                   </Link>
                 ))}
               </div>
@@ -331,300 +471,99 @@ export default function TopicPage({ topic, articlesData, relatedTopics }) {
   )
 }
 
-// Grid Article Card Component
-function GridArticleCard({ article }) {
-  return (
-    <Link href={`/posts/${article.slug}`} className="flex flex-col bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow group">
-      <div className="relative h-48">
-        <Image
-          src={article.image}
-          alt={article.title}
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-cover group-hover:scale-105 transition-transform duration-300"
-        />
-        {article.trending && (
-          <div className="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-md">
-            Trending
-          </div>
-        )}
-      </div>
-      <div className="p-4 flex-grow">
-        <h2 className="text-lg font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-indigo-600 transition-colors">
-          {article.title}
-        </h2>
-        <p className="text-gray-600 text-sm line-clamp-2 mb-3">
-          {article.excerpt}
-        </p>
-        <div className="flex items-center justify-between text-xs text-gray-500 mt-auto pt-2 border-t border-gray-100">
-          <span>{article.date ? new Date(article.date).toLocaleDateString() : 'No date'}</span>
-          <span>{article.readingTime} min read</span>
-        </div>
-      </div>
-    </Link>
-  )
-}
-
-// List Article Card Component
-function ListArticleCard({ article }) {
-  return (
-    <Link href={`/posts/${article.slug}`} className="flex bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow group">
-      <div className="relative w-32 sm:w-48">
-        <Image
-          src={article.image}
-          alt={article.title}
-          fill
-          sizes="(max-width: 640px) 128px, 192px"
-          className="object-cover group-hover:scale-105 transition-transform duration-300"
-        />
-        {article.trending && (
-          <div className="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-md">
-            Trending
-          </div>
-        )}
-      </div>
-      <div className="p-4 flex-grow">
-        <h2 className="text-lg font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-indigo-600 transition-colors">
-          {article.title}
-        </h2>
-        <p className="text-gray-600 text-sm line-clamp-2 mb-4">
-          {article.excerpt}
-        </p>
-        <div className="flex items-center justify-between text-xs text-gray-500">
-          <span>{article.date ? new Date(article.date).toLocaleDateString() : 'No date'}</span>
-          <div className="flex items-center">
-            <span className="mr-3">{article.readingTime} min read</span>
-            <span className="flex items-center">
-              <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-              </svg>
-              {article.views || 0}
-            </span>
-          </div>
-        </div>
-      </div>
-    </Link>
-  )
-}
-
-// Helper functions
-function getTopicIcon(slug) {
-  const iconMap = {
-    'tech': '💻',
-    'ai': '🤖',
-    'science': '🔬',
-    'climate': '🌍',
-    'business': '💼',
-    'innovation': '💡',
-    'gaming': '🎮',
-    'lifestyle': '✨',
-    'food': '🍳',
-    'politics': '🏛️',
-    'entertainment': '🎭',
-  }
-  
-  return iconMap[slug] || '📚'
-}
-
-function getTopicDescription(slug) {
-  const descriptionMap = {
-    'tech': 'Explore the latest in technology trends, innovations, and insights from leading tech companies and startups.',
-    'ai': 'Discover breakthroughs in artificial intelligence, machine learning, deep learning, and neural networks.',
-    'science': 'Stay updated with the newest scientific discoveries, research findings, and advancements across disciplines.',
-    'climate': 'Follow climate change developments, environmental policies, sustainability initiatives, and green technologies.',
-    'business': 'Track business trends, market movements, entrepreneurship stories, and corporate innovations.',
-    'innovation': 'Learn about groundbreaking ideas, disruptive technologies, and creative solutions changing our world.',
-    'gaming': 'Get the latest on video games, esports, gaming hardware, and industry developments.',
-    'lifestyle': 'Find inspiration for better living through wellness, personal development, home, and relationships.',
-  }
-  
-  return descriptionMap[slug] || `Explore our latest articles and insights about ${slug}.`
-}
-
-function getSubtopics(slug) {
-  // This would typically come from the data source
-  const subtopicsMap = {
-    'tech': [
-      { id: 'web-development', name: 'Web Development', icon: '🌐' },
-      { id: 'mobile', name: 'Mobile', icon: '📱' },
-      { id: 'cloud', name: 'Cloud Computing', icon: '☁️' },
-      { id: 'security', name: 'Cybersecurity', icon: '🔒' },
-      { id: 'data-science', name: 'Data Science', icon: '📊' },
-    ],
-    'ai': [
-      { id: 'machine-learning', name: 'Machine Learning', icon: '🧠' },
-      { id: 'generative-ai', name: 'Generative AI', icon: '🎨' },
-      { id: 'nlp', name: 'Natural Language Processing', icon: '💬' },
-      { id: 'computer-vision', name: 'Computer Vision', icon: '👁️' },
-      { id: 'ai-ethics', name: 'AI Ethics', icon: '⚖️' },
-    ],
-    'science': [
-      { id: 'physics', name: 'Physics', icon: '⚛️' },
-      { id: 'astronomy', name: 'Astronomy', icon: '🔭' },
-      { id: 'biology', name: 'Biology', icon: '🧬' },
-      { id: 'quantum', name: 'Quantum Science', icon: '🔄' },
-      { id: 'medicine', name: 'Medicine', icon: '🩺' },
-    ],
-  }
-  
-  return subtopicsMap[slug] || []
-}
-
-function getMainTopicsForSubtopic(subSlug) {
-  // In a real implementation, this would come from a database or API
-  // For now, we'll return some example related topics
-  return [
-    { id: 'tech', name: 'Technology', icon: '💻' },
-    { id: 'ai', name: 'AI & ML', icon: '🤖' },
-    { id: 'innovation', name: 'Innovation', icon: '💡' },
-    { id: 'business', name: 'Business', icon: '💼' },
-  ]
-}
-
 // Server-side data fetching
-export async function getStaticProps({ params }) {
-  const { slug } = params
-  
-  try {
-    // Get all posts from MDX utility
-    const allPosts = await getAllPosts()
-    
-    // Ensure allPosts is an array before proceeding
-    const postsArray = Array.isArray(allPosts) ? allPosts : 
-                      (allPosts && allPosts.posts && Array.isArray(allPosts.posts)) ? allPosts.posts : [];
-    
-    if (!postsArray || postsArray.length === 0) {
-      return {
-        props: {
-          topic: slug,
-          articlesData: [],
-          relatedTopics: []
-        }
-      }
-    }
-    
-    // More accurate filtering using the topics field
-    const filteredArticles = postsArray.filter(post => {
-      // First check if this post has the topic in its topics array (most accurate)
-      if (post.topics && Array.isArray(post.topics)) {
-        return post.topics.some(topic => topic.toLowerCase() === slug.toLowerCase());
-      }
-      
-      // Next check categories
-      if (post.categories && Array.isArray(post.categories)) {
-        return post.categories.some(category => {
-          return category.toLowerCase() === slug.toLowerCase() ||
-                 category.toLowerCase().includes(slug.toLowerCase());
-        });
-      }
-      
-      // Finally check if the main category matches
-      if (post.category) {
-        return post.category.toLowerCase() === slug.toLowerCase() ||
-               post.category.toLowerCase().includes(slug.toLowerCase());
-      }
-      
-      // Also check if the title or excerpt contains the topic as a fallback
-      const titleMatch = post.title && post.title.toLowerCase().includes(slug.toLowerCase());
-      const excerptMatch = post.excerpt && post.excerpt.toLowerCase().includes(slug.toLowerCase());
-      
-      return titleMatch || excerptMatch;
-    });
-    
-    // Get related topics based on this topic
-    // Get articles that have different main topics
-    const relatedTopicsMap = new Map();
-    filteredArticles.forEach(article => {
-      if (article.topics && Array.isArray(article.topics)) {
-        article.topics.forEach(topic => {
-          if (topic.toLowerCase() !== slug.toLowerCase()) {
-            // Track topics and their frequency
-            relatedTopicsMap.set(topic, (relatedTopicsMap.get(topic) || 0) + 1);
-          }
-        });
-      }
-    });
-    
-    // Get the top 6 related topics by frequency
-    const sortedRelatedTopics = [...relatedTopicsMap.entries()]
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, 6)
-      .map(([topic]) => {
-        const iconMap = {
-          'tech': { id: 'tech', name: 'Technology', icon: '💻' },
-          'ai': { id: 'ai', name: 'AI', icon: '🤖' },
-          'science': { id: 'science', name: 'Science', icon: '🔬' },
-          'climate': { id: 'climate', name: 'Climate', icon: '🌍' },
-          'business': { id: 'business', name: 'Business', icon: '💼' },
-          'innovation': { id: 'innovation', name: 'Innovation', icon: '💡' },
-          'gaming': { id: 'gaming', name: 'Gaming', icon: '🎮' },
-          'lifestyle': { id: 'lifestyle', name: 'Lifestyle', icon: '✨' },
-        };
-        
-        return iconMap[topic.toLowerCase()] || { 
-          id: topic.toLowerCase(), 
-          name: topic.charAt(0).toUpperCase() + topic.slice(1), 
-          icon: '📚' 
-        };
-      });
-    
-    // If we don't have enough related topics, add some default ones
-    const defaultTopics = [
-      { id: 'tech', name: 'Technology', icon: '💻' },
-      { id: 'ai', name: 'AI', icon: '🤖' },
-      { id: 'innovation', name: 'Innovation', icon: '💡' },
-      { id: 'science', name: 'Science', icon: '🔬' },
-      { id: 'business', name: 'Business', icon: '💼' },
-      { id: 'climate', name: 'Climate', icon: '🌍' },
-    ].filter(topic => topic.id !== slug);
-    
-    const relatedTopics = sortedRelatedTopics.length > 0 
-      ? sortedRelatedTopics 
-      : defaultTopics.slice(0, 6);
-    
-    return {
-      props: {
-        topic: slug,
-        articlesData: filteredArticles.map(post => ({
-          slug: post.slug,
-          title: post.title,
-          excerpt: post.excerpt,
-          date: post.date,
-          image: post.image || 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=60',
-          readingTime: post.readingTime || 3,
-          category: post.category || 'General',
-          trending: post.metadata?.trending || Math.random() > 0.7, // Use metadata if available, otherwise random
-          views: Math.floor(Math.random() * 1000) + 100, // Random view count for demo
-        })),
-        relatedTopics
-      }
-    }
-  } catch (error) {
-    console.error('Error in getStaticProps for topic page:', error)
-    
-    return {
-      props: {
-        topic: slug,
-        articlesData: [],
-        relatedTopics: []
-      }
-    }
-  }
-}
-
-// Generate static paths for common topics
 export async function getStaticPaths() {
-  const commonTopics = [
-    'tech', 'ai', 'science', 'business', 'innovation', 'gaming', 'climate', 'lifestyle'
-  ]
-  
-  const paths = commonTopics.map(topic => ({
-    params: { slug: topic }
+  // Get all the topic slugs from our topics data
+  const paths = topicCategories.map((topic) => ({
+    params: { slug: topic.slug },
   }))
   
   return {
     paths,
-    fallback: 'blocking' // Generate pages for other topics on-demand
+    fallback: 'blocking', // can also be true or false
+  }
+}
+
+export async function getStaticProps({ params }) {
+  try {
+    const { slug } = params || {}
+    // In a real app, this would come from an API or database
+    // For now, let's use the topic from the URL parameter
+    
+    // Handle subtopic paths
+    const slugParts = slug.split('/') 
+    const mainTopic = slugParts[0]
+    const subTopic = slugParts.length > 1 ? slugParts[1] : null
+    
+    // Get all posts
+    const allPosts = await getAllPosts()
+    
+    // Filter posts for this topic or subtopic
+    let postsForTopic = []
+    
+    if (allPosts && Array.isArray(allPosts)) {
+      postsForTopic = allPosts.filter((post) => {
+        // Check for main topic match
+        const topicMatch = post.frontmatter && 
+          (post.frontmatter.topic === mainTopic || 
+           post.frontmatter.category === mainTopic || 
+           post.frontmatter.tags?.includes(mainTopic) || 
+           post.frontmatter.title?.toLowerCase().includes(mainTopic.replace(/-/g, ' ')))
+        
+        // If there's a subtopic specified, filter by that too
+        if (subTopic && topicMatch) {
+          return post.frontmatter.subtopic === subTopic || 
+                 post.frontmatter.tags?.includes(subTopic) ||
+                 post.frontmatter.title?.toLowerCase().includes(subTopic.replace(/-/g, ' '))
+        }
+        
+        return topicMatch
+      })
+    }
+    
+    // Format the posts for display
+    const articles = postsForTopic.map((post) => ({
+      slug: post.slug,
+      title: post.frontmatter.title || '',
+      excerpt: post.frontmatter.excerpt || '',
+      date: post.frontmatter.date || '',
+      image: post.frontmatter.image || '/images/placeholder.jpg',
+      readingTime: post.frontmatter.readingTime || '5 min',
+      category: post.frontmatter.category || mainTopic,
+      trending: post.frontmatter.trending || false,
+      views: post.frontmatter.views || 0,
+    }))
+    
+    // Get related topics
+    // In a real app, this would be based on topic similarity or popularity
+    const relatedTopics = topicCategories
+      .filter((topic) => topic.slug !== mainTopic)
+      .slice(0, 10)
+      .map((topic) => ({
+        slug: topic.slug,
+        name: topic.name,
+        icon: topic.icon
+      }))
+    
+    return {
+      props: {
+        topic: mainTopic,
+        articlesData: articles,
+        relatedTopics,
+      },
+      revalidate: 3600, // Revalidate every hour
+    }
+  } catch (error) {
+    console.error('Error in getStaticProps for topic page:', error)
+    
+    // Return minimal props in case of error
+    return {
+      props: {
+        topic: params?.slug || '',
+        articlesData: [],
+        relatedTopics: [],
+      },
+      revalidate: 60, // Try again more quickly in case of error
+    }
   }
 } 
