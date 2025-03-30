@@ -707,10 +707,16 @@ export async function loadArticleCachePage(page = 1) {
 /**
  * Gets an article by slug
  * @param {string} slug - Article slug
- * @returns {Object|null} - Article data or null if not found
+ * @returns {Object} - Article data with safe fallbacks
  */
 export async function getArticleBySlug(slug) {
   try {
+    // Validate slug parameter to prevent errors
+    if (!slug || typeof slug !== 'string' || slug.trim() === '') {
+      console.error('Invalid slug provided to getArticleBySlug');
+      return createFallbackArticle('invalid-slug');
+    }
+
     // Performance optimization #1: Direct lookup from slug map
     if (slugToFilenameMap.has(slug)) {
       const targetFilename = slugToFilenameMap.get(slug);
@@ -721,7 +727,7 @@ export async function getArticleBySlug(slug) {
         
         return {
           frontMatter: data,
-          content,
+          content: content || '',
           slug: data.slug || slug
         };
       } catch (error) {
@@ -745,151 +751,199 @@ export async function getArticleBySlug(slug) {
     
     // If we found the file in our cache, read it directly
     if (targetFilename) {
-      const filePath = path.join(process.cwd(), 'content/articles', targetFilename);
-      const fileContents = fs.readFileSync(filePath, 'utf8');
-      const { data, content } = matter(fileContents);
-      
-      return {
-        frontMatter: data,
-        content,
-        slug: data.slug || targetFilename.replace(/\.md$/, '')
-      };
+      try {
+        const filePath = path.join(process.cwd(), 'content/articles', targetFilename);
+        const fileContents = fs.readFileSync(filePath, 'utf8');
+        const { data, content } = matter(fileContents);
+        
+        return {
+          frontMatter: data,
+          content: content || '',
+          slug: data.slug || targetFilename.replace(/\.md$/, '')
+        };
+      } catch (err) {
+        console.error(`Error reading cached file for slug ${slug}:`, err);
+        // Continue to next method if reading fails
+      }
     }
     
     // Performance optimization #3: Try direct filename match without reading content
-    const directFilePath = path.join(process.cwd(), 'content/articles', `${slug}.md`);
-    if (fs.existsSync(directFilePath)) {
-      const fileContents = fs.readFileSync(directFilePath, 'utf8');
-      const { data, content } = matter(fileContents);
-      
-      // Add to cache and slug map for future use
-      articleCache.set(`${slug}.md`, data);
-      slugToFilenameMap.set(slug, `${slug}.md`);
-      
-      return {
-        frontMatter: data,
-        content,
-        slug: data.slug || slug
-      };
+    try {
+      const directFilePath = path.join(process.cwd(), 'content/articles', `${slug}.md`);
+      if (fs.existsSync(directFilePath)) {
+        const fileContents = fs.readFileSync(directFilePath, 'utf8');
+        const { data, content } = matter(fileContents);
+        
+        // Add to cache and slug map for future use
+        articleCache.set(`${slug}.md`, data);
+        slugToFilenameMap.set(slug, `${slug}.md`);
+        
+        return {
+          frontMatter: data,
+          content: content || '',
+          slug: data.slug || slug
+        };
+      }
+    } catch (err) {
+      console.error(`Error checking direct file for slug ${slug}:`, err);
+      // Continue to next method
     }
     
     // Third attempt: Look for timestamp-prefixed files that end with the slug
     if (cachedArticlesList === null) {
-      // Initialize the list if needed
-      cachedArticlesList = fs.readdirSync(path.join(process.cwd(), 'content/articles'));
+      try {
+        // Initialize the list if needed
+        cachedArticlesList = fs.readdirSync(path.join(process.cwd(), 'content/articles'));
+      } catch (err) {
+        console.error('Error reading article directory:', err);
+        cachedArticlesList = []; // Initialize as empty array on error
+      }
     }
     
     // Optimization #4: Try pattern matching on filenames before reading contents
-    const potentialMatch = cachedArticlesList.find(file => {
-      // Try several patterns:
-      // 1. File ends with slug.md (for timestamp prefixed files)
-      if (file.endsWith(`-${slug}.md`)) return true;
+    try {
+      const potentialMatch = cachedArticlesList.find(file => {
+        // Try several patterns:
+        // 1. File ends with slug.md (for timestamp prefixed files)
+        if (file.endsWith(`-${slug}.md`)) return true;
+        
+        // 2. File has slug embedded (for timestamp plus slug files)
+        const slugPattern = new RegExp(`-${slug}(\\.md|\\.mdx)$`);
+        return slugPattern.test(file);
+      });
       
-      // 2. File has slug embedded (for timestamp plus slug files)
-      const slugPattern = new RegExp(`-${slug}(\\.md|\\.mdx)$`);
-      return slugPattern.test(file);
-    });
-    
-    if (potentialMatch) {
-      const filePath = path.join(process.cwd(), 'content/articles', potentialMatch);
-      const fileContents = fs.readFileSync(filePath, 'utf8');
-      const { data, content } = matter(fileContents);
-      
-      // Add to cache and slug map for future use
-      articleCache.set(potentialMatch, data);
-      slugToFilenameMap.set(slug, potentialMatch);
-      if (data.slug) {
-        slugToFilenameMap.set(data.slug, potentialMatch);
+      if (potentialMatch) {
+        const filePath = path.join(process.cwd(), 'content/articles', potentialMatch);
+        const fileContents = fs.readFileSync(filePath, 'utf8');
+        const { data, content } = matter(fileContents);
+        
+        // Add to cache and slug map for future use
+        articleCache.set(potentialMatch, data);
+        slugToFilenameMap.set(slug, potentialMatch);
+        if (data.slug) {
+          slugToFilenameMap.set(data.slug, potentialMatch);
+        }
+        
+        return {
+          frontMatter: data,
+          content: content || '',
+          slug: data.slug || slug
+        };
       }
-      
-      return {
-        frontMatter: data,
-        content,
-        slug: data.slug || slug
-      };
+    } catch (err) {
+      console.error(`Error in pattern matching for slug ${slug}:`, err);
+      // Continue to next method
     }
     
     // Optimization #5: Smart search by sorting files by likelihood 
     // Check files from newest first (assuming timestamp prefixed filenames)
     // and limit to only 100 files for even faster performance
     let filesToCheck = [];
-    if (cachedArticlesList.length > 0) {
-      // Try to find files that might contain the slug in the name first
-      const potentialFiles = cachedArticlesList.filter(file => 
-        file.includes(slug) || 
-        file.includes(slug.replace(/-/g, '')) ||
-        file.includes(slug.replace(/-/g, ' '))
-      );
-      
-      if (potentialFiles.length > 0) {
-        // If we have potential matches, check those first
-        filesToCheck = potentialFiles;
-      } else {
-        // Otherwise sort by timestamp and check newest 100
-        const sortedFiles = [...cachedArticlesList].sort((a, b) => {
-          try {
-            // Try to extract dates from filenames for sorting (newest first)
-            const dateA = a.match(/^\d{4}-\d{2}-\d{2}/);
-            const dateB = b.match(/^\d{4}-\d{2}-\d{2}/);
-            
-            if (dateA && dateB) {
-              return dateB[0].localeCompare(dateA[0]);
-            }
-            return 0;
-          } catch (error) {
-            return 0;
-          }
-        });
+    try {
+      if (cachedArticlesList.length > 0) {
+        // Try to find files that might contain the slug in the name first
+        const potentialFiles = cachedArticlesList.filter(file => 
+          file.includes(slug) || 
+          file.includes(slug.replace(/-/g, '')) ||
+          file.includes(slug.replace(/-/g, ' '))
+        );
         
-        filesToCheck = sortedFiles.slice(0, 100);
-      }
-    }
-    
-    // Last resort: Check a limited number of files
-    for (const filename of filesToCheck) {
-      try {
-        // Skip directories
-        const filePath = path.join(process.cwd(), 'content/articles', filename);
-        const stats = fs.statSync(filePath);
-        if (!stats.isFile()) continue;
-        
-        // Use cached data if available
-        let frontMatter;
-        if (articleCache.has(filename)) {
-          frontMatter = articleCache.get(filename);
+        if (potentialFiles.length > 0) {
+          // If we have potential matches, check those first
+          filesToCheck = potentialFiles;
         } else {
-          const fileContents = fs.readFileSync(filePath, 'utf8');
-          const { data } = matter(fileContents);
-          frontMatter = data;
-          // Store in cache for future use
-          articleCache.set(filename, frontMatter);
-        }
-        
-        if (frontMatter.slug === slug || filename.replace(/\.md$/, '') === slug) {
-          const fileContents = fs.readFileSync(filePath, 'utf8');
-          const { content } = matter(fileContents);
+          // Otherwise sort by timestamp and check newest 100
+          const sortedFiles = [...cachedArticlesList].sort((a, b) => {
+            try {
+              // Try to extract dates from filenames for sorting (newest first)
+              const dateA = a.match(/^\d{4}-\d{2}-\d{2}/);
+              const dateB = b.match(/^\d{4}-\d{2}-\d{2}/);
+              
+              if (dateA && dateB) {
+                return dateB[0].localeCompare(dateA[0]);
+              }
+              return 0;
+            } catch (error) {
+              return 0;
+            }
+          });
           
-          // Add to slug map for future lookups
-          slugToFilenameMap.set(slug, filename);
-          if (frontMatter.slug) {
-            slugToFilenameMap.set(frontMatter.slug, filename);
+          filesToCheck = sortedFiles.slice(0, 100);
+        }
+      }
+      
+      // Last resort: Check a limited number of files
+      for (const filename of filesToCheck) {
+        try {
+          // Skip directories
+          const filePath = path.join(process.cwd(), 'content/articles', filename);
+          const stats = fs.statSync(filePath);
+          if (!stats.isFile()) continue;
+          
+          // Use cached data if available
+          let frontMatter;
+          if (articleCache.has(filename)) {
+            frontMatter = articleCache.get(filename);
+          } else {
+            const fileContents = fs.readFileSync(filePath, 'utf8');
+            const { data } = matter(fileContents);
+            frontMatter = data;
+            // Store in cache for future use
+            articleCache.set(filename, frontMatter);
           }
           
-          return {
-            frontMatter,
-            content,
-            slug: frontMatter.slug || filename.replace(/\.md$/, '')
-          };
+          if (frontMatter.slug === slug || filename.replace(/\.md$/, '') === slug) {
+            const fileContents = fs.readFileSync(filePath, 'utf8');
+            const { content } = matter(fileContents);
+            
+            // Add to slug map for future lookups
+            slugToFilenameMap.set(slug, filename);
+            if (frontMatter.slug) {
+              slugToFilenameMap.set(frontMatter.slug, filename);
+            }
+            
+            return {
+              frontMatter,
+              content: content || '',
+              slug: frontMatter.slug || filename.replace(/\.md$/, '')
+            };
+          }
+        } catch (error) {
+          console.error(`Error processing file ${filename} for article by slug:`, error);
         }
-      } catch (error) {
-        console.error(`Error processing file ${filename} for article by slug:`, error);
       }
+    } catch (err) {
+      console.error(`Error in smart search for slug ${slug}:`, err);
     }
     
-    console.error(`Article not found for slug: ${slug}`);
-    return null;
+    // If we reach here, no article was found - return a fallback article instead of null
+    console.warn(`Article not found for slug: ${slug}, using fallback content`);
+    return createFallbackArticle(slug);
   } catch (error) {
     console.error('Error in getArticleBySlug:', error);
-    return null;
+    return createFallbackArticle(slug);
   }
+}
+
+/**
+ * Create a fallback article when the actual article cannot be found
+ * @param {string} slug - The slug that was requested
+ * @returns {Object} - A fallback article object
+ */
+function createFallbackArticle(slug) {
+  return {
+    frontMatter: {
+      title: 'Article Not Found',
+      excerpt: 'We could not locate this article. It may have been moved or deleted.',
+      date: new Date().toISOString(),
+      image: 'https://Trendiingz.com/default-og-image.jpg',
+      readingTime: 1,
+      category: 'General',
+      slug: slug,
+      keywords: [],
+      categories: []
+    },
+    content: `# Article Not Found\n\nWe could not locate the article you're looking for. It may have been moved, deleted, or the URL might be incorrect.\n\n[Return to home page](/)\n`,
+    slug: slug
+  };
 } 

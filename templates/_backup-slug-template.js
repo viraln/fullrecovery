@@ -737,9 +737,10 @@ export async function getStaticProps({ params: { slug } }) {
 
     const { data: frontMatter, content: rawContent } = matter(markdownWithMeta);
     
-    // Calculate word count for SEO and reading time
-    const wordCount = rawContent.split(/\s+/g).length;
-    const readingTime = Math.ceil(wordCount / 200); // 200 words per minute
+    // Calculate word count for SEO and reading time with safer calculation
+    const safeRawContent = rawContent || '';
+    const wordCount = safeRawContent.split(/\s+/g).length || 0;
+    const readingTime = Math.max(1, Math.ceil(wordCount / 200)); // 200 words per minute, minimum 1 minute
 
     // Get file stats for lastModified date
     const stats = fs.statSync(path.join(process.cwd(), 'content/articles', filePath));
@@ -747,18 +748,18 @@ export async function getStaticProps({ params: { slug } }) {
     // Ensure all necessary SEO fields are present
     const serializedFrontMatter = {
       ...frontMatter,
-      date: frontMatter.date instanceof Date 
+      date: frontMatter && frontMatter.date instanceof Date 
         ? frontMatter.date.toISOString() 
-        : frontMatter.date,
+        : (frontMatter?.date || new Date().toISOString()),
       lastModified: stats.mtime.toISOString(),
       wordCount,
       readingTime,
-      excerpt: frontMatter.excerpt || rawContent.slice(0, 160).trim() + '...',
-      keywords: frontMatter.keywords || frontMatter.tags || [],
-      category: frontMatter.category || 'Technology',
-      image: frontMatter.image || 'https://Trendiingz.com/default-og-image.jpg',
-      imageAlt: frontMatter.imageAlt || frontMatter.title,
-      imageCredit: frontMatter.imageCredit || '',
+      excerpt: frontMatter?.excerpt || (safeRawContent ? safeRawContent.slice(0, 160).trim() + '...' : 'No content available'),
+      keywords: frontMatter?.keywords || frontMatter?.tags || [],
+      category: frontMatter?.category || 'Technology',
+      image: frontMatter?.image || 'https://Trendiingz.com/default-og-image.jpg',
+      imageAlt: frontMatter?.imageAlt || frontMatter?.title || 'Article image',
+      imageCredit: frontMatter?.imageCredit || '',
       url: `https://Trendiingz.com/posts/${slug}`,
       locale: 'en_US'
     };

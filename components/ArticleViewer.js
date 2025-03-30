@@ -22,6 +22,12 @@ const createSlug = (text) => {
 
 // Function to extract headings from markdown content
 export const extractTableOfContents = (content) => {
+  // Add safety check for undefined or null content
+  if (!content || typeof content !== 'string') {
+    console.warn('extractTableOfContents: Invalid content provided', { content });
+    return [];
+  }
+  
   const headings = [];
   const lines = content.split('\n');
   
@@ -52,6 +58,16 @@ const ArticleViewer = ({ content }) => {
   const [currentSection, setCurrentSection] = useState(null);
   const [hasError, setHasError] = useState(false);
   const [errorDetails, setErrorDetails] = useState(null);
+  
+  // Safely handle content - ensure it's a string
+  const safeContent = React.useMemo(() => {
+    if (!content || typeof content !== 'string') {
+      console.warn('ArticleViewer: Invalid content provided', { contentType: typeof content });
+      // Return a placeholder message that won't break the markdown renderer
+      return '# Content Not Available\n\nThe article content could not be loaded properly.';
+    }
+    return content;
+  }, [content]);
 
   useEffect(() => {
     // Add scroll margin and smooth scrolling to all headings
@@ -755,45 +771,357 @@ const ArticleViewer = ({ content }) => {
   // Try rendering the content, catch errors
   const renderContent = () => {
     try {
-      // If we previously had an error but the component is re-rendered,
-      // give it another chance to render correctly
-      if (hasError) {
-        setHasError(false);
-        setErrorDetails(null);
-      }
+      // Process special syntax in the content
+      let processedContent = safeContent;
       
-      // Proceed with normal rendering
+      // Process callouts
+      processedContent = processedContent.replace(
+        /:::(\w+)\s*(?:\[(.*?)\])?\s*\n([\s\S]*?)\n:::/g,
+        (match, type, title, content) => {
+          const defaultTitles = {
+            tip: 'Tip',
+            info: 'Note',
+            warning: 'Warning',
+            expert: 'Expert Insight',
+            quote: 'Quote'
+          };
+          
+          const icons = {
+            tip: '💡',
+            info: 'ℹ️',
+            warning: '⚠️',
+            expert: '🔍',
+            quote: '💬'
+          };
+          
+          const finalTitle = title || defaultTitles[type] || type.charAt(0).toUpperCase() + type.slice(1);
+          const icon = icons[type] || '';
+          
+          return `<div class="callout-${type}">
+            <div class="callout-header">
+              <span class="callout-icon">${icon}</span>
+              <span class="callout-title">${finalTitle}</span>
+            </div>
+            <div class="callout-content">${content}</div>
+          </div>`;
+        }
+      );
+      
+      // Process tables with header
+      processedContent = processedContent.replace(
+        /\[\[Table\s*(?:\|(.*?)\])?\s*\n([\s\S]*?)\n\]\]/g,
+        (match, caption, tableContent) => {
+          const captionHtml = caption ? `<caption>${caption}</caption>` : '';
+          return `<div class="table-container">
+            <table>
+              ${captionHtml}
+              ${tableContent}
+            </table>
+          </div>`;
+        }
+      );
+      
+      // Process table of contents
+      processedContent = processedContent.replace(
+        /\[\[TOC\]\]/g,
+        () => {
+          const toc = extractTableOfContents(safeContent);
+          if (toc.length === 0) return '';
+          
+          let tocHtml = '<div class="table-of-contents"><h3>Table of Contents</h3><ul>';
+          
+          toc.forEach(heading => {
+            const indent = heading.level > 2 ? 'style="margin-left: 1rem"' : '';
+            tocHtml += `<li ${indent}><a href="#${heading.slug}">${heading.text}</a></li>`;
+          });
+          
+          tocHtml += '</ul></div>';
+          return tocHtml;
+        }
+      );
+      
+      // Process key takeaways
+      processedContent = processedContent.replace(
+        /\[\[Key Takeaways\]\]\s*\n([\s\S]*?)(?:\n\[\[\/Key Takeaways\]\]|\n\n(?=##|$))/g,
+        (match, content) => {
+          return `<div class="key-takeaways">
+            <h2>Key Takeaways</h2>
+            ${content}
+          </div>`;
+        }
+      );
+      
+      // Process fancy quotes
+      processedContent = processedContent.replace(
+        /\[\[Quote\s*(?:\|(.*?)\])?\s*\n([\s\S]*?)\n\[\[\/Quote\]\]/g,
+        (match, citation, quoteContent) => {
+          const citationHtml = citation ? `<cite>${citation}</cite>` : '';
+          return `<div class="fancy-quote">
+            <p>${quoteContent}</p>
+            ${citationHtml}
+          </div>`;
+        }
+      );
+      
+      // Process FAQ sections
+      processedContent = processedContent.replace(
+        /\[\[FAQ\]\]\s*\n([\s\S]*?)\n\[\[\/FAQ\]\]/g,
+        (match, faqContent) => {
+          // Split by questions (Q: ...)
+          const faqItems = faqContent.split(/\n(?=Q:)/);
+          
+          let faqHtml = '<div class="faq-container">';
+          
+          faqItems.forEach((item, index) => {
+            const parts = item.match(/Q:(.*?)(?:\n|$)(?:A:([\s\S]*))?/);
+            if (!parts) return;
+            
+            const question = parts[1]?.trim() || 'Question';
+            const answer = parts[2]?.trim() || 'No answer provided';
+            
+            faqHtml += `
+              <div class="faq-item">
+                <div class="faq-question" id="faq-${index}" onclick="toggleFAQ('faq-answer-${index}')">
+                  ${question}
+                </div>
+                <div class="faq-answer" id="faq-answer-${index}">
+                  ${answer}
+                </div>
+              </div>
+            `;
+          });
+          
+          faqHtml += '</div>';
+          
+          // Add the toggle script
+          faqHtml += `
+            <script>
+              function toggleFAQ(id) {
+                const answer = document.getElementById(id);
+                if (answer) {
+                  answer.classList.toggle('active');
+                }
+              }
+            </script>
+          `;
+          
+          return faqHtml;
+        }
+      );
+      
+      // Render the processed content using ReactMarkdown
       return (
         <ReactMarkdown
+          rehypePlugins={[rehypeRaw, rehypeSanitize]}
           remarkPlugins={[remarkGfm]}
           components={components}
         >
-          {content}
+          {processedContent}
         </ReactMarkdown>
       );
     } catch (error) {
-      console.error('Error rendering article content:', error);
-      
-      // Update error state
+      console.error('Error rendering markdown content:', error);
       setHasError(true);
-      setErrorDetails(error.toString());
+      setErrorDetails(error);
       
       // Return a fallback UI
       return (
-        <div className="p-4 border border-red-200 rounded-lg bg-red-50">
-          <h3 className="text-lg font-semibold text-red-600 mb-2">Article Rendering Error</h3>
-          <p className="text-gray-700 mb-4">
-            We encountered an issue while rendering this article content. The error has been logged.
+        <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+          <h2 className="text-lg font-medium text-red-800">Error rendering content</h2>
+          <p className="mt-2 text-sm text-red-700">
+            There was an error rendering this article. Please try refreshing the page.
           </p>
           {process.env.NODE_ENV === 'development' && (
-            <div className="mt-2 p-3 bg-white rounded border border-red-100">
-              <p className="text-sm font-mono text-red-500">{error.toString()}</p>
-            </div>
+            <pre className="mt-4 p-3 bg-red-100 text-xs overflow-auto rounded">
+              {error.toString()}
+            </pre>
           )}
         </div>
       );
     }
   };
+
+  // Find all code blocks and update for additional processing
+  useEffect(() => {
+    try {
+      if (typeof window !== 'undefined') {
+        const codeBlocks = document.querySelectorAll('pre code');
+        codeBlocks.forEach((block, index) => {
+          // Add line numbers
+          const lineCount = block.textContent.split('\n').length;
+          const lineNumbers = Array.from({ length: lineCount }, (_, i) => i + 1).join('\n');
+          
+          const lineNumbersElement = document.createElement('div');
+          lineNumbersElement.className = 'line-numbers';
+          lineNumbersElement.textContent = lineNumbers;
+          
+          block.parentNode.classList.add('code-block-wrapper');
+          block.parentNode.insertBefore(lineNumbersElement, block);
+          
+          // Add language label
+          const className = block.className || '';
+          const language = className.replace('language-', '');
+          
+          if (language && language !== className) {
+            const languageLabel = document.createElement('div');
+            languageLabel.className = 'language-label';
+            languageLabel.textContent = language;
+            block.parentNode.insertBefore(languageLabel, block);
+          }
+          
+          // Add copy button
+          const id = `code-block-${index}`;
+          block.id = id;
+          
+          const copyButton = document.createElement('button');
+          copyButton.className = 'copy-button';
+          copyButton.textContent = 'Copy';
+          copyButton.onclick = () => handleCopyCode(block.textContent, id);
+          
+          block.parentNode.appendChild(copyButton);
+        });
+      }
+    } catch (error) {
+      console.error('Error processing code blocks:', error);
+    }
+  }, [safeContent]);
+
+  // Track the current section in view
+  useEffect(() => {
+    const handleHashChange = () => {
+      if (typeof window !== 'undefined') {
+        const hash = window.location.hash;
+        if (hash) {
+          setCurrentSection(hash.replace('#', ''));
+          
+          // Smooth scroll to the section
+          const element = document.getElementById(hash.replace('#', ''));
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        } else {
+          setCurrentSection(null);
+        }
+      }
+    };
+    
+    // Call once on mount to handle initial hash
+    handleHashChange();
+    
+    // Set up listeners
+    window.addEventListener('hashchange', handleHashChange);
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+    };
+  }, [safeContent]);
+
+  // Set up intersection observer for headings
+  useEffect(() => {
+    const observeHeadings = () => {
+      if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+        return;
+      }
+      
+      const headings = document.querySelectorAll('h2, h3');
+      if (headings.length === 0) return;
+      
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const id = entry.target.id;
+              if (id) {
+                setCurrentSection(id);
+                // Update URL without scrolling
+                window.history.replaceState(null, null, `#${id}`);
+              }
+            }
+          });
+        },
+        { rootMargin: '-100px 0px -80% 0px' }
+      );
+      
+      headings.forEach((heading) => {
+        observer.observe(heading);
+      });
+      
+      return () => {
+        headings.forEach((heading) => {
+          observer.unobserve(heading);
+        });
+      };
+    };
+    
+    observeHeadings();
+  }, [safeContent]);
+  
+  // Show reading progress indicator
+  useEffect(() => {
+    const showReadingProgress = () => {
+      if (typeof window === 'undefined') return;
+      
+      const handleScroll = () => {
+        const article = document.querySelector('article');
+        if (!article) return;
+        
+        const totalHeight = article.offsetHeight;
+        const windowHeight = window.innerHeight;
+        const scrolled = window.scrollY;
+        
+        const progressPercentage = Math.min(
+          100,
+          Math.round((scrolled / (totalHeight - windowHeight)) * 100)
+        );
+        
+        const progressBar = document.getElementById('reading-progress-bar');
+        if (progressBar) {
+          progressBar.style.width = `${progressPercentage}%`;
+        }
+      };
+      
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    };
+    
+    showReadingProgress();
+  }, [safeContent]);
+  
+  // Update reading time indicator
+  useEffect(() => {
+    const updateReadingProgress = () => {
+      if (typeof window === 'undefined') return;
+      
+      const handleScroll = () => {
+        const article = document.querySelector('article');
+        if (!article) return;
+        
+        const totalHeight = article.offsetHeight;
+        const windowHeight = window.innerHeight;
+        const scrolled = window.scrollY;
+        
+        const wordCount = safeContent.split(/\s+/).length;
+        const readingTime = Math.ceil(wordCount / 200); // 200 words per minute
+        
+        // Calculate minutes read so far
+        const readingProgress = scrolled / (totalHeight - windowHeight);
+        const minutesRead = Math.min(readingTime, Math.round(readingTime * readingProgress));
+        
+        const timeElement = document.getElementById('time-read-indicator');
+        if (timeElement) {
+          timeElement.textContent = `${minutesRead} of ${readingTime} min read`;
+        }
+      };
+      
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    };
+    
+    updateReadingProgress();
+  }, [safeContent]);
 
   return (
     <div className="article-content">
