@@ -77,10 +77,15 @@ jobs:
           git push
           
       - name: Trigger Netlify build
-        # Only trigger the Netlify build if there were changes to commit
+        # Only trigger the Netlify build if there were changes to commit and the build hook is set
         run: |
           if git log -1 --pretty=%B | grep "new-articles"; then
-            curl -X POST -d {} ${{ secrets.NETLIFY_BUILD_HOOK }}
+            if [ -n "${{ secrets.NETLIFY_BUILD_HOOK }}" ]; then
+              echo "Triggering Netlify build..."
+              curl -X POST -d {} ${{ secrets.NETLIFY_BUILD_HOOK }}
+            else
+              echo "NETLIFY_BUILD_HOOK secret is not set. Skipping Netlify build trigger."
+            fi
           else
             echo "No changes were made, skipping Netlify build trigger"
           fi 
