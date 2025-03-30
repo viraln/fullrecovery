@@ -192,8 +192,29 @@ export default function Post({ frontMatter, content, slug, relatedArticles: rawR
     keywords: []
   };
   
-  // Ensure content is always defined
-  const safeContent = content || '# Article Not Found\n\nWe could not find the content for this article.';
+  // Improve content safety check to handle various types
+  let safeContent = '# Article Not Found\n\nWe could not find the content for this article.';
+  if (content) {
+    if (typeof content === 'string') {
+      safeContent = content; // Use content directly if it's a string
+    } else if (content && typeof content === 'object') {
+      // Try to convert object to string if possible
+      try {
+        safeContent = JSON.stringify(content);
+        console.warn('Content was an object, converted to JSON string:', typeof content);
+      } catch (e) {
+        console.error('Failed to convert content object to string:', e);
+      }
+    } else {
+      // For any other type, attempt to stringify
+      try {
+        safeContent = String(content);
+        console.warn('Content was not a string, converted to string:', typeof content);
+      } catch (e) {
+        console.error('Failed to convert content to string:', e);
+      }
+    }
+  }
   
   // Safely process related articles to ensure unique keys and valid data
   const relatedArticles = safeRelatedArticles(rawRelatedArticles);
@@ -211,8 +232,14 @@ export default function Post({ frontMatter, content, slug, relatedArticles: rawR
 
   // Set table of contents on the client side only
   useEffect(() => {
-    setTableOfContents(extractTableOfContentsClient(content));
-  }, [content]);
+    // Make sure content is a string before trying to extract table of contents
+    if (safeContent && typeof safeContent === 'string') {
+      setTableOfContents(extractTableOfContentsClient(safeContent));
+    } else {
+      console.warn('Cannot extract table of contents - content is not a string:', typeof safeContent);
+      setTableOfContents([]);
+    }
+  }, [safeContent]);
 
   // Infinite Articles state
   const [infinitePosts, setInfinitePosts] = useState([]);
@@ -1389,8 +1416,16 @@ export default function Post({ frontMatter, content, slug, relatedArticles: rawR
 
           {/* Main Content - Improved prose for mobile */}
           <div className="prose prose-sm sm:prose-base lg:prose-lg max-w-none w-full prose-headings:text-gray-800 prose-p:text-gray-700 prose-a:text-indigo-600 prose-a:no-underline hover:prose-a:text-indigo-800 prose-img:w-full prose-img:rounded-lg">
-            {/* Only render ArticleViewer on the client side */}
-            <ArticleViewer content={safeContent} />
+            {/* Only render ArticleViewer on the client side with type checking */}
+            {safeContent && typeof safeContent === 'string' ? (
+              <ArticleViewer content={safeContent} />
+            ) : (
+              <div className="p-4 border border-red-200 rounded-lg bg-red-50 text-red-600">
+                <h2 className="text-xl font-semibold mb-2">Article Content Unavailable</h2>
+                <p>We encountered an issue loading this article's content. The content may be in an invalid format.</p>
+                <p className="mt-2">Please try refreshing the page or return to the <a href="/" className="underline hover:text-red-700">home page</a>.</p>
+              </div>
+            )}
           </div>
 
           {/* Article CTA - Improved for mobile */}
@@ -1681,16 +1716,21 @@ export async function getStaticProps({ params: { slug } }) {
         const rehypeAutolinkHeadings = (await import('rehype-autolink-headings')).default;
         const rehypePrism = (await import('rehype-prism-plus')).default;
         
-        serializedContent = await serialize(safeRawContent, {
-          mdxOptions: {
-            remarkPlugins: [remarkGfm],
-            rehypePlugins: [
-              rehypeSlug,
-              [rehypeAutolinkHeadings, { behavior: 'wrap' }],
-              [rehypePrism, { ignoreMissing: true }]
-            ]
-          }
-        });
+        // Ensure we're passing a string to serialize
+        if (safeRawContent && typeof safeRawContent === 'string') {
+          serializedContent = await serialize(safeRawContent, {
+            mdxOptions: {
+              remarkPlugins: [remarkGfm],
+              rehypePlugins: [
+                rehypeSlug,
+                [rehypeAutolinkHeadings, { behavior: 'wrap' }],
+                [rehypePrism, { ignoreMissing: true }]
+              ]
+            }
+          });
+        } else {
+          console.error('Cannot serialize content: not a string', typeof safeRawContent);
+        }
       }
     } catch (error) {
       console.error('Error serializing MDX content:', error);
@@ -1725,7 +1765,8 @@ export async function getStaticProps({ params: { slug } }) {
     return {
       props: {
         frontMatter: serializedFrontMatter,
-        content: rawContent,
+        // Always provide content as a string, never an object
+        content: typeof safeRawContent === 'string' ? safeRawContent : String(safeRawContent || ''),
         serializedContent,
         slug,
         relatedArticles
