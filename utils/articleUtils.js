@@ -42,199 +42,88 @@ export function getRelativeTime(date) {
 }
 
 /**
- * Get related articles based on categories, tags, or content similarity
- * @param {string[]} keywords - Keywords to match
- * @param {string} currentSlug - Slug of the current article (to exclude from results)
+ * Get related articles based on category and keywords
+ * @param {string} category - The category to match
+ * @param {string} currentSlug - The current article's slug to exclude
  * @param {number} limit - Maximum number of articles to return
- * @returns {Promise<Array>} - Array of related articles
+ * @returns {Promise<Array>} - Array of related article objects
  */
-export async function getRelatedArticles(keywords = [], currentSlug, limit = 3) {
+export async function getRelatedArticles(category, currentSlug, limit = 3) {
   try {
-    // Check if we already have these recommendations cached
-    const cacheKey = `related_${currentSlug}_${limit}`;
-    if (RECOMMENDATION_CACHE.has(cacheKey)) {
-      const { data, timestamp } = RECOMMENDATION_CACHE.get(cacheKey);
-      // Use cache if not expired
-      if (Date.now() - timestamp < CACHE_TTL) {
-        return data;
-      }
-      // Otherwise continue and update the cache
-    }
-    
-    // Instead of scanning all files every time, use a subset of pre-indexed articles
-    // First ensure we have loaded the initial cache
+    // Ensure cache is loaded
     if (!isInitialCacheLoaded) {
-      await preloadArticleCache();
-    }
-    
-    // We'll use the cached articles we already have rather than reading all files
-    const articlesData = [];
-    
-    // Get a list of all filenames if not already stored
-    if (!cachedArticlesList) {
-      const files = fs.readdirSync(path.join(process.cwd(), 'content/articles'));
-      cachedArticlesList = files;
-    }
-    
-    // Use the files we've already cached, plus maybe load a few more
-    // First use what we already have in cache
-    for (const [filename, frontMatter] of articleCache.entries()) {
-      // Skip current post
-      if (frontMatter.slug === currentSlug) continue;
-      
-      // Calculate a relevance score based on keyword match
-      let relevanceScore = 0;
-      
-      // Check keyword matches
-      if (keywords && keywords.length > 0) {
-        // Check in post keywords
-        const postKeywords = frontMatter.keywords || [];
-        for (const keyword of keywords) {
-          // Check exact matches in keywords array
-          if (postKeywords.includes(keyword)) {
-            relevanceScore += 3;
-          }
-          // Check for partial matches in keywords
-          else if (postKeywords.some(k => k.includes(keyword))) {
-            relevanceScore += 1;
-          }
-          
-          // Check in title
-          if (frontMatter.title && frontMatter.title.includes(keyword)) {
-            relevanceScore += 2;
-          }
-          
-          // Check in excerpt
-          if (frontMatter.excerpt && frontMatter.excerpt.includes(keyword)) {
-            relevanceScore += 1;
-          }
-        }
+      try {
+        preloadArticleCacheSync();
+      } catch (error) {
+        console.error('Failed to preload article cache in getRelatedArticles:', error);
       }
-      
-      // Check category match
-      if (frontMatter.categories && Array.isArray(frontMatter.categories)) {
-        relevanceScore += frontMatter.categories.length; // More categories means more potential overlap
-      }
-      
-      // Boost trending or featured posts
-      if (frontMatter.trending) relevanceScore += 3;
-      if (frontMatter.featured) relevanceScore += 2;
-      
-      articlesData.push({
-        slug: frontMatter.slug || filename.replace(/\.md$/, ''),
-        title: frontMatter.title || 'Untitled',
-        excerpt: frontMatter.excerpt || '',
-        date: frontMatter.date || new Date().toISOString(),
-        image: frontMatter.image || '/placeholder.jpg',
-        category: frontMatter.category || 'Uncategorized',
-        readingTime: frontMatter.readingTime || 3,
-        relevanceScore
-      });
     }
     
-    // If we don't have enough related articles yet, load a few more
-    if (articlesData.length < limit * 3) { // Load more to ensure we have enough good matches
-      // Get uncached files to check
-      const uncachedFiles = cachedArticlesList.filter(filename => !articleCache.has(filename));
-      
-      // Load maximum 50 additional files to check for better matches
-      const filesToCheck = uncachedFiles.slice(0, 50); 
-      
-      for (const filename of filesToCheck) {
-        try {
-          // Skip directories
-          const filePath = path.join(process.cwd(), 'content/articles', filename);
-          const stats = fs.statSync(filePath);
-          if (!stats.isFile()) continue;
-          
-          const fileContents = fs.readFileSync(filePath, 'utf8');
-          const { data } = matter(fileContents);
-          
-          // Store in cache for future use
-          articleCache.set(filename, data);
-          
-          // Skip current post
-          if (data.slug === currentSlug) continue;
-          
-          // Calculate relevance score (same logic as above)
-          let relevanceScore = 0;
-          
-          if (keywords && keywords.length > 0) {
-            const postKeywords = data.keywords || [];
-            for (const keyword of keywords) {
-              if (postKeywords.includes(keyword)) {
-                relevanceScore += 3;
-              } else if (postKeywords.some(k => k.includes(keyword))) {
-                relevanceScore += 1;
-              }
-              
-              if (data.title && data.title.includes(keyword)) {
-                relevanceScore += 2;
-              }
-              
-              if (data.excerpt && data.excerpt.includes(keyword)) {
-                relevanceScore += 1;
-              }
-            }
-          }
-          
-          if (data.categories && Array.isArray(data.categories)) {
-            relevanceScore += data.categories.length;
-          }
-          
-          if (data.trending) relevanceScore += 3;
-          if (data.featured) relevanceScore += 2;
-          
-          articlesData.push({
-            slug: data.slug || filename.replace(/\.md$/, ''),
-            title: data.title || 'Untitled',
+    // Initialize results array
+    const relatedArticles = [];
+    
+    // First, try to find articles in the same category
+    if (category) {
+      for (const [filename, data] of articleCache.entries()) {
+        // Skip current article and ensure slug exists
+        if (!data.slug || data.slug === currentSlug) continue;
+        
+        // Match by category
+        if (data.category === category) {
+          // Add to related articles
+          relatedArticles.push({
+            slug: data.slug,
+            title: data.title || 'Untitled Article',
             excerpt: data.excerpt || '',
             date: data.date || new Date().toISOString(),
-            image: data.image || '/placeholder.jpg',
+            image: data.image || '/images/default-article.jpg',
             category: data.category || 'Uncategorized',
-            readingTime: data.readingTime || 3,
-            relevanceScore
+            readingTime: data.readingTime || 3
           });
-        } catch (error) {
-          console.error(`Error processing file ${filename} for related articles:`, error);
+          
+          // Break if we have enough articles
+          if (relatedArticles.length >= limit) break;
         }
       }
     }
     
-    // Sort by relevance score (higher is better)
-    articlesData.sort((a, b) => b.relevanceScore - a.relevanceScore);
-    
-    // Get limited results
-    const results = articlesData.slice(0, limit);
-    
-    // Store in cache
-    RECOMMENDATION_CACHE.set(cacheKey, {
-      data: results,
-      timestamp: Date.now()
-    });
-    
-    // Trim cache if it's too large
-    if (RECOMMENDATION_CACHE.size > MAX_CACHE_SIZE) {
-      // Find the oldest entry
-      let oldestKey = null;
-      let oldestTime = Date.now();
+    // If we don't have enough articles by category, add recent articles
+    if (relatedArticles.length < limit) {
+      // Get recent articles that are not already included
+      const existingSlugs = new Set(relatedArticles.map(article => article.slug));
+      existingSlugs.add(currentSlug); // Exclude current article
       
-      for (const [key, { timestamp }] of RECOMMENDATION_CACHE.entries()) {
-        if (timestamp < oldestTime) {
-          oldestTime = timestamp;
-          oldestKey = key;
-        }
-      }
-      
-      // Remove the oldest entry
-      if (oldestKey) {
-        RECOMMENDATION_CACHE.delete(oldestKey);
+      // Get recent articles from the cached list
+      for (const filename of cachedArticlesList) {
+        // Skip if we have enough articles
+        if (relatedArticles.length >= limit) break;
+        
+        // Get article data from cache
+        const data = articleCache.get(filename);
+        if (!data || !data.slug || existingSlugs.has(data.slug)) continue;
+        
+        // Add to related articles
+        relatedArticles.push({
+          slug: data.slug,
+          title: data.title || 'Untitled Article',
+          excerpt: data.excerpt || '',
+          date: data.date || new Date().toISOString(),
+          image: data.image || '/images/default-article.jpg',
+          category: data.category || 'Uncategorized',
+          readingTime: data.readingTime || 3
+        });
+        
+        // Mark as included
+        existingSlugs.add(data.slug);
       }
     }
     
-    return results;
+    // Sort related articles by date (newest first)
+    relatedArticles.sort((a, b) => new Date(b.date) - new Date(a.date));
+    
+    return relatedArticles;
   } catch (error) {
-    console.error('Error in getRelatedArticles:', error);
+    console.error('Error getting related articles:', error);
     return [];
   }
 }
@@ -512,7 +401,32 @@ export async function preloadArticleCache() {
     }
     
     console.time('preloadCache');
-    let files = fs.readdirSync(path.join(process.cwd(), 'content/articles'));
+    
+    // Check if content/articles directory exists
+    let articleDir = path.join(process.cwd(), 'content/articles');
+    if (!fs.existsSync(articleDir)) {
+      console.warn(`Directory ${articleDir} not found. Articles may not be accessible.`);
+      // Initialize empty arrays to prevent errors
+      cachedArticlesList = [];
+      isInitialCacheLoaded = true;
+      console.timeEnd('preloadCache');
+      return;
+    }
+    
+    // Get all files in the articles directory
+    let files = fs.readdirSync(articleDir);
+    
+    // Log the directory and number of files found
+    console.log(`Found ${files.length} files in ${articleDir}`);
+    
+    // If no files were found, log a warning and exit early
+    if (files.length === 0) {
+      console.warn('No article files found in the content directory. This may cause "Article Not Found" errors.');
+      cachedArticlesList = [];
+      isInitialCacheLoaded = true;
+      console.timeEnd('preloadCache');
+      return;
+    }
     
     // Sort files by their timestamp in filename (newer files first)
     files.sort((a, b) => {
@@ -546,8 +460,13 @@ export async function preloadArticleCache() {
     
     for (const filename of initialBatch) {
       try {
-        // Skip directories
-        const filePath = path.join(process.cwd(), 'content/articles', filename);
+        // Skip directories and check if file exists before processing
+        const filePath = path.join(articleDir, filename);
+        if (!fs.existsSync(filePath)) {
+          console.warn(`File ${filePath} not found, skipping`);
+          continue;
+        }
+        
         const stats = fs.statSync(filePath);
         if (!stats.isFile()) continue;
         
@@ -564,12 +483,23 @@ export async function preloadArticleCache() {
             }
           }
           
+          // Make sure data.slug exists, otherwise extract from filename
+          if (!data.slug) {
+            const filenameParts = filename.match(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z-(.*?)\.md$/);
+            if (filenameParts && filenameParts[1]) {
+              data.slug = filenameParts[1];
+            } else {
+              data.slug = filename.replace(/\.md$/, '');
+            }
+            console.log(`Generated slug '${data.slug}' for file ${filename}`);
+          }
+          
           articleCache.set(filename, data);
           
           // Build slug-to-filename index for faster lookups
-          if (data.slug) {
-            slugToFilenameMap.set(data.slug, filename);
-          }
+          slugToFilenameMap.set(data.slug, filename);
+          console.log(`Mapped slug '${data.slug}' to file ${filename}`);
+          
           // Also index by filename without extension as fallback
           const filenameSlug = filename.replace(/\.md$/, '');
           // Check for timestamp prefix pattern and extract slug
@@ -599,8 +529,8 @@ export async function preloadArticleCache() {
         if (articleCache.has(filename)) continue;
         
         try {
-          const filePath = path.join(process.cwd(), 'content/articles', filename);
-          if (!fs.statSync(filePath).isFile()) continue;
+          const filePath = path.join(articleDir, filename);
+          if (!fs.existsSync(filePath) || !fs.statSync(filePath).isFile()) continue;
           
           const fileContents = fs.readFileSync(filePath, 'utf8');
           const { data } = matter(fileContents);
@@ -613,12 +543,20 @@ export async function preloadArticleCache() {
             }
           }
           
+          // Make sure data.slug exists, otherwise extract from filename
+          if (!data.slug) {
+            const filenameParts = filename.match(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z-(.*?)\.md$/);
+            if (filenameParts && filenameParts[1]) {
+              data.slug = filenameParts[1];
+            } else {
+              data.slug = filename.replace(/\.md$/, '');
+            }
+          }
+          
           articleCache.set(filename, data);
           
           // Add to slug mapping
-          if (data.slug) {
-            slugToFilenameMap.set(data.slug, filename);
-          }
+          slugToFilenameMap.set(data.slug, filename);
           
           // Extract slug from filename
           const filenameSlug = filename.replace(/\.md$/, '');
@@ -709,218 +647,192 @@ export async function loadArticleCachePage(page = 1) {
  * @param {string} slug - Article slug
  * @returns {Object} - Article data with safe fallbacks
  */
-export async function getArticleBySlug(slug) {
+export function getArticleBySlug(slug) {
   try {
-    // Validate slug parameter to prevent errors
-    if (!slug || typeof slug !== 'string' || slug.trim() === '') {
-      console.error('Invalid slug provided to getArticleBySlug');
-      return createFallbackArticle('invalid-slug');
+    // Validate slug input
+    if (!slug || typeof slug !== 'string') {
+      console.error(`Invalid slug provided to getArticleBySlug: ${slug}`);
+      return createFallbackArticle(slug);
     }
-
-    // Performance optimization #1: Direct lookup from slug map
-    if (slugToFilenameMap.has(slug)) {
-      const targetFilename = slugToFilenameMap.get(slug);
+    
+    // Debug logging to help troubleshoot slug issues
+    console.log(`Looking up article with slug: "${slug}"`);
+    
+    // Ensure the article cache is loaded
+    if (!isInitialCacheLoaded) {
+      console.warn('Article cache not loaded when getArticleBySlug was called');
       try {
-        const filePath = path.join(process.cwd(), 'content/articles', targetFilename);
-        const fileContents = fs.readFileSync(filePath, 'utf8');
-        const { data, content } = matter(fileContents);
-        
-        return {
-          frontMatter: data,
-          content: content || '',
-          slug: data.slug || slug
-        };
+        // Try to load it synchronously for static build
+        preloadArticleCacheSync();
       } catch (error) {
-        // If file access fails, remove from map and continue with other methods
-        slugToFilenameMap.delete(slug);
-        console.log(`File lookup failed for cached slug ${slug}, falling back to other methods`);
+        console.error('Failed to preload article cache synchronously:', error);
       }
     }
     
-    // Performance optimization #2: Check existing cache by examining frontMatter slugs
-    // If we already know which file contains this slug, use it directly
-    let targetFilename = null;
-    for (const [filename, data] of articleCache.entries()) {
-      if (data.slug === slug) {
-        targetFilename = filename;
-        // Add to slug map for future lookups
-        slugToFilenameMap.set(slug, filename);
-        break;
-      }
+    // Debug the slug mapping size
+    console.log(`Slug mapping size: ${slugToFilenameMap.size}`);
+    
+    // First try exact match from slug-to-filename mapping
+    let filename = slugToFilenameMap.get(slug);
+    
+    // Log the result of the lookup
+    if (filename) {
+      console.log(`Found direct slug mapping: ${slug} -> ${filename}`);
+    } else {
+      console.log(`No direct slug mapping found for: "${slug}"`);
     }
     
-    // If we found the file in our cache, read it directly
-    if (targetFilename) {
-      try {
-        const filePath = path.join(process.cwd(), 'content/articles', targetFilename);
-        const fileContents = fs.readFileSync(filePath, 'utf8');
-        const { data, content } = matter(fileContents);
-        
-        return {
-          frontMatter: data,
-          content: content || '',
-          slug: data.slug || targetFilename.replace(/\.md$/, '')
-        };
-      } catch (err) {
-        console.error(`Error reading cached file for slug ${slug}:`, err);
-        // Continue to next method if reading fails
-      }
-    }
-    
-    // Performance optimization #3: Try direct filename match without reading content
-    try {
-      const directFilePath = path.join(process.cwd(), 'content/articles', `${slug}.md`);
-      if (fs.existsSync(directFilePath)) {
-        const fileContents = fs.readFileSync(directFilePath, 'utf8');
-        const { data, content } = matter(fileContents);
-        
-        // Add to cache and slug map for future use
-        articleCache.set(`${slug}.md`, data);
-        slugToFilenameMap.set(slug, `${slug}.md`);
-        
-        return {
-          frontMatter: data,
-          content: content || '',
-          slug: data.slug || slug
-        };
-      }
-    } catch (err) {
-      console.error(`Error checking direct file for slug ${slug}:`, err);
-      // Continue to next method
-    }
-    
-    // Third attempt: Look for timestamp-prefixed files that end with the slug
-    if (cachedArticlesList === null) {
-      try {
-        // Initialize the list if needed
-        cachedArticlesList = fs.readdirSync(path.join(process.cwd(), 'content/articles'));
-      } catch (err) {
-        console.error('Error reading article directory:', err);
-        cachedArticlesList = []; // Initialize as empty array on error
-      }
-    }
-    
-    // Optimization #4: Try pattern matching on filenames before reading contents
-    try {
-      const potentialMatch = cachedArticlesList.find(file => {
-        // Try several patterns:
-        // 1. File ends with slug.md (for timestamp prefixed files)
-        if (file.endsWith(`-${slug}.md`)) return true;
-        
-        // 2. File has slug embedded (for timestamp plus slug files)
-        const slugPattern = new RegExp(`-${slug}(\\.md|\\.mdx)$`);
-        return slugPattern.test(file);
-      });
+    // If no exact match, try alternative approaches
+    if (!filename) {
+      // Try matching with normalized slug (lowercase, no special chars)
+      const normalizedSlug = slug.toLowerCase().replace(/[^a-z0-9]+/g, '-');
       
-      if (potentialMatch) {
-        const filePath = path.join(process.cwd(), 'content/articles', potentialMatch);
-        const fileContents = fs.readFileSync(filePath, 'utf8');
-        const { data, content } = matter(fileContents);
-        
-        // Add to cache and slug map for future use
-        articleCache.set(potentialMatch, data);
-        slugToFilenameMap.set(slug, potentialMatch);
-        if (data.slug) {
-          slugToFilenameMap.set(data.slug, potentialMatch);
-        }
-        
-        return {
-          frontMatter: data,
-          content: content || '',
-          slug: data.slug || slug
-        };
-      }
-    } catch (err) {
-      console.error(`Error in pattern matching for slug ${slug}:`, err);
-      // Continue to next method
-    }
-    
-    // Optimization #5: Smart search by sorting files by likelihood 
-    // Check files from newest first (assuming timestamp prefixed filenames)
-    // and limit to only 100 files for even faster performance
-    let filesToCheck = [];
-    try {
-      if (cachedArticlesList.length > 0) {
-        // Try to find files that might contain the slug in the name first
-        const potentialFiles = cachedArticlesList.filter(file => 
-          file.includes(slug) || 
-          file.includes(slug.replace(/-/g, '')) ||
-          file.includes(slug.replace(/-/g, ' '))
-        );
-        
-        if (potentialFiles.length > 0) {
-          // If we have potential matches, check those first
-          filesToCheck = potentialFiles;
-        } else {
-          // Otherwise sort by timestamp and check newest 100
-          const sortedFiles = [...cachedArticlesList].sort((a, b) => {
-            try {
-              // Try to extract dates from filenames for sorting (newest first)
-              const dateA = a.match(/^\d{4}-\d{2}-\d{2}/);
-              const dateB = b.match(/^\d{4}-\d{2}-\d{2}/);
-              
-              if (dateA && dateB) {
-                return dateB[0].localeCompare(dateA[0]);
-              }
-              return 0;
-            } catch (error) {
-              return 0;
-            }
-          });
-          
-          filesToCheck = sortedFiles.slice(0, 100);
+      // Check all entries in slugToFilenameMap with normalized comparison
+      for (const [mapSlug, mapFilename] of slugToFilenameMap.entries()) {
+        const normalizedMapSlug = mapSlug.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+        if (normalizedMapSlug === normalizedSlug) {
+          filename = mapFilename;
+          console.log(`Found normalized slug match: ${normalizedMapSlug} for "${slug}"`);
+          break;
         }
       }
       
-      // Last resort: Check a limited number of files
-      for (const filename of filesToCheck) {
+      // If still not found, look through all files in the content/articles directory
+      if (!filename) {
+        console.log('Attempting to search through all files for matching slug');
         try {
-          // Skip directories
-          const filePath = path.join(process.cwd(), 'content/articles', filename);
-          const stats = fs.statSync(filePath);
-          if (!stats.isFile()) continue;
-          
-          // Use cached data if available
-          let frontMatter;
-          if (articleCache.has(filename)) {
-            frontMatter = articleCache.get(filename);
-          } else {
-            const fileContents = fs.readFileSync(filePath, 'utf8');
-            const { data } = matter(fileContents);
-            frontMatter = data;
-            // Store in cache for future use
-            articleCache.set(filename, frontMatter);
-          }
-          
-          if (frontMatter.slug === slug || filename.replace(/\.md$/, '') === slug) {
-            const fileContents = fs.readFileSync(filePath, 'utf8');
-            const { content } = matter(fileContents);
+          const articleDir = path.join(process.cwd(), 'content/articles');
+          if (fs.existsSync(articleDir)) {
+            const allFiles = fs.readdirSync(articleDir);
             
-            // Add to slug map for future lookups
-            slugToFilenameMap.set(slug, filename);
-            if (frontMatter.slug) {
-              slugToFilenameMap.set(frontMatter.slug, filename);
+            // First try to match by filename pattern
+            const slugPattern = new RegExp(`\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z-${normalizedSlug.replace(/-/g, '[-_]')}(\\.md)?$`, 'i');
+            const matchingFile = allFiles.find(file => slugPattern.test(file));
+            
+            if (matchingFile) {
+              filename = matchingFile;
+              console.log(`Found matching file by name pattern: ${matchingFile}`);
+              
+              // Update the slug mapping for future lookups
+              slugToFilenameMap.set(slug, filename);
+              
+              // Also cache the article data if not already cached
+              if (!articleCache.has(filename)) {
+                try {
+                  const filePath = path.join(articleDir, filename);
+                  const fileContents = fs.readFileSync(filePath, 'utf8');
+                  const { data } = matter(fileContents);
+                  articleCache.set(filename, data);
+                } catch (error) {
+                  console.error(`Error caching article data for ${filename}:`, error);
+                }
+              }
             }
             
-            return {
-              frontMatter,
-              content: content || '',
-              slug: frontMatter.slug || filename.replace(/\.md$/, '')
-            };
+            // If still not found, try to check the frontmatter of each article (expensive but thorough)
+            if (!filename) {
+              for (const file of allFiles) {
+                try {
+                  const filePath = path.join(articleDir, file);
+                  
+                  // Skip if not a file
+                  if (!fs.existsSync(filePath) || !fs.statSync(filePath).isFile()) continue;
+                  
+                  // Skip non-markdown files
+                  if (!file.endsWith('.md')) continue;
+                  
+                  // Only load articles not already in cache
+                  if (!articleCache.has(file)) {
+                    const fileContents = fs.readFileSync(filePath, 'utf8');
+                    const { data } = matter(fileContents);
+                    
+                    // Cache this article
+                    articleCache.set(file, data);
+                    
+                    // Check if this article has our slug
+                    if (data.slug === slug || 
+                        data.slug?.toLowerCase() === slug.toLowerCase()) {
+                      filename = file;
+                      slugToFilenameMap.set(slug, file);
+                      console.log(`Found article by scanning frontmatter: ${file}`);
+                      break;
+                    }
+                  }
+                } catch (error) {
+                  // Skip files with errors
+                  console.error(`Error checking file ${file}:`, error);
+                }
+              }
+            }
           }
         } catch (error) {
-          console.error(`Error processing file ${filename} for article by slug:`, error);
+          console.error('Error searching for article file:', error);
         }
       }
-    } catch (err) {
-      console.error(`Error in smart search for slug ${slug}:`, err);
     }
     
-    // If we reach here, no article was found - return a fallback article instead of null
-    console.warn(`Article not found for slug: ${slug}, using fallback content`);
-    return createFallbackArticle(slug);
+    if (!filename) {
+      console.warn(`No filename found for slug: "${slug}"`);
+      return createFallbackArticle(slug);
+    }
+    
+    // Now try to get the article data from cache
+    const cachedArticleData = articleCache.get(filename);
+    
+    if (cachedArticleData) {
+      try {
+        // Get the full article content
+        const articleContent = getArticleContent(filename);
+        
+        // Return combined data (frontmatter + content)
+        return {
+          ...cachedArticleData,
+          slug: slug, // Ensure slug is set correctly
+          content: articleContent
+        };
+      } catch (error) {
+        console.error(`Error getting full article content for ${filename}:`, error);
+        
+        // Return just the metadata with empty content if we can't get the full content
+        return {
+          ...cachedArticleData,
+          slug: slug,
+          content: ''
+        };
+      }
+    }
+    
+    console.warn(`Article cache miss for file: ${filename}`);
+    
+    // If not cached, read directly
+    try {
+      const fullPath = path.join(process.cwd(), 'content/articles', filename);
+      if (!fs.existsSync(fullPath)) {
+        console.error(`Article file not found: ${fullPath}`);
+        return createFallbackArticle(slug);
+      }
+      
+      // Read the file
+      const fileContents = fs.readFileSync(fullPath, 'utf8');
+      const { data, content } = matter(fileContents);
+      
+      // Cache the article data for future lookups
+      articleCache.set(filename, data);
+      
+      // Ensure slug is consistent
+      const articleData = {
+        ...data,
+        slug: slug,
+        content: content || ''
+      };
+      
+      return articleData;
+    } catch (error) {
+      console.error(`Error reading article file ${filename}:`, error);
+      return createFallbackArticle(slug);
+    }
   } catch (error) {
-    console.error('Error in getArticleBySlug:', error);
+    console.error(`Error in getArticleBySlug for slug "${slug}":`, error);
     return createFallbackArticle(slug);
   }
 }
@@ -946,4 +858,192 @@ function createFallbackArticle(slug) {
     content: `# Article Not Found\n\nWe could not locate the article you're looking for. It may have been moved, deleted, or the URL might be incorrect.\n\n[Return to home page](/)\n`,
     slug: slug
   };
+}
+
+/**
+ * Gets the content portion of an article file
+ * @param {string} filename - The filename of the article
+ * @returns {string} - The article content
+ */
+function getArticleContent(filename) {
+  try {
+    if (!filename) {
+      console.error('No filename provided to getArticleContent');
+      return '';
+    }
+    
+    const filePath = path.join(process.cwd(), 'content/articles', filename);
+    if (!fs.existsSync(filePath)) {
+      console.error(`Article file not found: ${filePath}`);
+      return '';
+    }
+    
+    const fileContents = fs.readFileSync(filePath, 'utf8');
+    const { content } = matter(fileContents);
+    
+    return content || '';
+  } catch (error) {
+    console.error(`Error getting article content for ${filename}:`, error);
+    return '';
+  }
+}
+
+/**
+ * Get related categories based on the current category
+ * @param {string} currentCategory - The current article's category
+ * @param {number} limit - Maximum number of categories to return
+ * @returns {Promise<Array>} - Array of related category objects
+ */
+export async function getRelatedCategories(currentCategory, limit = 5) {
+  try {
+    if (!currentCategory) {
+      return [];
+    }
+    
+    // Get all available categories from our articles
+    const categories = new Map();
+    
+    // Process all articles in the cache
+    for (const [, data] of articleCache.entries()) {
+      if (data.category && data.category !== currentCategory) {
+        // Count articles in each category
+        if (!categories.has(data.category)) {
+          categories.set(data.category, 0);
+        }
+        categories.set(data.category, categories.get(data.category) + 1);
+      }
+    }
+    
+    // Convert to array and sort by popularity (number of articles)
+    const sortedCategories = [...categories.entries()]
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, limit)
+      .map(([category, count]) => ({
+        name: category,
+        slug: category.toLowerCase().replace(/\s+/g, '-'),
+        count
+      }));
+    
+    return sortedCategories;
+  } catch (error) {
+    console.error('Error getting related categories:', error);
+    return [];
+  }
+}
+
+/**
+ * Synchronous version of preloadArticleCache for use in static builds
+ * This is called when we need to immediately load the cache
+ */
+export function preloadArticleCacheSync() {
+  try {
+    // If already loaded, return immediately
+    if (isInitialCacheLoaded) {
+      return;
+    }
+    
+    console.time('preloadCacheSync');
+    
+    // Check if content/articles directory exists
+    let articleDir = path.join(process.cwd(), 'content/articles');
+    if (!fs.existsSync(articleDir)) {
+      console.warn(`Directory ${articleDir} not found. Articles may not be accessible.`);
+      // Initialize empty arrays to prevent errors
+      cachedArticlesList = [];
+      isInitialCacheLoaded = true;
+      console.timeEnd('preloadCacheSync');
+      return;
+    }
+    
+    // Get all files in the articles directory
+    let files = fs.readdirSync(articleDir);
+    
+    // Log the directory and number of files found
+    console.log(`Found ${files.length} files in ${articleDir}`);
+    
+    // Sort files by their timestamp in filename (newer files first)
+    files.sort((a, b) => {
+      // Extract timestamp from filename if present
+      const timestampRegexA = a.match(/^(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z)/);
+      const timestampRegexB = b.match(/^(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z)/);
+      
+      const timestampA = timestampRegexA ? timestampRegexA[1] : null;
+      const timestampB = timestampRegexB ? timestampRegexB[1] : null;
+      
+      // If both have timestamps, compare them (reverse order for newest first)
+      if (timestampA && timestampB) {
+        return timestampB.localeCompare(timestampA);
+      }
+      
+      // If only one has a timestamp, prioritize that one
+      if (timestampA) return -1; // A has timestamp, comes first
+      if (timestampB) return 1;  // B has timestamp, comes first
+      
+      // Otherwise just sort by filename
+      return b.localeCompare(a);
+    });
+    
+    // Store the list of files for later pagination - already sorted by newest first
+    cachedArticlesList = files;
+    
+    // Process all files to build the slug map
+    for (const filename of files) {
+      try {
+        // Skip directories
+        const filePath = path.join(articleDir, filename);
+        if (!fs.existsSync(filePath)) continue;
+        
+        const stats = fs.statSync(filePath);
+        if (!stats.isFile()) continue;
+        
+        // Skip non-markdown files
+        if (!filename.endsWith('.md')) continue;
+        
+        // Read file contents
+        const fileContents = fs.readFileSync(filePath, 'utf8');
+        const { data } = matter(fileContents);
+        
+        // Store in cache
+        articleCache.set(filename, data);
+        
+        // If no date is present in frontmatter, try to extract from filename
+        if (!data.date) {
+          const timestampRegex = filename.match(/^(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z)/);
+          if (timestampRegex) {
+            data.date = timestampRegex[1];
+          }
+        }
+        
+        // Make sure data.slug exists, otherwise extract from filename
+        if (!data.slug) {
+          const filenameParts = filename.match(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z-(.*?)\.md$/);
+          if (filenameParts && filenameParts[1]) {
+            data.slug = filenameParts[1];
+          } else {
+            data.slug = filename.replace(/\.md$/, '');
+          }
+        }
+        
+        // Add to slug mapping
+        slugToFilenameMap.set(data.slug, filename);
+        
+        // Also index by filename without extension as fallback
+        const filenameSlug = filename.replace(/\.md$/, '');
+        const timeStampMatch = filenameSlug.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z-(.*?)$/);
+        if (timeStampMatch && timeStampMatch[1]) {
+          slugToFilenameMap.set(timeStampMatch[1], filename);
+        }
+      } catch (error) {
+        console.error(`Error processing file ${filename} in preloadArticleCacheSync:`, error);
+      }
+    }
+    
+    isInitialCacheLoaded = true;
+    console.log(`Preloaded ${articleCache.size} articles into cache synchronously`);
+    console.log(`Built slug mapping with ${slugToFilenameMap.size} entries`);
+    console.timeEnd('preloadCacheSync');
+  } catch (error) {
+    console.error('Error in preloadArticleCacheSync:', error);
+    throw error; // Re-throw to allow caller to handle
+  }
 } 

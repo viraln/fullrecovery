@@ -10,19 +10,17 @@ import dynamic from 'next/dynamic';
 import { getRelativeTime, formatDate } from '../../utils/dateUtils';
 import ArticleReactions from '../../components/ArticleReactions';
 import AdSense from '../../components/AdSense';
-import { extractTableOfContents } from '../../components/ArticleViewer';
-import { getRelatedArticles, getArticleBySlug } from '../../utils/articleUtils';
+import { getRelatedArticles, getArticleBySlug, preloadArticleCache, getRelatedCategories } from '../../utils/articleUtils';
 import Header from '../../components/Header';
 import Footer from '../../components/layout/Footer';
-
-// Import components that don't have external dependencies
-import SocialShare from '../../components/blog/SocialShare';
-import TOCButton from '../../components/blog/TOCButton';
-import FloatingShareBar from '../../components/blog/FloatingShareBar';
-import AuthorBox from '../../components/blog/AuthorBox';
+import ShareButtons from '../../components/blog/ShareButtons';
 import RelatedArticles from '../../components/blog/RelatedArticles';
+import ArticleHeader from '../../components/blog/ArticleHeader';
+import AuthorBox from '../../components/blog/AuthorBox';
+import CommentSection from '../../components/blog/CommentSection';
 import TableOfContents from '../../components/blog/TableOfContents';
 import BlogEditor from '../../components/blog/BlogEditor';
+import { markdownToHtml, extractTableOfContents } from '../../utils/markdownUtils';
 
 // Dynamically import MDX components to prevent build errors
 const MDXRemote = dynamic(() => import('next-mdx-remote').then(mod => mod.MDXRemote), {
@@ -1642,138 +1640,115 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps({ params: { slug } }) {
+export async function getStaticProps({ params }) {
   try {
-    console.time(`getStaticProps:${slug}`);
-    console.log('Getting static props for slug:', slug);
+    // Get the slug from params
+    const { slug } = params;
     
-    // Validate slug - ensure it's a valid string
+    // Validate the slug
     if (!slug || typeof slug !== 'string') {
-      console.error('Invalid slug provided to getStaticProps:', slug);
-      return { notFound: true };
+      console.error(`Invalid slug in getStaticProps: ${slug}`);
+      return {
+        notFound: true
+      };
     }
     
-    // Import and use getArticleBySlug
-    const { getArticleBySlug, getRelatedArticles } = await import('../../utils/articleUtils');
+    console.log(`Getting static props for slug: ${slug}`);
     
-    // Use optimized getArticleBySlug
-    const article = await getArticleBySlug(slug);
+    // Get the article data
+    const article = getArticleBySlug(slug);
     
-    if (!article) {
-      console.error(`Article not found for slug: ${slug}`);
-      return { notFound: true };
+    // If no article is found, return 404
+    if (!article || article.isPlaceholder) {
+      console.warn(`No article found for slug: ${slug}`);
+      return {
+        notFound: true
+      };
     }
     
-    const { frontMatter, content: rawContent } = article;
+    // Handle the format from getArticleBySlug (which now returns a flattened object)
+    // Extract necessary properties
+    const { content, ...frontMatter } = article;
     
-    // Ensure rawContent is valid before using split
-    const safeRawContent = rawContent || '';
+    // Prepare content for serialization
+    const safeContent = content || '';
     
-    // Calculate word count for SEO and reading time with safer calculation
-    const wordCount = safeRawContent ? safeRawContent.split(/\s+/g).length : 0;
-    const readingTime = Math.ceil(wordCount / 200) || 1; // 200 words per minute, minimum 1 minute
+    // Calculate reading time
+    const wordsPerMinute = 200;
+    const wordCount = safeContent.split(/\s+/).length;
+    const readingTime = Math.ceil(wordCount / wordsPerMinute);
     
-    // Ensure all necessary SEO fields are present
-    const serializedFrontMatter = {
-      ...frontMatter,
-      date: frontMatter && frontMatter.date instanceof Date 
-        ? frontMatter.date.toISOString() 
-        : (frontMatter?.date || new Date().toISOString()),
-      wordCount,
-      readingTime: frontMatter?.readingTime || readingTime,
-      excerpt: frontMatter?.excerpt || (safeRawContent ? safeRawContent.slice(0, 160).trim() + '...' : 'No content available'),
-      keywords: frontMatter?.keywords || frontMatter?.tags || [],
-      category: frontMatter?.category || 'Technology',
-      // Ensure categories are properly handled
-      categories: frontMatter?.categories || [],
-      image: frontMatter?.image || 'https://Trendiingz.com/default-og-image.jpg',
-      imageAlt: frontMatter?.imageAlt || frontMatter?.title || 'Article image',
-      imageCredit: frontMatter?.imageCredit || '',
-      url: `https://Trendiingz.com/posts/${slug}`,
-      locale: 'en_US'
-    };
-
-    // Get related articles in parallel with other operations
-    const relatedArticlesPromise = getRelatedArticles(
-      frontMatter?.keywords || [], 
-      slug, 
-      6
-    ).catch(error => {
-      console.error('Error fetching related articles:', error);
-      return []; // Return empty array on error
-    });
+    // Process content with remark plugins
+    const processedContent = await markdownToHtml(safeContent);
     
-    // Import only if needed
-    let serializedContent = null;
+    // Process the table of contents
+    let tableOfContents = [];
     try {
-      // Only try to serialize if we need it
-      if (process.env.NODE_ENV === 'production') {
-        const { serialize } = await import('next-mdx-remote/serialize');
-        const remarkGfm = (await import('remark-gfm')).default;
-        
-        // Dynamically import rehype plugins to prevent build errors
-        const rehypeSlug = (await import('rehype-slug')).default;
-        const rehypeAutolinkHeadings = (await import('rehype-autolink-headings')).default;
-        const rehypePrism = (await import('rehype-prism-plus')).default;
-        
-        // Ensure we're passing a string to serialize
-        if (safeRawContent && typeof safeRawContent === 'string') {
-          serializedContent = await serialize(safeRawContent, {
-            mdxOptions: {
-              remarkPlugins: [remarkGfm],
-              rehypePlugins: [
-                rehypeSlug,
-                [rehypeAutolinkHeadings, { behavior: 'wrap' }],
-                [rehypePrism, { ignoreMissing: true }]
-              ]
-            }
-          });
-        } else {
-          console.error('Cannot serialize content: not a string', typeof safeRawContent);
-        }
-      }
+      tableOfContents = extractTableOfContents(safeContent);
     } catch (error) {
-      console.error('Error serializing MDX content:', error);
-      // Continue without serialized content - will fallback to regular markdown
+      console.error('Error extracting table of contents:', error);
     }
     
-    // Wait for related articles to finish and sort by newest first
-    let relatedArticles = await relatedArticlesPromise;
-    
-    // Validate and sanitize related articles
-    relatedArticles = Array.isArray(relatedArticles) ? relatedArticles : [];
-    
-    // Filter out any invalid articles and ensure all have required fields
-    relatedArticles = relatedArticles
-      .filter(article => article && typeof article === 'object' && article.slug)
-      .map(article => ({
-        slug: article.slug,
-        title: article.title || 'Untitled Article',
-        excerpt: article.excerpt || 'No description available',
-        date: article.date || new Date().toISOString(),
-        image: article.image || 'https://Trendiingz.com/default-og-image.jpg',
-        category: article.category || 'Uncategorized',
-        readingTime: article.readingTime || 3
-      }));
-    
-    // Ensure articles are sorted by newest first
-    if (relatedArticles.length > 0) {
-      relatedArticles.sort((a, b) => new Date(b.date) - new Date(a.date));
+    // Get related articles (in parallel to speed up build time)
+    let relatedArticlesPromise;
+    try {
+      relatedArticlesPromise = getRelatedArticles(frontMatter.category, slug, 3);
+    } catch (error) {
+      console.error('Error initiating related articles fetch:', error);
+      relatedArticlesPromise = Promise.resolve([]);
     }
     
-    console.timeEnd(`getStaticProps:${slug}`);
+    // Get related categories (in parallel)
+    let relatedCategoriesPromise;
+    try {
+      relatedCategoriesPromise = getRelatedCategories(frontMatter.category, 5);
+    } catch (error) {
+      console.error('Error initiating related categories fetch:', error);
+      relatedCategoriesPromise = Promise.resolve([]);
+    }
+    
+    // Wait for both promises to resolve
+    const [relatedArticles, relatedCategories] = await Promise.all([
+      relatedArticlesPromise.catch(err => {
+        console.error('Error fetching related articles:', err);
+        return [];
+      }),
+      relatedCategoriesPromise.catch(err => {
+        console.error('Error fetching related categories:', err);
+        return [];
+      })
+    ]);
+    
+    // Ensure we have valid values for all front matter properties used in the UI
+    const validatedFrontMatter = {
+      title: frontMatter.title || 'Untitled Article',
+      date: frontMatter.date || new Date().toISOString(),
+      slug: slug,
+      category: frontMatter.category || 'Uncategorized',
+      excerpt: frontMatter.excerpt || '',
+      image: frontMatter.image || '/images/default-article.jpg',
+      keywords: frontMatter.keywords || [],
+      readingTime: readingTime || 1,
+      author: frontMatter.author || 'Full Recovery Team',
+      ...frontMatter // include any other fields
+    };
+    
+    // Return the props
     return {
       props: {
-        frontMatter: serializedFrontMatter,
-        // Always provide content as a string, never an object
-        content: typeof safeRawContent === 'string' ? safeRawContent : String(safeRawContent || ''),
-        serializedContent,
-        slug,
-        relatedArticles
-      }
+        frontMatter: validatedFrontMatter,
+        content: processedContent,
+        tableOfContents,
+        relatedArticles,
+        relatedCategories
+      },
+      // Revalidate every hour (3600 seconds)
+      revalidate: 3600
     };
   } catch (error) {
     console.error('Error in getStaticProps:', error);
-    return { notFound: true };
+    return {
+      notFound: true
+    };
   }
 } 
