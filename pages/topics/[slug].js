@@ -465,7 +465,11 @@ export async function getStaticProps({ params }) {
     // Get all posts from MDX utility
     const allPosts = await getAllPosts()
     
-    if (!allPosts || allPosts.length === 0) {
+    // Ensure allPosts is an array before proceeding
+    const postsArray = Array.isArray(allPosts) ? allPosts : 
+                      (allPosts && allPosts.posts && Array.isArray(allPosts.posts)) ? allPosts.posts : [];
+    
+    if (!postsArray || postsArray.length === 0) {
       return {
         props: {
           topic: slug,
@@ -477,7 +481,7 @@ export async function getStaticProps({ params }) {
     }
     
     // More accurate filtering using the topics field
-    const filteredArticles = allPosts.filter(post => {
+    const filteredArticles = postsArray.filter(post => {
       // First check if this post has the topic in its topics array (most accurate)
       if (post.topics && Array.isArray(post.topics)) {
         return post.topics.some(topic => topic.toLowerCase() === slug.toLowerCase());

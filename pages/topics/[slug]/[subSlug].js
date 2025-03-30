@@ -469,7 +469,11 @@ export async function getStaticProps({ params }) {
     // Get all posts from MDX utility
     const allPosts = await getAllPosts()
     
-    if (!allPosts || allPosts.length === 0) {
+    // Ensure allPosts is an array before proceeding
+    const postsArray = Array.isArray(allPosts) ? allPosts : 
+                      (allPosts && allPosts.posts && Array.isArray(allPosts.posts)) ? allPosts.posts : [];
+                      
+    if (!postsArray || postsArray.length === 0) {
       return {
         props: {
           subtopic: subSlug,
@@ -482,7 +486,7 @@ export async function getStaticProps({ params }) {
     }
     
     // More accurate filtering for subtopics
-    const filteredArticles = allPosts.filter(post => {
+    const filteredArticles = postsArray.filter(post => {
       // First check if this post has the subtopic in its subtopics array (most accurate)
       if (post.subtopics && Array.isArray(post.subtopics)) {
         return post.subtopics.some(subtopic => 

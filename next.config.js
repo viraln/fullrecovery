@@ -3,6 +3,10 @@ const nextConfig = {
   // Basic configuration
   reactStrictMode: true,
   
+  // Output configuration
+  output: 'export',
+  distDir: 'out',
+  
   // Image domains - using remotePatterns instead of deprecated domains
   images: {
     remotePatterns: [
@@ -27,6 +31,7 @@ const nextConfig = {
         hostname: 'i.ytimg.com',
       }
     ],
+    unoptimized: true,
   },
   
   // Handle server-only modules
