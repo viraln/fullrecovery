@@ -5,3 +5,9 @@
 
 # Handle SPA routing
 /*    /index.html   200 
+
+# Handle URLs without .html extension
+/posts/*  /posts/:splat.html  200
+
+# Fallback for 404 pages
+/*  /404.html  404 

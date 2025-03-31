@@ -33,6 +33,12 @@
   to = "/api-fallback.js"
   status = 200
 
+# Handle URLs without .html extension
+[[redirects]]
+  from = "/posts/*"
+  to = "/posts/:splat.html"
+  status = 200
+
 # Optimize asset caching
 [[headers]]
   for = "/static/*"
