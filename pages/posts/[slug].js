@@ -1598,7 +1598,7 @@ export async function getStaticPaths() {
     
     // Instead of processing all files, just generate paths for the most recent articles
     // This dramatically speeds up builds while ensuring the most important pages are pre-rendered
-    const recentFiles = files.slice(0, 100); // Only build the 100 most recent articles statically
+    const recentFiles = files.slice(0, 5000); // Increase from 100 to 5000 for more static pages
     
     const paths = recentFiles.map((filename) => {
       try {
@@ -1741,9 +1741,9 @@ export async function getStaticProps({ params }) {
         tableOfContents,
         relatedArticles,
         relatedCategories
-      },
-      // Revalidate every hour (3600 seconds)
-      revalidate: 3600
+      }
+      // Static exports don't support revalidate
+      // revalidate: 3600
     };
   } catch (error) {
     console.error('Error in getStaticProps:', error);

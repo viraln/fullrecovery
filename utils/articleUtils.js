@@ -12,7 +12,7 @@ const MAX_CACHE_SIZE = 100; // Maximum number of recommendation sets to cache
 const articleCache = new Map();
 
 // Add pagination state
-const ARTICLES_PER_PAGE = 20;
+const ARTICLES_PER_PAGE = 100;
 let cachedArticlesList = null;
 let isInitialCacheLoaded = false;
 
@@ -520,7 +520,7 @@ export async function preloadArticleCache() {
       // We're already sorted by newest first, so we just need to get articles with timestamp-prefixed filenames
       const recentArticleFiles = cachedArticlesList
         .filter(file => /^\d{4}-\d{2}-\d{2}T/.test(file))
-        .slice(0, 50); // Ensure we at least have 50 recent ones
+        .slice(0, 5000); // Increased from 50 to 5000
         
       console.log(`Preloading ${recentArticleFiles.length} additional recent articles...`);
       

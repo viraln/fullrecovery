@@ -4,7 +4,7 @@
 
 // Mark this function as server-side only
 const getAllPosts = async (options = {}) => {
-  const { page = 1, limit = 50, paginate = true } = options;
+  const { page = 1, limit = 5000, paginate = true } = options;
   
   // Only include server-side code when running on the server
   if (typeof window === 'undefined') {

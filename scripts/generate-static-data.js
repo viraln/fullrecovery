@@ -277,7 +277,7 @@ async function generateStaticData() {
   try {
     // Get all posts data
     console.log('📚 Getting all posts...');
-    const allPosts = await getAllPosts();
+    const allPosts = await getAllPosts({ limit: 10000, paginate: false });
     
     // Ensure allPosts is an array
     const posts = Array.isArray(allPosts) ? allPosts : 
