@@ -1434,55 +1434,6 @@ export default function Home({ posts: serverPosts, hasMore, totalPosts }) {
               onLoadMore={loadMoreInfinite}
             />
           </div>
-
-          {/* Category-specific sections - only show if we have articles in those categories */}
-          <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 pt-4">
-            {/* Only show category sections if no specific topics are selected, or if that topic is selected */}
-            {(selectedTopics.length === 0 || selectedTopics.includes('tech')) && (
-              <CategoryArticlesSection 
-                posts={filteredPosts} 
-                category="Tech" 
-                icon="💻" 
-                description="Latest technology news and innovations from around the world."
-              />
-            )}
-            
-            {(selectedTopics.length === 0 || selectedTopics.includes('ai')) && (
-              <CategoryArticlesSection 
-                posts={filteredPosts} 
-                category="AI" 
-                icon="🤖" 
-                description="Advancements in artificial intelligence and machine learning."
-              />
-            )}
-            
-            {(selectedTopics.length === 0 || selectedTopics.includes('science')) && (
-              <CategoryArticlesSection 
-                posts={filteredPosts} 
-                category="Science" 
-                icon="🔬" 
-                description="Scientific discoveries and breakthroughs across disciplines."
-              />
-            )}
-            
-            {(selectedTopics.length === 0 || selectedTopics.includes('business')) && (
-              <CategoryArticlesSection 
-                posts={filteredPosts} 
-                category="Business" 
-                icon="💼" 
-                description="Business news, market trends, and entrepreneurship insights."
-              />
-            )}
-            
-            {(selectedTopics.length === 0 || selectedTopics.includes('innovation')) && (
-              <CategoryArticlesSection 
-                posts={filteredPosts} 
-                category="Innovation" 
-                icon="💡" 
-                description="Groundbreaking ideas and innovations shaping the future."
-              />
-            )}
-          </div>
         </main>
 
         {/* Bottom CTA */}
